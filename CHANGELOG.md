@@ -16,3 +16,4 @@
 
 ## Added
 - Setting configuration flavor android and iOS
+- Setting environment
