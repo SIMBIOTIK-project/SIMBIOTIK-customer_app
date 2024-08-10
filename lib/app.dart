@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simbiotik_customer/core/configs/app_config.dart';
+import 'package:simbiotik_customer/core/routers/routers.dart';
 
 Future<Widget> initializeApp(AppConfig config) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,19 +11,23 @@ Future<Widget> initializeApp(AppConfig config) async {
 
 class MyApp extends StatelessWidget {
   final AppConfig config;
-  const MyApp({
+  final AppRouterConfig _appRouter = AppRouterConfig();
+  MyApp({
     super.key,
     required this.config,
   });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: config.appName,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(),
+      routerDelegate: _appRouter.router.routerDelegate,
+      routeInformationParser: _appRouter.router.routeInformationParser,
+      routeInformationProvider: _appRouter.router.routeInformationProvider,
     );
   }
 }

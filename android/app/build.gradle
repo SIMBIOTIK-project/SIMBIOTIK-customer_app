@@ -25,6 +25,7 @@ if (flutterVersionName == null) {
 android {
     namespace "com.example.simbiotik_customer"
     compileSdk flutter.compileSdkVersion
+    compileSdkVersion 31
     ndkVersion flutter.ndkVersion
 
     compileOptions {
