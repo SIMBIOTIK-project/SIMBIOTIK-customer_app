@@ -9,7 +9,7 @@ Future main() async {
     appName: 'SIMBIOTIK Access DEV',
     flavorType: FlavorType.dev,
   );
-  await dotenv.load(fileName: ".dev.env");
+  await dotenv.load(fileName: ".env_dev");
   Widget app = await initializeApp(devAppConfig);
   runApp(app);
 }

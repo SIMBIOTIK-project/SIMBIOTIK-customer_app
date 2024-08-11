@@ -15,19 +15,27 @@ class $AssetsImagesGen {
   /// File path: assets/images/cash.png
   AssetGenImage get cash => const AssetGenImage('assets/images/cash.png');
 
+  /// File path: assets/images/simbiotik2.png
+  AssetGenImage get simbiotik2 =>
+      const AssetGenImage('assets/images/simbiotik2.png');
+
+  /// File path: assets/images/simbiotik3.png
+  AssetGenImage get simbiotik3 =>
+      const AssetGenImage('assets/images/simbiotik3.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [cash];
+  List<AssetGenImage> get values => [cash, simbiotik2, simbiotik3];
 }
 
 class Assets {
   Assets._();
 
-  static const String aDev = '.dev.env';
   static const String aEnv = '.env';
+  static const String aEnvDev = '.env_dev';
   static const $AssetsImagesGen images = $AssetsImagesGen();
 
   /// List of all assets
-  static List<String> get values => [aDev, aEnv];
+  static List<String> get values => [aEnv, aEnvDev];
 }
 
 class AssetGenImage {
