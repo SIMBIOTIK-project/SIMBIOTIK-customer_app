@@ -25,7 +25,7 @@ mixin _$UserModel {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
-  String? get emial => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'email_verified_at')
   String? get emailVerifiedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
@@ -55,7 +55,7 @@ abstract class $UserModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? emial,
+      @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'email_verified_at') String? emailVerifiedAt,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -80,7 +80,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? emial = freezed,
+    Object? email = freezed,
     Object? emailVerifiedAt = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -98,9 +98,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      emial: freezed == emial
-          ? _value.emial
-          : emial // ignore: cast_nullable_to_non_nullable
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       emailVerifiedAt: freezed == emailVerifiedAt
           ? _value.emailVerifiedAt
@@ -145,7 +145,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'email') String? emial,
+      @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'email_verified_at') String? emailVerifiedAt,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -168,7 +168,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? emial = freezed,
+    Object? email = freezed,
     Object? emailVerifiedAt = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -186,9 +186,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      emial: freezed == emial
-          ? _value.emial
-          : emial // ignore: cast_nullable_to_non_nullable
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       emailVerifiedAt: freezed == emailVerifiedAt
           ? _value.emailVerifiedAt
@@ -228,7 +228,7 @@ class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'email') this.emial,
+      @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'email_verified_at') this.emailVerifiedAt,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
@@ -248,7 +248,7 @@ class _$UserModelImpl implements _UserModel {
   final String? name;
   @override
   @JsonKey(name: 'email')
-  final String? emial;
+  final String? email;
   @override
   @JsonKey(name: 'email_verified_at')
   final String? emailVerifiedAt;
@@ -273,7 +273,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, name: $name, emial: $emial, emailVerifiedAt: $emailVerifiedAt, createdAt: $createdAt, updatedAt: $updatedAt, nik: $nik, phoneNumber: $phoneNumber, address: $address, status: $status)';
+    return 'UserModel(id: $id, name: $name, email: $email, emailVerifiedAt: $emailVerifiedAt, createdAt: $createdAt, updatedAt: $updatedAt, nik: $nik, phoneNumber: $phoneNumber, address: $address, status: $status)';
   }
 
   @override
@@ -283,7 +283,7 @@ class _$UserModelImpl implements _UserModel {
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.emial, emial) || other.emial == emial) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.emailVerifiedAt, emailVerifiedAt) ||
                 other.emailVerifiedAt == emailVerifiedAt) &&
             (identical(other.createdAt, createdAt) ||
@@ -299,7 +299,7 @@ class _$UserModelImpl implements _UserModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, emial, emailVerifiedAt,
+  int get hashCode => Object.hash(runtimeType, id, name, email, emailVerifiedAt,
       createdAt, updatedAt, nik, phoneNumber, address, status);
 
   @JsonKey(ignore: true)
@@ -320,7 +320,7 @@ abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {@JsonKey(name: 'id') final int? id,
       @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'email') final String? emial,
+      @JsonKey(name: 'email') final String? email,
       @JsonKey(name: 'email_verified_at') final String? emailVerifiedAt,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       @JsonKey(name: 'updated_at') final DateTime? updatedAt,
@@ -340,7 +340,7 @@ abstract class _UserModel implements UserModel {
   String? get name;
   @override
   @JsonKey(name: 'email')
-  String? get emial;
+  String? get email;
   @override
   @JsonKey(name: 'email_verified_at')
   String? get emailVerifiedAt;

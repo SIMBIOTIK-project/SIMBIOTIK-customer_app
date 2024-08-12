@@ -44,6 +44,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool? _rememberMe = false;
+  bool _obsecurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +109,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                   'Masuk',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
+                const Gap(8.0),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -154,14 +156,26 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                   ),
                   child: TextFormField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(
-                      hintText: 'Masukkan Password',
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0,
-                      ),
-                    ),
-                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: 'Masukkan Password',
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 8.0,
+                        ),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _obsecurePassword = !_obsecurePassword;
+                            });
+                          },
+                          child: Icon(
+                            _obsecurePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            size: 20,
+                          ),
+                        )),
+                    obscureText: _obsecurePassword,
                   ),
                 ),
                 Row(
@@ -184,12 +198,24 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                 BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
                     if (state.status.isLoaded) {
-                      GoRouter.of(context).pushReplacement(
-                        AppRouterConstants.homeScreen,
-                      );
+                      if (state.data?.status == 'nasabah') {
+                        GoRouter.of(context).pushReplacement(
+                          AppRouterConstants.homeScreen,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                'Silahkan masuk menggunakan akun nasabah!'),
+                          ),
+                        );
+                      }
                     } else if (state.status.isError) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.error ?? 'Login failed')),
+                        const SnackBar(
+                          content: Text(
+                              'Gagal masuk, silahkan periksa kembali email atau password!'),
+                        ),
                       );
                     }
                   },
@@ -228,6 +254,48 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                     );
                   },
                 ),
+                const Gap(8.0),
+                const Row(
+                  children: [
+                    Expanded(child: Divider()),
+                    Gap(8.0),
+                    Text(
+                      'Belum ada akun?',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Gap(8.0),
+                    Expanded(child: Divider()),
+                  ],
+                ),
+                const Gap(8.0),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.biruSimbiotik,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        )),
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                            AuthEvent.login(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            ),
+                          );
+                    },
+                    child: const Text(
+                      'Daftar',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

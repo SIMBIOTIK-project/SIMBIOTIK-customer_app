@@ -24,8 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.simbiotik_customer"
-    compileSdk flutter.compileSdkVersion
-    compileSdkVersion 31
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -58,13 +57,15 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+        debug {
+        }
     }
 
     flavorDimensions "SIMBIOTIK Access"
 
     productFlavors {
         dev {
-            dimension "SIMBIOTIK Access DEV"
+            dimension "SIMBIOTIK Access"
             applicationIdSuffix ".dev"
             resValue "string", "app_name", "SIMBIOTIK Access DEV"
             versionNameSuffix ".dev"

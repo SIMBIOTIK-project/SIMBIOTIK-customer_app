@@ -24,7 +24,7 @@ class UserModel with _$UserModel {
   const factory UserModel({
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'email') String? emial,
+    @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'email_verified_at') String? emailVerifiedAt,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
