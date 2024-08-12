@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:simbiotik_customer/core/blocs/auth/auth_bloc.dart';
 import 'package:simbiotik_customer/core/blocs/blocs.dart';
 import 'package:simbiotik_customer/core/routers/routers.dart';
@@ -43,119 +42,194 @@ class LoginScreenContent extends StatefulWidget {
 class _LoginScreenContentState extends State<LoginScreenContent> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  bool? _rememberMe = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthBloc(AuthRepository()),
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Gap(40),
-              Assets.images.simbiotik2.image(
-                width: 40,
-                height: 40,
-              ),
-              const Text(
-                'Selamat Datang',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+          padding: const EdgeInsets.all(40.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Assets.images.simbiotik2.image(
+                  width: 40,
+                  height: 40,
                 ),
-              ),
-              const Row(
-                children: [
-                  Text(
-                    'SIMBIO',
-                    style: TextStyle(
-                      color: AppColors.hijauSimbiotik,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 28,
-                    ),
+                const Text(
+                  'Selamat Datang',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
-                  Text(
-                    'TIK',
-                    style: TextStyle(
-                      color: AppColors.biruSimbiotik,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 28,
-                    ),
-                  ),
-                  Gap(8.0),
-                  Text(
-                    'Access',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 24,
-                        fontStyle: FontStyle.italic),
-                  ),
-                ],
-              ),
-              const Text(
-                'SIMBIOTIK Access adalah aplikasi mobile yang dirancang khusus untuk nasabah, memungkinkan Anda untuk dengan mudah mengakses saldo rekening dan memantau riwayat transaksi kapan saja dan di mana saja',
-                style: TextStyle(
-                  fontSize: 8,
                 ),
-                textAlign: TextAlign.justify,
-              ),
-              const Gap(50),
-              const Text(
-                'Masuk',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                const Row(
                   children: [
-                    TextField(
-                      controller: _emailController,
-                      decoration: const InputDecoration(labelText: 'Email'),
+                    Text(
+                      'SIMBIO',
+                      style: TextStyle(
+                        color: AppColors.hijauSimbiotik,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 28,
+                      ),
                     ),
-                    TextField(
-                      controller: _passwordController,
-                      decoration: const InputDecoration(labelText: 'Password'),
-                      obscureText: true,
+                    Text(
+                      'TIK',
+                      style: TextStyle(
+                        color: AppColors.biruSimbiotik,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 28,
+                      ),
                     ),
-                    const Gap(16.0),
-                    BlocConsumer<AuthBloc, AuthState>(
-                      listener: (context, state) {
-                        if (state.status.isLoaded) {
-                          GoRouter.of(context).pushReplacement(
-                            AppRouterConstants.homeScreen,
-                          );
-                        } else if (state.status.isError) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(state.error ?? 'Login failed')),
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        if (state.status.isLoading) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-
-                        return ElevatedButton(
-                          onPressed: () {
-                            context.read<AuthBloc>().add(
-                                  AuthEvent.login(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
-                                  ),
-                                );
-                          },
-                          child: const Text('Login'),
-                        );
-                      },
-                    )
+                    Gap(8.0),
+                    Text(
+                      'Access',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 24,
+                          fontStyle: FontStyle.italic),
+                    ),
                   ],
                 ),
-              ),
-            ],
+                const Text(
+                  'SIMBIOTIK Access adalah aplikasi mobile yang dirancang khusus untuk nasabah, memungkinkan Anda untuk dengan mudah mengakses saldo rekening dan memantau riwayat transaksi kapan saja dan di mana saja',
+                  style: TextStyle(
+                    fontSize: 8,
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
+                const Gap(20),
+                const Text(
+                  'Masuk',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black12,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      8.0,
+                    ),
+                  ),
+                  height: 40,
+                  padding: const EdgeInsets.fromLTRB(
+                    8,
+                    4,
+                    8,
+                    4,
+                  ),
+                  child: TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      hintText: 'Masukkan Email',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                      ),
+                    ),
+                  ),
+                ),
+                const Gap(8.0),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black12,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      8.0,
+                    ),
+                  ),
+                  height: 40.0,
+                  padding: const EdgeInsets.fromLTRB(
+                    8,
+                    4,
+                    8,
+                    4,
+                  ),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                      hintText: 'Masukkan Password',
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                      ),
+                    ),
+                    obscureText: true,
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Ingat Saya',
+                      style: TextStyle(fontSize: 12.0),
+                    ),
+                    Checkbox(
+                      activeColor: Colors.lightBlue,
+                      value: _rememberMe,
+                      onChanged: (bool? newValue) {
+                        setState(() {
+                          _rememberMe = newValue ?? false;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                BlocConsumer<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    if (state.status.isLoaded) {
+                      GoRouter.of(context).pushReplacement(
+                        AppRouterConstants.homeScreen,
+                      );
+                    } else if (state.status.isError) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.error ?? 'Login failed')),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state.status.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    return SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.hijauSimbiotik,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            )),
+                        onPressed: () {
+                          context.read<AuthBloc>().add(
+                                AuthEvent.login(
+                                  email: _emailController.text,
+                                  password: _passwordController.text,
+                                ),
+                              );
+                        },
+                        child: const Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
