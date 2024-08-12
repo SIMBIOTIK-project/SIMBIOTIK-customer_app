@@ -279,12 +279,12 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                           borderRadius: BorderRadius.circular(5.0),
                         )),
                     onPressed: () {
-                      context.read<AuthBloc>().add(
-                            AuthEvent.login(
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            ),
-                          );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              'Fitur pendaftaran belum tersedia. Pendaftaran akun masih dilakukan oleh admin!'),
+                        ),
+                      );
                     },
                     child: const Text(
                       'Daftar',
