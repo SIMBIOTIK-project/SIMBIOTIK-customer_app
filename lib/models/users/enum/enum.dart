@@ -12,5 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'user_model.dart';
-export 'enum/enum.dart';
+export 'status_user.dart';

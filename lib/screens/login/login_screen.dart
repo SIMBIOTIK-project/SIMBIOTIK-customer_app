@@ -21,6 +21,7 @@ import 'package:simbiotik_customer/core/blocs/blocs.dart';
 import 'package:simbiotik_customer/core/routers/routers.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/gen/assets.gen.dart';
+import 'package:simbiotik_customer/models/models.dart';
 import 'package:simbiotik_customer/utils/app_colors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -190,6 +191,14 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                       onChanged: (bool? newValue) {
                         setState(() {
                           _rememberMe = newValue ?? false;
+                          if (_rememberMe == true) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text('Fitur masih dalam pengembangan!'),
+                              ),
+                            );
+                          }
                         });
                       },
                     ),
@@ -198,7 +207,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                 BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
                     if (state.status.isLoaded) {
-                      if (state.data?.status == 'nasabah') {
+                      if (state.data?.status == StatusUser.nasabah.value) {
                         GoRouter.of(context).pushReplacement(
                           AppRouterConstants.homeScreen,
                         );
@@ -243,7 +252,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                               );
                         },
                         child: const Text(
-                          'Login',
+                          'Masuk',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16.0,
