@@ -23,6 +23,7 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   const factory UserModel({
     @JsonKey(name: 'id') int? id,
+    @JsonKey(name: 'id_user') String? idUser,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'email_verified_at') String? emailVerifiedAt,

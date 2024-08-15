@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'home_screen.dart';
-export 'login/login.dart';
-export 'detail_user/detail_user.dart';
+part of 'user_bloc.dart';
+
+@freezed
+class UserEvent with _$UserEvent {
+  const factory UserEvent.fetch({
+    required String token,
+  }) = _Fetch;
+}

@@ -15,7 +15,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simbiotik_customer/core/routers/app_router_constants.dart';
-import 'package:simbiotik_customer/screens/login/login.dart';
+import 'package:simbiotik_customer/models/models.dart';
 import 'package:simbiotik_customer/screens/screens.dart';
 
 class AppRouterConfig {
@@ -34,9 +34,21 @@ class AppRouterConfig {
               name: AppRouterConstants.homeScreen,
               path: AppRouterConstants.homeScreen,
               builder: (context, state) {
-                return const Homescreen();
+                String? token = state.extra as String?;
+                return Homescreen(
+                  token: token,
+                );
               },
-            )
+            ),
+            GoRoute(
+                name: AppRouterConstants.detailUser,
+                path: AppRouterConstants.detailUser,
+                builder: (context, state) {
+                  UserModel user = state.extra as UserModel;
+                  return DetailUserScreen(
+                    user: user,
+                  );
+                })
           ],
           errorBuilder: (context, state) {
             return const Scaffold(

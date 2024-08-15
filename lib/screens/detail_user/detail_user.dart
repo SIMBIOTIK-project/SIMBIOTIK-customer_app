@@ -12,6 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'home_screen.dart';
-export 'login/login.dart';
-export 'detail_user/detail_user.dart';
+export 'detail_user_screen.dart';

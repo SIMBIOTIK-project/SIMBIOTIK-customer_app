@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'home_screen.dart';
-export 'login/login.dart';
-export 'detail_user/detail_user.dart';
+part of 'logout_bloc.dart';
+
+@freezed
+class LogoutEvent with _$LogoutEvent {
+  const factory LogoutEvent.logout() = _Logout;
+}

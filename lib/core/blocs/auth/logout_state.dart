@@ -12,6 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'home_screen.dart';
-export 'login/login.dart';
-export 'detail_user/detail_user.dart';
+part of 'logout_bloc.dart';
+
+enum GetLogoutStateStatus {
+  initial,
+  loading,
+  loaded,
+  error;
+
+  bool get isInitial => this == initial;
+  bool get isLoading => this == loading;
+  bool get isLoaded => this == loaded;
+  bool get isError => this == error;
+}
+
+@freezed
+class LogoutState with _$LogoutState {
+  const factory LogoutState({
+    @Default(GetLogoutStateStatus.initial) GetLogoutStateStatus status,
+    @Default('') String? error,
+  }) = _LogoutState;
+}

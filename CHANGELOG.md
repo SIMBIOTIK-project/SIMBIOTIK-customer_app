@@ -18,3 +18,4 @@
 - Setting configuration flavor android and iOS
 - Setting environment
 - Create Login screen
+- Create Detail User and Logout

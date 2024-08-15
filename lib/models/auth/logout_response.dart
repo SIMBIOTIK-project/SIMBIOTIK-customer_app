@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'home_screen.dart';
-export 'login/login.dart';
-export 'detail_user/detail_user.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'logout_response.freezed.dart';
+part 'logout_response.g.dart';
+
+@freezed
+class LogoutResponse with _$LogoutResponse {
+  const factory LogoutResponse({
+    required bool success,
+  }) = _LogoutResponse;
+
+  factory LogoutResponse.fromJson(Map<String, dynamic> json) =>
+      _$LogoutResponseFromJson(json);
+}

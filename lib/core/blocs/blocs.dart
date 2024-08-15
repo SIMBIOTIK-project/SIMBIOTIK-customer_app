@@ -13,3 +13,4 @@
 // limitations under the License.
 
 export 'auth/auth.dart';
+export 'user/user.dart';

@@ -12,9 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color hijauSimbiotik = Color(0xFF61AB32);
   static const Color biruSimbiotik = Color(0xFF51aDE5);
+}
+
+Color getRandomColor() {
+  final random = Random();
+  return Color.fromARGB(
+    255,
+    random.nextInt(256), // Red value
+    random.nextInt(256), // Green value
+    random.nextInt(256), // Blue value
+  );
 }

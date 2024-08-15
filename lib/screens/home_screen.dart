@@ -13,22 +13,46 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simbiotik_customer/core/blocs/blocs.dart';
+import 'package:simbiotik_customer/core/routers/routers.dart';
+import 'package:simbiotik_customer/data/repository/user_repository.dart';
 import 'package:simbiotik_customer/gen/assets.gen.dart';
+import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/utils/app_colors.dart';
 import 'package:simbiotik_customer/utils/utils.dart';
 
 class Homescreen extends StatelessWidget {
-  const Homescreen({super.key});
+  final String? token;
+  const Homescreen({
+    this.token,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const HomescreenContent();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UserBloc(UserRepository()),
+        ),
+      ],
+      child: HomescreenContent(
+        token: token,
+      ),
+    );
   }
 }
 
 class HomescreenContent extends StatefulWidget {
-  const HomescreenContent({super.key});
+  final String? token;
+  const HomescreenContent({
+    this.token,
+    super.key,
+  });
 
   @override
   State<HomescreenContent> createState() => _HomescreenContentState();
@@ -42,48 +66,62 @@ class _HomescreenContentState extends State<HomescreenContent> {
   void initState() {
     super.initState();
     _getCurrentLocation();
+    context.read<UserBloc>().add(UserEvent.fetch(token: widget.token!));
   }
 
   @override
   Widget build(BuildContext context) {
-    String fullName = 'Ahmad Subari';
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(
-          16.0,
-          60.0,
-          16.0,
-          16.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildNameandProfile(
-              context,
-              fullName,
-            ),
-            _buildLocation(context),
-            const Gap(20.0),
-            _buildTotalBalance(context),
-            const Gap(8.0),
-            const Text(
-              'Ringkasan',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        if (state.status.isLoaded) {
+          return Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                16.0,
+                60.0,
+                16.0,
+                16.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildNameandProfile(context, state.data!),
+                  _buildLocation(context),
+                  const Gap(20.0),
+                  _buildTotalBalance(context),
+                  const Gap(8.0),
+                  const Text(
+                    'Ringkasan',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Gap(8.0),
+                  _buildOverviewContent(context),
+                  const Gap(8.0),
+                  const Text(
+                    'Data Riwayat',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const Gap(8.0),
-            _buildOverviewContent(context),
-            const Gap(8.0),
-            const Text(
-              'Data Riwayat',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+          );
+        } else if (state.status.isError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.error.toString()),
             ),
-          ],
-        ),
-      ),
+          );
+        } else {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return Container();
+      },
     );
   }
 
@@ -273,7 +311,7 @@ class _HomescreenContentState extends State<HomescreenContent> {
     );
   }
 
-  Widget _buildNameandProfile(BuildContext context, String fullName) {
+  Widget _buildNameandProfile(BuildContext context, UserModel user) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -281,7 +319,7 @@ class _HomescreenContentState extends State<HomescreenContent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hi, $fullName',
+              'Hi, ${user.name}',
               style: const TextStyle(
                 fontWeight: FontWeight.w400,
               ),
@@ -295,13 +333,21 @@ class _HomescreenContentState extends State<HomescreenContent> {
             )
           ],
         ),
-        CircleAvatar(
-          radius: 24,
-          backgroundColor: Colors.pinkAccent,
-          child: Text(
-            getInitials(fullName),
-            style: const TextStyle(color: Colors.white),
+        InkWell(
+          child: CircleAvatar(
+            radius: 24,
+            backgroundColor: getRandomColor(),
+            child: Text(
+              getInitials(user.name ?? '-'),
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
+          onTap: () {
+            GoRouter.of(context).pushNamed(
+              AppRouterConstants.detailUser,
+              extra: user,
+            );
+          },
         ),
       ],
     );
@@ -328,13 +374,17 @@ class _HomescreenContentState extends State<HomescreenContent> {
     Position? position = await LocationHandler.getCurrentPosition();
     if (position != null) {
       String? address = await LocationHandler.getAddressFromLatLang(position);
-      setState(() {
-        _currentAddress = address ?? 'Lokasi tidak ditemukan';
-      });
+      if (mounted) {
+        setState(() {
+          _currentAddress = address ?? 'Lokasi tidak ditemukan';
+        });
+      }
     } else {
-      setState(() {
-        _currentAddress = 'Tidak dapat mengakses lokasi';
-      });
+      if (mounted) {
+        setState(() {
+          _currentAddress = 'Tidak dapat mengakses lokasi';
+        });
+      }
     }
   }
 }

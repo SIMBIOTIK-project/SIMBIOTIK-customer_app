@@ -15,9 +15,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:simbiotik_customer/data/data.dart';
-import 'package:simbiotik_customer/models/auth/auth_response.dart';
+import 'package:simbiotik_customer/models/auth/logout_response.dart';
 
-class AuthRepository {
+class LogoutRepository {
   final Dio _dio = Dio()
     ..interceptors.add(LogInterceptor(
       request: true,
@@ -27,20 +27,16 @@ class AuthRepository {
       requestHeader: false,
       error: true,
     ));
-  final String api = dotenv.get('URL') + ApiConstants.login;
-  Future<AuthResponse> login(String email, String password) async {
+  final String api = dotenv.get('URL') + ApiConstants.logout;
+  Future<LogoutResponse> logout() async {
     final response = await _dio.post(
       api,
-      data: {
-        'email': email,
-        'password': password,
-      },
     );
 
     if (response.statusCode == 200) {
-      return AuthResponse.fromJson(response.data);
+      return LogoutResponse.fromJson(response.data);
     } else {
-      throw Exception('Gagal login');
+      throw Exception('Gagal logout');
     }
   }
 }
