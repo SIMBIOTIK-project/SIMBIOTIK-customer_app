@@ -30,7 +30,7 @@ enum DepositStateStatus {
 class DepositState with _$DepositState {
   const factory DepositState({
     @Default(DepositStateStatus.initial) DepositStateStatus status,
-    DepositModel? data,
+    DepositResponseModel? data,
     @Default('') String? error,
   }) = _DepositState;
 }

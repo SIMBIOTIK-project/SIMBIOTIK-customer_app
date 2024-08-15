@@ -15,7 +15,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simbiotik_customer/data/data.dart';
-import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/models/deposits/deposit_page_model.dart';
+import 'package:simbiotik_customer/models/deposits/deposit_response_model.dart';
 
 part 'deposit_event.dart';
 part 'deposit_state.dart';
@@ -35,6 +36,7 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
       final response = await _depositRepository.getDeposit(
         event.token,
         event.idUser,
+        event.page,
       );
       emit(
         state.copyWith(
@@ -43,6 +45,7 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
         ),
       );
     } catch (e) {
+      print('Errornya adalah $e');
       emit(
         state.copyWith(
           status: DepositStateStatus.error,

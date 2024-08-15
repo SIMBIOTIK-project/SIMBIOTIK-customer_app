@@ -38,3 +38,10 @@ String formatCurrency(double amount) {
     return formatCurrency.format(amount);
   }
 }
+
+String formattedDate(String time) {
+  final date = DateFormat('dd-MM-yyyy').format(
+    DateTime.parse(time),
+  );
+  return date;
+}

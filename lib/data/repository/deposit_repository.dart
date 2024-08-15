@@ -15,7 +15,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:simbiotik_customer/data/data.dart';
-import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/models/deposits/deposit_page_model.dart';
+import 'package:simbiotik_customer/models/deposits/deposit_response_model.dart';
 
 class DepositRepository {
   final Dio _dio = Dio()
@@ -28,7 +29,11 @@ class DepositRepository {
       error: true,
     ));
   final String api = dotenv.get('URL') + ApiConstants.deposit;
-  Future<DepositModel> getDeposit(String token, String? idUser) async {
+  Future<DepositResponseModel> getDeposit(
+    String token,
+    String? idUser,
+    int? page,
+  ) async {
     final response = await _dio.get(
       api,
       options: Options(
@@ -38,11 +43,14 @@ class DepositRepository {
       ),
       queryParameters: {
         'id_user': idUser,
+        'page': page,
       },
     );
 
+    print('Hasil responsenya ${response.data['data']}');
+
     if (response.statusCode == 200) {
-      return DepositModel.fromJson(response.data);
+      return DepositResponseModel.fromJson(response.data['data']);
     } else {
       throw Exception('Gagal login');
     }

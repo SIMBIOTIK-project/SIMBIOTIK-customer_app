@@ -19,5 +19,6 @@ class DepositEvent with _$DepositEvent {
   const factory DepositEvent.fetch({
     required String token,
     String? idUser,
+    int? page,
   }) = _Fetch;
 }

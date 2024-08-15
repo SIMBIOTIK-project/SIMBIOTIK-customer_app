@@ -1,4 +1,4 @@
-// Copyright 2024 SIMBIOTIK Developer
+// Copyright 2024 ariefsetyonugroho
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,23 +17,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simbiotik_customer/models/models.dart';
 
-part 'deposit_model.freezed.dart';
-part 'deposit_model.g.dart';
+part 'deposit_page_model.freezed.dart';
+part 'deposit_page_model.g.dart';
 
 @freezed
-class DepositModel with _$DepositModel {
-  const factory DepositModel({
-    @JsonKey(name: 'id') int? id,
-    @JsonKey(name: 'id_user') String? idUser,
-    @JsonKey(name: 'id_wastetype') String? idWastetype,
-    @JsonKey(name: 'weight') String? weight,
-    @JsonKey(name: 'price') String? price,
-    @JsonKey(name: 'created_at') DateTime? createdAt,
-    @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'user') UserModel? user,
-    @JsonKey(name: 'wastetype') WasteTypesModel? wasteType,
-  }) = _DepositModel;
+class DepositPageModel with _$DepositPageModel {
+  const factory DepositPageModel({
+    @JsonKey(name: 'total_data') int? totalData,
+    @JsonKey(name: 'current_page') int? currentPage,
+    @JsonKey(name: 'per_page') int? perPage,
+    @JsonKey(name: 'total_pages') int? totalPages,
+    @JsonKey(name: 'data') List<DepositModel>? data,
+  }) = _DepositPageModel;
 
-  factory DepositModel.fromJson(Map<String, dynamic> json) =>
-      _$DepositModelFromJson(json);
+  factory DepositPageModel.fromJson(Map<String, dynamic> json) =>
+      _$DepositPageModelFromJson(json);
 }

@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DepositEvent {
   String get token => throw _privateConstructorUsedError;
   String? get idUser => throw _privateConstructorUsedError;
+  int? get page => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser) fetch,
+    required TResult Function(String token, String? idUser, int? page) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser)? fetch,
+    TResult? Function(String token, String? idUser, int? page)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser)? fetch,
+    TResult Function(String token, String? idUser, int? page)? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +63,7 @@ abstract class $DepositEventCopyWith<$Res> {
           DepositEvent value, $Res Function(DepositEvent) then) =
       _$DepositEventCopyWithImpl<$Res, DepositEvent>;
   @useResult
-  $Res call({String token, String? idUser});
+  $Res call({String token, String? idUser, int? page});
 }
 
 /// @nodoc
@@ -80,6 +81,7 @@ class _$DepositEventCopyWithImpl<$Res, $Val extends DepositEvent>
   $Res call({
     Object? token = null,
     Object? idUser = freezed,
+    Object? page = freezed,
   }) {
     return _then(_value.copyWith(
       token: null == token
@@ -90,6 +92,10 @@ class _$DepositEventCopyWithImpl<$Res, $Val extends DepositEvent>
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as String?,
+      page: freezed == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -102,7 +108,7 @@ abstract class _$$FetchImplCopyWith<$Res>
       __$$FetchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String token, String? idUser});
+  $Res call({String token, String? idUser, int? page});
 }
 
 /// @nodoc
@@ -118,6 +124,7 @@ class __$$FetchImplCopyWithImpl<$Res>
   $Res call({
     Object? token = null,
     Object? idUser = freezed,
+    Object? page = freezed,
   }) {
     return _then(_$FetchImpl(
       token: null == token
@@ -128,6 +135,10 @@ class __$$FetchImplCopyWithImpl<$Res>
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as String?,
+      page: freezed == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -135,16 +146,18 @@ class __$$FetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  const _$FetchImpl({required this.token, this.idUser});
+  const _$FetchImpl({required this.token, this.idUser, this.page});
 
   @override
   final String token;
   @override
   final String? idUser;
+  @override
+  final int? page;
 
   @override
   String toString() {
-    return 'DepositEvent.fetch(token: $token, idUser: $idUser)';
+    return 'DepositEvent.fetch(token: $token, idUser: $idUser, page: $page)';
   }
 
   @override
@@ -153,11 +166,12 @@ class _$FetchImpl implements _Fetch {
         (other.runtimeType == runtimeType &&
             other is _$FetchImpl &&
             (identical(other.token, token) || other.token == token) &&
-            (identical(other.idUser, idUser) || other.idUser == idUser));
+            (identical(other.idUser, idUser) || other.idUser == idUser) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token, idUser);
+  int get hashCode => Object.hash(runtimeType, token, idUser, page);
 
   @JsonKey(ignore: true)
   @override
@@ -168,27 +182,27 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser) fetch,
+    required TResult Function(String token, String? idUser, int? page) fetch,
   }) {
-    return fetch(token, idUser);
+    return fetch(token, idUser, page);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser)? fetch,
+    TResult? Function(String token, String? idUser, int? page)? fetch,
   }) {
-    return fetch?.call(token, idUser);
+    return fetch?.call(token, idUser, page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser)? fetch,
+    TResult Function(String token, String? idUser, int? page)? fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(token, idUser);
+      return fetch(token, idUser, page);
     }
     return orElse();
   }
@@ -223,13 +237,17 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements DepositEvent {
-  const factory _Fetch({required final String token, final String? idUser}) =
-      _$FetchImpl;
+  const factory _Fetch(
+      {required final String token,
+      final String? idUser,
+      final int? page}) = _$FetchImpl;
 
   @override
   String get token;
   @override
   String? get idUser;
+  @override
+  int? get page;
   @override
   @JsonKey(ignore: true)
   _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
@@ -239,7 +257,7 @@ abstract class _Fetch implements DepositEvent {
 /// @nodoc
 mixin _$DepositState {
   DepositStateStatus get status => throw _privateConstructorUsedError;
-  DepositModel? get data => throw _privateConstructorUsedError;
+  DepositResponseModel? get data => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -253,9 +271,10 @@ abstract class $DepositStateCopyWith<$Res> {
           DepositState value, $Res Function(DepositState) then) =
       _$DepositStateCopyWithImpl<$Res, DepositState>;
   @useResult
-  $Res call({DepositStateStatus status, DepositModel? data, String? error});
+  $Res call(
+      {DepositStateStatus status, DepositResponseModel? data, String? error});
 
-  $DepositModelCopyWith<$Res>? get data;
+  $DepositResponseModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -283,7 +302,7 @@ class _$DepositStateCopyWithImpl<$Res, $Val extends DepositState>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as DepositModel?,
+              as DepositResponseModel?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -293,12 +312,12 @@ class _$DepositStateCopyWithImpl<$Res, $Val extends DepositState>
 
   @override
   @pragma('vm:prefer-inline')
-  $DepositModelCopyWith<$Res>? get data {
+  $DepositResponseModelCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
-    return $DepositModelCopyWith<$Res>(_value.data!, (value) {
+    return $DepositResponseModelCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
@@ -312,10 +331,11 @@ abstract class _$$DepositStateImplCopyWith<$Res>
       __$$DepositStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DepositStateStatus status, DepositModel? data, String? error});
+  $Res call(
+      {DepositStateStatus status, DepositResponseModel? data, String? error});
 
   @override
-  $DepositModelCopyWith<$Res>? get data;
+  $DepositResponseModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -341,7 +361,7 @@ class __$$DepositStateImplCopyWithImpl<$Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as DepositModel?,
+              as DepositResponseModel?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -360,7 +380,7 @@ class _$DepositStateImpl implements _DepositState {
   @JsonKey()
   final DepositStateStatus status;
   @override
-  final DepositModel? data;
+  final DepositResponseModel? data;
   @override
   @JsonKey()
   final String? error;
@@ -393,13 +413,13 @@ class _$DepositStateImpl implements _DepositState {
 abstract class _DepositState implements DepositState {
   const factory _DepositState(
       {final DepositStateStatus status,
-      final DepositModel? data,
+      final DepositResponseModel? data,
       final String? error}) = _$DepositStateImpl;
 
   @override
   DepositStateStatus get status;
   @override
-  DepositModel? get data;
+  DepositResponseModel? get data;
   @override
   String? get error;
   @override

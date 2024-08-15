@@ -18,8 +18,9 @@ import 'package:gap/gap.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simbiotik_customer/core/blocs/blocs.dart';
+import 'package:simbiotik_customer/core/blocs/deposit/deposit.dart';
 import 'package:simbiotik_customer/core/routers/routers.dart';
-import 'package:simbiotik_customer/data/repository/user_repository.dart';
+import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/gen/assets.gen.dart';
 import 'package:simbiotik_customer/models/models.dart';
 import 'package:simbiotik_customer/utils/app_colors.dart';
@@ -38,6 +39,12 @@ class Homescreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => UserBloc(UserRepository()),
+        ),
+        BlocProvider(
+          create: (context) => DepositBloc(DepositRepository()),
+        ),
+        BlocProvider(
+          create: (context) => WithdrawalBloc(WithdrawalRepository()),
         ),
       ],
       child: HomescreenContent(
@@ -74,41 +81,52 @@ class _HomescreenContentState extends State<HomescreenContent> {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state.status.isLoaded) {
-          return Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                16.0,
-                60.0,
-                16.0,
-                16.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildNameandProfile(context, state.data!),
-                  _buildLocation(context),
-                  const Gap(20.0),
-                  _buildTotalBalance(context),
-                  const Gap(8.0),
-                  const Text(
-                    'Ringkasan',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+          if (state.data?.idUser != null) {
+            context.read<DepositBloc>().add(DepositEvent.fetch(
+                  token: widget.token!,
+                  idUser: state.data?.idUser,
+                  page: 1,
+                ));
+            return Scaffold(
+              body: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  16.0,
+                  60.0,
+                  16.0,
+                  16.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildNameandProfile(context, state.data!),
+                    _buildLocation(context),
+                    const Gap(20.0),
+                    _buildTotalBalance(context),
+                    const Gap(8.0),
+                    const Text(
+                      'Ringkasan',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const Gap(8.0),
-                  _buildOverviewContent(context),
-                  const Gap(8.0),
-                  const Text(
-                    'Data Riwayat',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                    const Gap(8.0),
+                    _buildOverviewContent(context),
+                    const Gap(8.0),
+                    const Text(
+                      'Data Riwayat',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            const Center(
+              child: Text('Data Nasabah Tidak Diketahui!'),
+            );
+          }
         } else if (state.status.isError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -212,52 +230,24 @@ class _HomescreenContentState extends State<HomescreenContent> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: Container(
-            height: 80,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(color: Colors.black12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Setoran',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Icon(
-                        Icons.price_check,
-                        size: 20,
-                        color: Colors.green,
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        _isHidden ? '*******' : formatCurrency(10000000),
-                        style: const TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    'Setoran Terakhir: 1 Agustus 2024',
-                    style:
-                        TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
-                  )
-                ],
-              ),
-            ),
-          ),
+        BlocBuilder<DepositBloc, DepositState>(
+          builder: (context, state) {
+            if (state.status.isLoaded) {
+              List<DepositModel> list = state.data?.result?.data ?? [];
+              double lastDeposit = list.isNotEmpty
+                  ? double.parse(list.last.price.toString())
+                  : 0;
+              return _buildDeposit(
+                context,
+                lastDeposit,
+                list.last.createdAt.toString(),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
         ),
         const Gap(8.0),
         Expanded(
@@ -308,6 +298,60 @@ class _HomescreenContentState extends State<HomescreenContent> {
           ),
         ),
       ],
+    );
+  }
+
+  _buildDeposit(
+    BuildContext context,
+    double price,
+    String date,
+  ) {
+    return Expanded(
+      child: Container(
+        height: 80,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(color: Colors.black12),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Setoran',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Icon(
+                    Icons.price_check,
+                    size: 20,
+                    color: Colors.green,
+                  )
+                ],
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    _isHidden ? '*******' : formatCurrency(price),
+                    style: const TextStyle(
+                        fontSize: 18.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Text(
+                'Setoran Terakhir: ${formattedDate(date)}',
+                style:
+                    const TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
