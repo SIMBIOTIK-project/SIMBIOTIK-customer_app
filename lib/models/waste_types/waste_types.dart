@@ -1,4 +1,4 @@
-// Copyright 2024 SIMBIOTIK Developer
+// Copyright 2024 SIMBIOTIK DEVELOPER
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,8 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'users/users.dart';
-export 'auth/auth.dart';
-export 'waste_types/waste_types.dart';
-export 'deposits/deposits.dart';
-export 'withdrawals/withdrawals.dart';
+export 'waste_types_model.dart';

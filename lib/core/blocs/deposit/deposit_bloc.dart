@@ -14,38 +14,38 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:simbiotik_customer/data/repository/user_repository.dart';
+import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/models.dart';
 
-part 'user_event.dart';
-part 'user_state.dart';
-part 'user_bloc.freezed.dart';
+part 'deposit_event.dart';
+part 'deposit_state.dart';
+part 'deposit_bloc.freezed.dart';
 
-class UserBloc extends Bloc<UserEvent, UserState> {
-  final UserRepository _userRepository;
+class DepositBloc extends Bloc<DepositEvent, DepositState> {
+  final DepositRepository _depositRepository;
 
-  UserBloc(this._userRepository) : super(const UserState()) {
+  DepositBloc(this._depositRepository) : super(const DepositState()) {
     on<_Fetch>(_onFetch);
   }
 
-  Future<void> _onFetch(_Fetch event, Emitter<UserState> emit) async {
-    emit(state.copyWith(status: UserStateStatus.loading, error: ''));
+  Future<void> _onFetch(_Fetch event, Emitter<DepositState> emit) async {
+    emit(state.copyWith(status: DepositStateStatus.loading, error: ''));
 
     try {
-      final response = await _userRepository.getUser(
+      final response = await _depositRepository.getDeposit(
         event.token,
+        event.idUser,
       );
-
       emit(
         state.copyWith(
-          status: UserStateStatus.loaded,
+          status: DepositStateStatus.loaded,
           data: response,
         ),
       );
     } catch (e) {
       emit(
         state.copyWith(
-          status: UserStateStatus.error,
+          status: DepositStateStatus.error,
           error: e.toString(),
         ),
       );

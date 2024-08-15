@@ -12,5 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'repository/auth_repository.dart';
 export 'api_constants.dart';
+export 'repository/repository.dart';

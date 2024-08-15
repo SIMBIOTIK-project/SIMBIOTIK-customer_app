@@ -12,8 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'users/users.dart';
-export 'auth/auth.dart';
-export 'waste_types/waste_types.dart';
-export 'deposits/deposits.dart';
-export 'withdrawals/withdrawals.dart';
+part of 'deposit_bloc.dart';
+
+enum DepositStateStatus {
+  initial,
+  loading,
+  loaded,
+  error;
+
+  bool get isInitial => this == initial;
+  bool get isLoading => this == loading;
+  bool get isLoaded => this == loaded;
+  bool get isError => this == error;
+}
+
+@freezed
+class DepositState with _$DepositState {
+  const factory DepositState({
+    @Default(DepositStateStatus.initial) DepositStateStatus status,
+    DepositModel? data,
+    @Default('') String? error,
+  }) = _DepositState;
+}

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'users/users.dart';
-export 'auth/auth.dart';
-export 'waste_types/waste_types.dart';
-export 'deposits/deposits.dart';
-export 'withdrawals/withdrawals.dart';
+export 'auth_repository.dart';
+export 'deposit_repository.dart';
+export 'logout_repository.dart';
+export 'user_repository.dart';
+export 'withdrawal_repository.dart';

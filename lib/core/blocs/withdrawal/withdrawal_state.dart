@@ -12,8 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'users/users.dart';
-export 'auth/auth.dart';
-export 'waste_types/waste_types.dart';
-export 'deposits/deposits.dart';
-export 'withdrawals/withdrawals.dart';
+part of 'withdrawal_bloc.dart';
+
+enum WithdrawalStateStatus {
+  initial,
+  loading,
+  loaded,
+  error;
+
+  bool get isInitial => this == initial;
+  bool get isLoading => this == loading;
+  bool get isLoaded => this == loaded;
+  bool get isError => this == error;
+}
+
+@freezed
+class WithdrawalState with _$WithdrawalState {
+  const factory WithdrawalState({
+    @Default(WithdrawalStateStatus.initial) WithdrawalStateStatus status,
+    WithdrawalModel? data,
+    @Default('') String? error,
+  }) = _WithdrawalState;
+}

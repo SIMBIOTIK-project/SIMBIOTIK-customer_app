@@ -17,4 +17,6 @@ class ApiConstants {
   static const String logout = '/logout';
   static const String register = '/register';
   static const String user = '/user';
+  static const String deposit = '/deposits';
+  static const String withdrawal = '/withdrawals';
 }
