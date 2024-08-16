@@ -67,6 +67,12 @@ class HomescreenContent extends StatefulWidget {
 class _HomescreenContentState extends State<HomescreenContent> {
   String? _currentAddress;
   bool _isHidden = false;
+  String idUser = '';
+
+  List<DepositModel> listDeposit = [];
+
+  double totalDeposit = 0;
+  double totalWithdrawal = 0;
 
   @override
   void initState() {
@@ -81,11 +87,34 @@ class _HomescreenContentState extends State<HomescreenContent> {
       builder: (context, state) {
         if (state.status.isLoaded) {
           if (state.data?.idUser != null) {
-            context.read<DepositBloc>().add(DepositEvent.fetch(
-                  token: widget.token!,
-                  idUser: state.data?.idUser,
-                  page: 1,
-                ));
+            // idUser = state.data!.idUser!;
+
+            context.read<DepositBloc>().add(
+                  DepositEvent.fetch(
+                    token: widget.token!,
+                    idUser: state.data?.idUser,
+                    page: 1,
+                  ),
+                );
+            context.read<DepositBloc>().add(
+                  DepositEvent.fetchAll(
+                    token: widget.token!,
+                    idUser: state.data?.idUser,
+                  ),
+                );
+            context.read<WithdrawalBloc>().add(
+                  WithdrawalEvent.fetch(
+                    token: widget.token!,
+                    idUser: state.data?.idUser,
+                    page: 1,
+                  ),
+                );
+            context.read<WithdrawalBloc>().add(
+                  WithdrawalEvent.fetchAll(
+                    token: widget.token!,
+                    idUser: state.data?.idUser,
+                  ),
+                );
             return Scaffold(
               body: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -143,7 +172,6 @@ class _HomescreenContentState extends State<HomescreenContent> {
   }
 
   Widget _buildTotalBalance(BuildContext context) {
-    double saldo = 999999999;
     return Container(
       decoration: BoxDecoration(
           color: Colors.teal, borderRadius: BorderRadius.circular(8.0)),
@@ -190,16 +218,20 @@ class _HomescreenContentState extends State<HomescreenContent> {
                       ],
                     ),
                     Text(
-                      _isHidden ? '*******' : formatCurrency(saldo),
+                      _isHidden
+                          ? '*******'
+                          : formatCurrency(
+                              (totalDeposit - totalWithdrawal),
+                            ),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24.0,
                         color: Colors.white,
                       ),
                     ),
-                    const Text(
-                      'Update Terakhir: 1 Agustus 2024',
-                      style: TextStyle(
+                    Text(
+                      'Update Terakhir: ${formattedDate(DateTime.now().toString())}',
+                      style: const TextStyle(
                           fontSize: 9,
                           fontStyle: FontStyle.italic,
                           color: Colors.white),
@@ -236,6 +268,14 @@ class _HomescreenContentState extends State<HomescreenContent> {
               double lastDeposit = list.isNotEmpty
                   ? double.parse(list.last.price.toString())
                   : 0;
+              List<DepositModel> allList = state.allData ?? [];
+              if (allList.isNotEmpty) {
+                final totalPrice = allList.fold<double>(0, (sum, deposit) {
+                  return sum + double.parse(deposit.price!);
+                });
+
+                totalDeposit = totalPrice;
+              }
               return _buildDeposit(
                 context,
                 lastDeposit,
@@ -249,53 +289,33 @@ class _HomescreenContentState extends State<HomescreenContent> {
           },
         ),
         const Gap(8.0),
-        Expanded(
-          child: Container(
-            height: 80,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(color: Colors.black12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Penarikan',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Icon(
-                        Icons.price_check,
-                        size: 20,
-                        color: Colors.red,
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        _isHidden ? '*******' : formatCurrency(2000000),
-                        style: const TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  const Text(
-                    'Penarikan Terakhir: 1 Agustus 2024',
-                    style:
-                        TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+        BlocBuilder<WithdrawalBloc, WithdrawalState>(
+          builder: (context, state) {
+            if (state.status.isLoaded) {
+              List<WithdrawalModel> list = state.data?.result?.data ?? [];
+              double lastWithdrawal = list.isNotEmpty
+                  ? double.parse(list.last.price.toString())
+                  : 0;
+              List<WithdrawalModel> allList = state.allData ?? [];
+              if (allList.isNotEmpty) {
+                final totalPrice = allList.fold<double>(0, (sum, deposit) {
+                  return sum + double.parse(deposit.price!);
+                });
+
+                totalWithdrawal = totalPrice;
+              }
+              return _buildWithdrawal(
+                context,
+                lastWithdrawal,
+                list.last.createdAt.toString(),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        )
       ],
     );
   }
@@ -344,6 +364,56 @@ class _HomescreenContentState extends State<HomescreenContent> {
               ),
               Text(
                 'Setoran Terakhir: ${formattedDate(date)}',
+                style:
+                    const TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildWithdrawal(BuildContext context, double price, String date) {
+    return Expanded(
+      child: Container(
+        height: 80,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(color: Colors.black12),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Penarikan',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Icon(
+                    Icons.price_check,
+                    size: 20,
+                    color: Colors.red,
+                  )
+                ],
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    _isHidden ? '*******' : formatCurrency(price),
+                    style: const TextStyle(
+                        fontSize: 18.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Text(
+                'Penarikan Terakhir: ${formattedDate(date)}',
                 style:
                     const TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
               )

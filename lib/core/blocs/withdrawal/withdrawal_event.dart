@@ -19,5 +19,11 @@ class WithdrawalEvent with _$WithdrawalEvent {
   const factory WithdrawalEvent.fetch({
     required String token,
     String? idUser,
+    int? page,
   }) = _Fetch;
+
+  const factory WithdrawalEvent.fetchAll({
+    required String token,
+    String? idUser,
+  }) = _FetchAll;
 }

@@ -21,4 +21,9 @@ class DepositEvent with _$DepositEvent {
     String? idUser,
     int? page,
   }) = _Fetch;
+
+  const factory DepositEvent.fetchAll({
+    required String token,
+    String? idUser,
+  }) = _FetchAll;
 }

@@ -16,6 +16,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/deposits/deposit_response_model.dart';
+import 'package:simbiotik_customer/models/models.dart';
 
 class DepositRepository {
   final Dio _dio = Dio()
@@ -49,7 +50,23 @@ class DepositRepository {
     if (response.statusCode == 200) {
       return DepositResponseModel.fromJson(response.data['data']);
     } else {
-      throw Exception('Gagal login');
+      throw Exception('Gagal memuat data');
     }
+  }
+
+  Future<List<DepositModel>> getAllDeposits(
+      String token, String? idUser) async {
+    List<DepositModel> allDeposits = [];
+    int? currentPage = 1;
+    int? totalPages;
+
+    do {
+      final response = await getDeposit(token, idUser, currentPage);
+      allDeposits.addAll(response.result?.data ?? []);
+      totalPages = response.result?.totalPages;
+      currentPage = (currentPage ?? 1) + 1;
+    } while (currentPage <= totalPages!);
+
+    return allDeposits;
   }
 }

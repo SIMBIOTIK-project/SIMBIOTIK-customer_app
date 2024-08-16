@@ -31,6 +31,7 @@ class DepositState with _$DepositState {
   const factory DepositState({
     @Default(DepositStateStatus.initial) DepositStateStatus status,
     DepositResponseModel? data,
+    List<DepositModel>? allData,
     @Default('') String? error,
   }) = _DepositState;
 }

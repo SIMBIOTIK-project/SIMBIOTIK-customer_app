@@ -15,21 +15,19 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/models/withdrawals/withdrawal_page_model.dart';
 
-part 'deposit_page_model.freezed.dart';
-part 'deposit_page_model.g.dart';
+part 'withdrawal_response_model.freezed.dart';
+part 'withdrawal_response_model.g.dart';
 
 @freezed
-class DepositPageModel with _$DepositPageModel {
-  const factory DepositPageModel({
-    @JsonKey(name: 'total_data') int? totalData,
-    @JsonKey(name: 'current_page') int? currentPage,
-    @JsonKey(name: 'per_page') int? perPage,
-    @JsonKey(name: 'total_pages') int? totalPages,
-    @JsonKey(name: 'data') List<DepositModel>? data,
-  }) = _DepositPageModel;
+class WithdrawalResponseModel with _$WithdrawalResponseModel {
+  const factory WithdrawalResponseModel({
+    @JsonKey(name: 'success') bool? success,
+    @JsonKey(name: 'message') String? message,
+    @JsonKey(name: 'result') WithdrawalPageModel? result,
+  }) = _WithdrawalResponseModel;
 
-  factory DepositPageModel.fromJson(Map<String, dynamic> json) =>
-      _$DepositPageModelFromJson(json);
+  factory WithdrawalResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$WithdrawalResponseModelFromJson(json);
 }

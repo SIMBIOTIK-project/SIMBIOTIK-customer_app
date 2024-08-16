@@ -19,3 +19,4 @@
 - Setting environment
 - Create Login screen
 - Create Detail User and Logout
+- Implement API Total Saldo, Last Deposit, Last Withdrawal

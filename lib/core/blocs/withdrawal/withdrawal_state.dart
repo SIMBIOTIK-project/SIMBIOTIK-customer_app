@@ -30,7 +30,8 @@ enum WithdrawalStateStatus {
 class WithdrawalState with _$WithdrawalState {
   const factory WithdrawalState({
     @Default(WithdrawalStateStatus.initial) WithdrawalStateStatus status,
-    WithdrawalModel? data,
+    WithdrawalResponseModel? data,
+    List<WithdrawalModel>? allData,
     @Default('') String? error,
   }) = _WithdrawalState;
 }

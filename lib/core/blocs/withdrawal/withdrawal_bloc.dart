@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/models/withdrawals/withdrawal_response_model.dart';
 
 part 'withdrawal_event.dart';
 part 'withdrawal_state.dart';
@@ -26,6 +27,7 @@ class WithdrawalBloc extends Bloc<WithdrawalEvent, WithdrawalState> {
 
   WithdrawalBloc(this._withdrawalRepository) : super(const WithdrawalState()) {
     on<_Fetch>(_onFetch);
+    on<_FetchAll>(_onFetchAll);
   }
 
   Future<void> _onFetch(_Fetch event, Emitter<WithdrawalState> emit) async {
@@ -35,12 +37,40 @@ class WithdrawalBloc extends Bloc<WithdrawalEvent, WithdrawalState> {
       final response = await _withdrawalRepository.getWithdrawal(
         event.token,
         event.idUser,
+        event.page,
       );
 
       emit(
         state.copyWith(
           status: WithdrawalStateStatus.loaded,
           data: response,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          status: WithdrawalStateStatus.error,
+          error: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> _onFetchAll(
+      _FetchAll event, Emitter<WithdrawalState> emit) async {
+    emit(state.copyWith(status: WithdrawalStateStatus.loading, error: ''));
+
+    try {
+      final List<WithdrawalModel> withdrawals =
+          await _withdrawalRepository.getAllWithdrawal(
+        event.token,
+        event.idUser,
+      );
+
+      emit(
+        state.copyWith(
+          status: WithdrawalStateStatus.loaded,
+          allData: withdrawals,
         ),
       );
     } catch (e) {

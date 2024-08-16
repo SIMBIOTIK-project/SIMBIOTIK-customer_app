@@ -16,6 +16,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/models/withdrawals/withdrawal_response_model.dart';
 
 class WithdrawalRepository {
   final Dio _dio = Dio()
@@ -28,7 +29,11 @@ class WithdrawalRepository {
       error: true,
     ));
   final String api = dotenv.get('URL') + ApiConstants.withdrawal;
-  Future<WithdrawalModel> getWithdrawal(String token, String? idUser) async {
+  Future<WithdrawalResponseModel> getWithdrawal(
+    String token,
+    String? idUser,
+    int? page,
+  ) async {
     final response = await _dio.get(
       api,
       options: Options(
@@ -38,13 +43,30 @@ class WithdrawalRepository {
       ),
       queryParameters: {
         'id_user': idUser,
+        'page': page,
       },
     );
 
     if (response.statusCode == 200) {
-      return WithdrawalModel.fromJson(response.data);
+      return WithdrawalResponseModel.fromJson(response.data['data']);
     } else {
-      throw Exception('Gagal login');
+      throw Exception('Gagal memuat data');
     }
+  }
+
+  Future<List<WithdrawalModel>> getAllWithdrawal(
+      String token, String? idUser) async {
+    List<WithdrawalModel> allWithdrawals = [];
+    int? currentPage = 1;
+    int? totalPages;
+
+    do {
+      final response = await getWithdrawal(token, idUser, currentPage);
+      allWithdrawals.addAll(response.result?.data ?? []);
+      totalPages = response.result?.totalPages;
+      currentPage = (currentPage ?? 1) + 1;
+    } while (currentPage <= totalPages!);
+
+    return allWithdrawals;
   }
 }

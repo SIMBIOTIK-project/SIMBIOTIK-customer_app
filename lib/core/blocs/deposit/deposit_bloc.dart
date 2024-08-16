@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/deposits/deposit_response_model.dart';
+import 'package:simbiotik_customer/models/models.dart';
 
 part 'deposit_event.dart';
 part 'deposit_state.dart';
@@ -26,6 +27,7 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
 
   DepositBloc(this._depositRepository) : super(const DepositState()) {
     on<_Fetch>(_onFetch);
+    on<_FetchAll>(_onFetchAll);
   }
 
   Future<void> _onFetch(_Fetch event, Emitter<DepositState> emit) async {
@@ -41,6 +43,32 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
         state.copyWith(
           status: DepositStateStatus.loaded,
           data: response,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          status: DepositStateStatus.error,
+          error: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<void> _onFetchAll(_FetchAll event, Emitter<DepositState> emit) async {
+    emit(state.copyWith(status: DepositStateStatus.loading, error: ''));
+
+    try {
+      final List<DepositModel> deposits =
+          await _depositRepository.getAllDeposits(
+        event.token,
+        event.idUser,
+      );
+
+      emit(
+        state.copyWith(
+          status: DepositStateStatus.loaded,
+          allData: deposits,
         ),
       );
     } catch (e) {
