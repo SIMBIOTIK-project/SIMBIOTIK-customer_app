@@ -15,7 +15,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:simbiotik_customer/data/data.dart';
-import 'package:simbiotik_customer/models/deposits/deposit_page_model.dart';
 import 'package:simbiotik_customer/models/deposits/deposit_response_model.dart';
 
 class DepositRepository {
@@ -46,8 +45,6 @@ class DepositRepository {
         'page': page,
       },
     );
-
-    print('Hasil responsenya ${response.data['data']}');
 
     if (response.statusCode == 200) {
       return DepositResponseModel.fromJson(response.data['data']);

@@ -18,7 +18,6 @@ import 'package:gap/gap.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simbiotik_customer/core/blocs/blocs.dart';
-import 'package:simbiotik_customer/core/blocs/deposit/deposit.dart';
 import 'package:simbiotik_customer/core/routers/routers.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/gen/assets.gen.dart';
