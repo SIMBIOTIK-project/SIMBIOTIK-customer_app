@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128638907033",
+    "project_id": "simbiotik-project-bf220",
+    "storage_bucket": "simbiotik-project-bf220.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128638907033:android:782d31800d90c454bdbe08",
+        "android_client_info": {
+          "package_name": "com.example.simbiotik_customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCys9Yf5s8oqgsVRdraCQQu4eSeAURbp88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

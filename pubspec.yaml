@@ -51,6 +51,7 @@ dependencies:
   google_fonts: ^6.2.1
   shared_preferences: ^2.2.3
   flutter_sticky_header: ^0.6.5
+  firebase_core: ^3.3.0
 
 
 dev_dependencies:
