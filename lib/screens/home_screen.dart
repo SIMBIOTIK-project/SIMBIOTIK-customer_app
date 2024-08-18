@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:gap/gap.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
@@ -64,21 +65,45 @@ class HomescreenContent extends StatefulWidget {
   State<HomescreenContent> createState() => _HomescreenContentState();
 }
 
-class _HomescreenContentState extends State<HomescreenContent> {
+class _HomescreenContentState extends State<HomescreenContent>
+    with SingleTickerProviderStateMixin {
   String? _currentAddress;
   bool _isHidden = false;
   String idUser = '';
 
   List<DepositModel> listDeposit = [];
+  int currentPage = 1;
+  int totalPages = 1;
+  bool isLoading = true;
 
-  double totalDeposit = 0;
-  double totalWithdrawal = 0;
+  late TabController _tabController;
+
+  int _selectedTabBarIndex = 0;
+  final _selectedColor = Colors.teal;
+  final _tabs = [
+    const Tab(
+      text: 'Setoran',
+    ),
+    const Tab(
+      text: 'Penarikan',
+    ),
+  ];
+
+  List<DepositModel> allDeposit = [];
+  List<WithdrawalModel> allWithdrawal = [];
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
     context.read<UserBloc>().add(UserEvent.fetch(token: widget.token!));
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
   }
 
   @override
@@ -87,13 +112,11 @@ class _HomescreenContentState extends State<HomescreenContent> {
       builder: (context, state) {
         if (state.status.isLoaded) {
           if (state.data?.idUser != null) {
-            // idUser = state.data!.idUser!;
-
             context.read<DepositBloc>().add(
                   DepositEvent.fetch(
                     token: widget.token!,
                     idUser: state.data?.idUser,
-                    page: 1,
+                    // page: 1,
                   ),
                 );
             context.read<DepositBloc>().add(
@@ -116,38 +139,268 @@ class _HomescreenContentState extends State<HomescreenContent> {
                   ),
                 );
             return Scaffold(
-              body: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  16.0,
-                  60.0,
-                  16.0,
-                  16.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildNameandProfile(context, state.data!),
-                    _buildLocation(context),
-                    const Gap(20.0),
-                    _buildTotalBalance(context),
-                    const Gap(8.0),
-                    const Text(
-                      'Ringkasan',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+              backgroundColor: Colors.white,
+              body: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      16.0,
+                      60.0,
+                      16.0,
+                      16.0,
                     ),
-                    const Gap(8.0),
-                    _buildOverviewContent(context),
-                    const Gap(8.0),
-                    const Text(
-                      'Data Riwayat',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildNameandProfile(
+                          context,
+                          state.data!,
+                        ),
+                        _buildLocation(context),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverToBoxAdapter(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                              16.0,
+                              0.0,
+                              16.0,
+                              8.0,
+                            ),
+                            child: BlocBuilder<DepositBloc, DepositState>(
+                              builder: (context, state) {
+                                if (state.status.isLoading) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+                                if (state.status.isLoaded) {
+                                  if (state.allData != null) {
+                                    allDeposit = state.allData!;
+                                    return BlocBuilder<WithdrawalBloc,
+                                        WithdrawalState>(
+                                      builder: (context, state) {
+                                        if (state.status.isLoading) {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        }
+                                        if (state.status.isLoaded) {
+                                          if (state.allData != null) {
+                                            allWithdrawal = state.allData!;
+                                            final totalDepositPrice = allDeposit
+                                                .fold<double>(0,
+                                                    (sum, deposit) {
+                                              return sum +
+                                                  double.parse(deposit.price!);
+                                            });
+                                            final totalWithdrawalPrice =
+                                                allWithdrawal.fold<double>(0,
+                                                    (sum, withdrawal) {
+                                              return sum +
+                                                  double.parse(
+                                                      withdrawal.price!);
+                                            });
+                                            return Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                _buildTotalBalance(
+                                                  context,
+                                                  totalDepositPrice,
+                                                  totalWithdrawalPrice,
+                                                ),
+                                                const Gap(8.0),
+                                                const Text(
+                                                  'Ringkasan',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const Gap(8.0),
+                                                _buildOverviewContent(
+                                                  context,
+                                                  allDeposit,
+                                                  allWithdrawal,
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return const Center(
+                                              child: Text('Tidak ada data'),
+                                            );
+                                          }
+                                        }
+                                        return Container();
+                                      },
+                                    );
+                                  } else {
+                                    return const Center(
+                                      child: Text('Tidak ada data'),
+                                    );
+                                  }
+                                }
+                                return Container();
+                              },
+                            ),
+                            // Column(
+                            //   crossAxisAlignment: CrossAxisAlignment.start,
+                            //   children: [
+                            //     _buildTotalBalance(context),
+                            //     const Gap(8.0),
+                            //     const Text(
+                            //       'Ringkasan',
+                            //       style: TextStyle(
+                            //         fontWeight: FontWeight.bold,
+                            //       ),
+                            //     ),
+                            //     const Gap(8.0),
+                            //     _buildOverviewContent(context),
+                            //   ],
+                            // ),
+                          ),
+                        ),
+                        SliverStickyHeader(
+                          header: Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                16.0,
+                                0.0,
+                                16.0,
+                                16.0,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        'Data Riwayat',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Gap(8),
+                                      Text(
+                                        '*Hanya menampilkan 10 data setoran terakhir',
+                                        style: TextStyle(
+                                          fontSize: 8,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const Gap(8.0),
+                                  Container(
+                                    height: kToolbarHeight - 20.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: TabBar(
+                                      controller: _tabController,
+                                      onTap: (index) {
+                                        setState(() {
+                                          _selectedTabBarIndex = index;
+                                        });
+                                      },
+                                      tabs: _tabs,
+                                      indicator: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          color: _selectedColor),
+                                      labelColor: Colors.white,
+                                      indicatorPadding: EdgeInsets.zero,
+                                      dividerColor: Colors.transparent,
+                                      indicatorSize: TabBarIndicatorSize.tab,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          sliver: SliverToBoxAdapter(
+                            child: _selectedTabBarIndex == 0
+                                ? BlocBuilder<DepositBloc, DepositState>(
+                                    builder: (context, state) {
+                                      if (state.status.isLoaded) {
+                                        List<DepositModel> allList =
+                                            state.allData ?? [];
+                                        return Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                            16.0,
+                                            0,
+                                            16.0,
+                                            40,
+                                          ),
+                                          child: ListView.separated(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemBuilder: (context, index) {
+                                              return _buildListHistoryDeposit(
+                                                  context, allList[index]);
+                                            },
+                                            separatorBuilder: (context, index) {
+                                              return const Gap(16.0);
+                                            },
+                                            itemCount: allList.length >= 10
+                                                ? 10
+                                                : allList.length,
+                                          ),
+                                        );
+                                      }
+
+                                      return Container();
+                                    },
+                                  )
+                                : BlocBuilder<WithdrawalBloc, WithdrawalState>(
+                                    builder: (context, state) {
+                                      if (state.status.isLoaded) {
+                                        List<WithdrawalModel> allList =
+                                            state.allData ?? [];
+                                        return Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                            16.0,
+                                            0,
+                                            16.0,
+                                            40,
+                                          ),
+                                          child: ListView.separated(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemBuilder: (context, index) {
+                                              return _buildListHistoryWithdrawal(
+                                                  context, allList[index]);
+                                            },
+                                            separatorBuilder: (context, index) {
+                                              return const Gap(16.0);
+                                            },
+                                            itemCount: allList.length >= 10
+                                                ? 10
+                                                : allList.length,
+                                          ),
+                                        );
+                                      }
+
+                                      return Container();
+                                    },
+                                  ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             );
           } else {
@@ -171,7 +424,11 @@ class _HomescreenContentState extends State<HomescreenContent> {
     );
   }
 
-  Widget _buildTotalBalance(BuildContext context) {
+  Widget _buildTotalBalance(
+    BuildContext context,
+    double totalDeposit,
+    double totalWithdrawal,
+  ) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.teal, borderRadius: BorderRadius.circular(8.0)),
@@ -257,64 +514,22 @@ class _HomescreenContentState extends State<HomescreenContent> {
     );
   }
 
-  Widget _buildOverviewContent(BuildContext context) {
+  Widget _buildOverviewContent(
+    BuildContext context,
+    List<DepositModel> deposit,
+    List<WithdrawalModel> withdrawal,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BlocBuilder<DepositBloc, DepositState>(
-          builder: (context, state) {
-            if (state.status.isLoaded) {
-              List<DepositModel> list = state.data?.result?.data ?? [];
-              double lastDeposit = list.isNotEmpty
-                  ? double.parse(list.last.price.toString())
-                  : 0;
-              List<DepositModel> allList = state.allData ?? [];
-              if (allList.isNotEmpty) {
-                final totalPrice = allList.fold<double>(0, (sum, deposit) {
-                  return sum + double.parse(deposit.price!);
-                });
-
-                totalDeposit = totalPrice;
-              }
-              return _buildDeposit(
-                context,
-                lastDeposit,
-                list.last.createdAt.toString(),
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+        _buildDeposit(
+          context,
+          deposit,
         ),
         const Gap(8.0),
-        BlocBuilder<WithdrawalBloc, WithdrawalState>(
-          builder: (context, state) {
-            if (state.status.isLoaded) {
-              List<WithdrawalModel> list = state.data?.result?.data ?? [];
-              double lastWithdrawal = list.isNotEmpty
-                  ? double.parse(list.last.price.toString())
-                  : 0;
-              List<WithdrawalModel> allList = state.allData ?? [];
-              if (allList.isNotEmpty) {
-                final totalPrice = allList.fold<double>(0, (sum, deposit) {
-                  return sum + double.parse(deposit.price!);
-                });
-
-                totalWithdrawal = totalPrice;
-              }
-              return _buildWithdrawal(
-                context,
-                lastWithdrawal,
-                list.last.createdAt.toString(),
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+        _buildWithdrawal(
+          context,
+          withdrawal,
         )
       ],
     );
@@ -322,9 +537,10 @@ class _HomescreenContentState extends State<HomescreenContent> {
 
   _buildDeposit(
     BuildContext context,
-    double price,
-    String date,
+    List<DepositModel> deposit,
   ) {
+    double lastDeposit =
+        deposit.isNotEmpty ? double.parse(deposit.last.price.toString()) : 0;
     return Expanded(
       child: Container(
         height: 80,
@@ -356,14 +572,14 @@ class _HomescreenContentState extends State<HomescreenContent> {
               Expanded(
                 child: Center(
                   child: Text(
-                    _isHidden ? '*******' : formatCurrency(price),
+                    _isHidden ? '*******' : formatCurrency(lastDeposit),
                     style: const TextStyle(
                         fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Text(
-                'Setoran Terakhir: ${formattedDate(date)}',
+                'Setoran Terakhir: ${deposit.isNotEmpty ? formattedDate(deposit.last.createdAt.toString()) : ''}',
                 style:
                     const TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
               )
@@ -374,7 +590,13 @@ class _HomescreenContentState extends State<HomescreenContent> {
     );
   }
 
-  _buildWithdrawal(BuildContext context, double price, String date) {
+  _buildWithdrawal(
+    BuildContext context,
+    List<WithdrawalModel> withdrawal,
+  ) {
+    double lastWithdrawal = withdrawal.isNotEmpty
+        ? double.parse(withdrawal.last.price.toString())
+        : 0;
     return Expanded(
       child: Container(
         height: 80,
@@ -406,14 +628,14 @@ class _HomescreenContentState extends State<HomescreenContent> {
               Expanded(
                 child: Center(
                   child: Text(
-                    _isHidden ? '*******' : formatCurrency(price),
+                    _isHidden ? '*******' : formatCurrency(lastWithdrawal),
                     style: const TextStyle(
                         fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Text(
-                'Penarikan Terakhir: ${formattedDate(date)}',
+                'Penarikan Terakhir:  ${withdrawal.isNotEmpty ? formattedDate(withdrawal.last.createdAt.toString()) : ''}',
                 style:
                     const TextStyle(fontSize: 8.0, fontStyle: FontStyle.italic),
               )
@@ -499,5 +721,138 @@ class _HomescreenContentState extends State<HomescreenContent> {
         });
       }
     }
+  }
+
+  _buildListHistoryDeposit(BuildContext context, DepositModel deposit) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black12,
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Jumlah Setoran',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  formatCurrency(double.parse(deposit.price!)),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
+            ),
+            const Gap(8),
+            _buildRowText(
+              context,
+              'Berat',
+              '${deposit.weight} kg',
+            ),
+            const Gap(8),
+            _buildRowText(
+              context,
+              'Jenis Sampah',
+              '${deposit.wasteType?.type}',
+            ),
+            const Gap(8),
+            _buildRowText(
+              context,
+              'Tanggal Setoran',
+              formattedDate(deposit.createdAt.toString()),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildListHistoryWithdrawal(
+      BuildContext context, WithdrawalModel withdarawal) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black12,
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Jumlah Setoran',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  formatCurrency(double.parse(withdarawal.price!)),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.teal,
+                  ),
+                ),
+              ],
+            ),
+            const Gap(8),
+            _buildRowText(
+              context,
+              'Status',
+              '${withdarawal.status}',
+            ),
+            const Gap(8),
+            _buildRowText(
+              context,
+              'Tanggal Setoran',
+              formattedDate(withdarawal.createdAt.toString()),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildRowText(
+    BuildContext context,
+    String title,
+    String value,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
   }
 }
