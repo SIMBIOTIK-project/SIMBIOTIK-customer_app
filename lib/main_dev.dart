@@ -7,15 +7,15 @@ import 'package:simbiotik_customer/core/configs/flavor_type.dart';
 import 'package:simbiotik_customer/firebase_options.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   final devAppConfig = AppConfig(
     appName: 'SIMBIOTIK Access DEV',
     flavorType: FlavorType.dev,
   );
-  await dotenv.load(fileName: ".env_dev");
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await dotenv.load(fileName: ".env-dev");
   Widget app = await initializeApp(devAppConfig);
   runApp(app);
 }

@@ -31,7 +31,7 @@ class Assets {
   Assets._();
 
   static const String aEnv = '.env';
-  static const String aEnvDev = '.env_dev';
+  static const String aEnvDev = '.env-dev';
   static const $AssetsImagesGen images = $AssetsImagesGen();
 
   /// List of all assets

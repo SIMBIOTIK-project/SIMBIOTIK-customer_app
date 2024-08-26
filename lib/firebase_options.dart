@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCys9Yf5s8oqgsVRdraCQQu4eSeAURbp88',
-    appId: '1:128638907033:android:782d31800d90c454bdbe08',
-    messagingSenderId: '128638907033',
-    projectId: 'simbiotik-project-bf220',
-    storageBucket: 'simbiotik-project-bf220.appspot.com',
+    apiKey: 'AIzaSyCCaaPYuwyZxWJfVy_6JOOQRE-0U3OvURg',
+    appId: '1:871256948941:android:e5532d7dd1dc3c84472984',
+    messagingSenderId: '871256948941',
+    projectId: 'simbiotik-access-dev',
+    storageBucket: 'simbiotik-access-dev.appspot.com',
   );
 }

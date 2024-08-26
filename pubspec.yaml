@@ -54,6 +54,7 @@ dependencies:
   firebase_core: ^3.3.0
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -85,7 +86,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
-    - .env_dev
+    - .env-dev
     - assets/images/
   #   - images/a_dot_ham.jpeg
 

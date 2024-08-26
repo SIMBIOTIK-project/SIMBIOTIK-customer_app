@@ -244,9 +244,9 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                       }
                     } else if (state.status.isError) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
+                        SnackBar(
                           content: Text(
-                              'Gagal masuk, silahkan periksa kembali email atau password!'),
+                              'Gagal masuk, silahkan periksa kembali email atau password! ${state.error}'),
                         ),
                       );
                     }

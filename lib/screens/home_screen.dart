@@ -108,39 +108,39 @@ class _HomescreenContentState extends State<HomescreenContent>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      builder: (context, state) {
-        if (state.status.isLoaded) {
-          if (state.data?.idUser != null) {
-            context.read<DepositBloc>().add(
-                  DepositEvent.fetch(
-                    token: widget.token!,
-                    idUser: state.data?.idUser,
-                    // page: 1,
-                  ),
-                );
-            context.read<DepositBloc>().add(
-                  DepositEvent.fetchAll(
-                    token: widget.token!,
-                    idUser: state.data?.idUser,
-                  ),
-                );
-            context.read<WithdrawalBloc>().add(
-                  WithdrawalEvent.fetch(
-                    token: widget.token!,
-                    idUser: state.data?.idUser,
-                    page: 1,
-                  ),
-                );
-            context.read<WithdrawalBloc>().add(
-                  WithdrawalEvent.fetchAll(
-                    token: widget.token!,
-                    idUser: state.data?.idUser,
-                  ),
-                );
-            return Scaffold(
-              backgroundColor: Colors.white,
-              body: Column(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          if (state.status.isLoaded) {
+            if (state.data?.idUser != null) {
+              context.read<DepositBloc>().add(
+                    DepositEvent.fetch(
+                      token: widget.token!,
+                      idUser: state.data?.idUser,
+                      // page: 1,
+                    ),
+                  );
+              context.read<DepositBloc>().add(
+                    DepositEvent.fetchAll(
+                      token: widget.token!,
+                      idUser: state.data?.idUser,
+                    ),
+                  );
+              context.read<WithdrawalBloc>().add(
+                    WithdrawalEvent.fetch(
+                      token: widget.token!,
+                      idUser: state.data?.idUser,
+                      page: 1,
+                    ),
+                  );
+              context.read<WithdrawalBloc>().add(
+                    WithdrawalEvent.fetchAll(
+                      token: widget.token!,
+                      idUser: state.data?.idUser,
+                    ),
+                  );
+              return Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(
@@ -401,26 +401,26 @@ class _HomescreenContentState extends State<HomescreenContent>
                     ),
                   ),
                 ],
+              );
+            } else {
+              const Center(
+                child: Text('Data Nasabah Tidak Diketahui!'),
+              );
+            }
+          } else if (state.status.isError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error.toString()),
               ),
             );
           } else {
             const Center(
-              child: Text('Data Nasabah Tidak Diketahui!'),
+              child: CircularProgressIndicator(),
             );
           }
-        } else if (state.status.isError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error.toString()),
-            ),
-          );
-        } else {
-          const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        return Container();
-      },
+          return Container();
+        },
+      ),
     );
   }
 
@@ -798,7 +798,7 @@ class _HomescreenContentState extends State<HomescreenContent>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Jumlah Setoran',
+                  'Jumlah Penarikan',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
