@@ -31,4 +31,9 @@ For Production
 flutter run --flavor prod --target lib/main_prod.dart
 ```
 
+Build Apk
+```
+flutter build apk --flavor=prod --target=lib/main_prod.dart --dart-define-from-file=.env
+```
+
 
