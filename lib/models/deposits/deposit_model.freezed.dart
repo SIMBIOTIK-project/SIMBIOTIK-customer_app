@@ -38,6 +38,8 @@ mixin _$DepositModel {
   UserModel? get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'wastetype')
   WasteTypesModel? get wasteType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  String? get createdby => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +62,8 @@ abstract class $DepositModelCopyWith<$Res> {
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'user') UserModel? user,
-      @JsonKey(name: 'wastetype') WasteTypesModel? wasteType});
+      @JsonKey(name: 'wastetype') WasteTypesModel? wasteType,
+      @JsonKey(name: 'created_by') String? createdby});
 
   $UserModelCopyWith<$Res>? get user;
   $WasteTypesModelCopyWith<$Res>? get wasteType;
@@ -88,6 +91,7 @@ class _$DepositModelCopyWithImpl<$Res, $Val extends DepositModel>
     Object? updatedAt = freezed,
     Object? user = freezed,
     Object? wasteType = freezed,
+    Object? createdby = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -126,6 +130,10 @@ class _$DepositModelCopyWithImpl<$Res, $Val extends DepositModel>
           ? _value.wasteType
           : wasteType // ignore: cast_nullable_to_non_nullable
               as WasteTypesModel?,
+      createdby: freezed == createdby
+          ? _value.createdby
+          : createdby // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -171,7 +179,8 @@ abstract class _$$DepositModelImplCopyWith<$Res>
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'user') UserModel? user,
-      @JsonKey(name: 'wastetype') WasteTypesModel? wasteType});
+      @JsonKey(name: 'wastetype') WasteTypesModel? wasteType,
+      @JsonKey(name: 'created_by') String? createdby});
 
   @override
   $UserModelCopyWith<$Res>? get user;
@@ -199,6 +208,7 @@ class __$$DepositModelImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? user = freezed,
     Object? wasteType = freezed,
+    Object? createdby = freezed,
   }) {
     return _then(_$DepositModelImpl(
       id: freezed == id
@@ -237,6 +247,10 @@ class __$$DepositModelImplCopyWithImpl<$Res>
           ? _value.wasteType
           : wasteType // ignore: cast_nullable_to_non_nullable
               as WasteTypesModel?,
+      createdby: freezed == createdby
+          ? _value.createdby
+          : createdby // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -253,7 +267,8 @@ class _$DepositModelImpl implements _DepositModel {
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'user') this.user,
-      @JsonKey(name: 'wastetype') this.wasteType});
+      @JsonKey(name: 'wastetype') this.wasteType,
+      @JsonKey(name: 'created_by') this.createdby});
 
   factory _$DepositModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DepositModelImplFromJson(json);
@@ -285,10 +300,13 @@ class _$DepositModelImpl implements _DepositModel {
   @override
   @JsonKey(name: 'wastetype')
   final WasteTypesModel? wasteType;
+  @override
+  @JsonKey(name: 'created_by')
+  final String? createdby;
 
   @override
   String toString() {
-    return 'DepositModel(id: $id, idUser: $idUser, idWastetype: $idWastetype, weight: $weight, price: $price, createdAt: $createdAt, updatedAt: $updatedAt, user: $user, wasteType: $wasteType)';
+    return 'DepositModel(id: $id, idUser: $idUser, idWastetype: $idWastetype, weight: $weight, price: $price, createdAt: $createdAt, updatedAt: $updatedAt, user: $user, wasteType: $wasteType, createdby: $createdby)';
   }
 
   @override
@@ -308,13 +326,15 @@ class _$DepositModelImpl implements _DepositModel {
                 other.updatedAt == updatedAt) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.wasteType, wasteType) ||
-                other.wasteType == wasteType));
+                other.wasteType == wasteType) &&
+            (identical(other.createdby, createdby) ||
+                other.createdby == createdby));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, idUser, idWastetype, weight,
-      price, createdAt, updatedAt, user, wasteType);
+      price, createdAt, updatedAt, user, wasteType, createdby);
 
   @JsonKey(ignore: true)
   @override
@@ -340,7 +360,8 @@ abstract class _DepositModel implements DepositModel {
           @JsonKey(name: 'created_at') final DateTime? createdAt,
           @JsonKey(name: 'updated_at') final DateTime? updatedAt,
           @JsonKey(name: 'user') final UserModel? user,
-          @JsonKey(name: 'wastetype') final WasteTypesModel? wasteType}) =
+          @JsonKey(name: 'wastetype') final WasteTypesModel? wasteType,
+          @JsonKey(name: 'created_by') final String? createdby}) =
       _$DepositModelImpl;
 
   factory _DepositModel.fromJson(Map<String, dynamic> json) =
@@ -373,6 +394,9 @@ abstract class _DepositModel implements DepositModel {
   @override
   @JsonKey(name: 'wastetype')
   WasteTypesModel? get wasteType;
+  @override
+  @JsonKey(name: 'created_by')
+  String? get createdby;
   @override
   @JsonKey(ignore: true)
   _$$DepositModelImplCopyWith<_$DepositModelImpl> get copyWith =>
