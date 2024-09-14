@@ -12,9 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-class AppRouterConstants {
-  static const String homeScreen = '/home_screen';
-  static const String loginScreen = '/login_screen';
-  static const String detailUser = '/detail_user';
-  static const String registerScreen = '/register_screen';
+part of 'register_bloc.dart';
+
+enum RegisterStateStatus {
+  initial,
+  loading,
+  loaded,
+  error;
+
+  bool get isInitial => this == initial;
+  bool get isLoading => this == loading;
+  bool get isLoaded => this == loaded;
+  bool get isError => this == error;
+}
+
+@freezed
+class RegisterState with _$RegisterState {
+  const factory RegisterState({
+    @Default(RegisterStateStatus.initial) RegisterStateStatus status,
+    UserModel? data,
+    @Default('') String? error,
+  }) = _RegisterState;
 }

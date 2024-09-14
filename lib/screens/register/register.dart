@@ -12,9 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-class AppRouterConstants {
-  static const String homeScreen = '/home_screen';
-  static const String loginScreen = '/login_screen';
-  static const String detailUser = '/detail_user';
-  static const String registerScreen = '/register_screen';
-}
+export 'register_screen.dart';

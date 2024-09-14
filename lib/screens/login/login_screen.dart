@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simbiotik_customer/core/blocs/auth/auth_bloc.dart';
 import 'package:simbiotik_customer/core/blocs/blocs.dart';
@@ -48,6 +49,8 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
   bool? _rememberMe = false;
   bool _obsecurePassword = true;
 
+  String? getToken;
+
   _savedToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
@@ -56,7 +59,26 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
   Future<void> _loadToken() async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token') ?? '';
-    print('Hasil penyimpanan token $token');
+    setState(() {
+      getToken = token;
+    });
+    if (getToken != null && getToken?.isNotEmpty == true) {
+      _buildAutoLogin();
+    }
+    Logger().d(token);
+  }
+
+  _buildAutoLogin() {
+    GoRouter.of(context).pushReplacement(
+      AppRouterConstants.homeScreen,
+      extra: getToken,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadToken();
   }
 
   @override
@@ -65,7 +87,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
       create: (context) => AuthBloc(AuthRepository()),
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -203,14 +225,6 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                       onChanged: (bool? newValue) {
                         setState(() {
                           _rememberMe = newValue ?? false;
-                          if (_rememberMe == true) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content:
-                                    Text('Fitur masih dalam pengembangan!'),
-                              ),
-                            );
-                          }
                         });
                       },
                     ),
@@ -220,13 +234,13 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                   listener: (context, state) {
                     if (state.status.isLoaded) {
                       if (state.data?.status == StatusUser.nasabah.value) {
-                        // GoRouter.of(context).pushReplacement(
-                        //   AppRouterConstants.homeScreen,
-                        // );
                         if (_rememberMe == true) {
                           if (state.token != null) {
                             _savedToken(state.token!);
-                            _loadToken();
+                            GoRouter.of(context).pushReplacement(
+                              AppRouterConstants.homeScreen,
+                              extra: state.token,
+                            );
                           }
                         } else {
                           GoRouter.of(context).pushReplacement(
@@ -311,11 +325,8 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                           borderRadius: BorderRadius.circular(5.0),
                         )),
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                              'Fitur pendaftaran belum tersedia. Pendaftaran akun masih dilakukan oleh admin!'),
-                        ),
+                      GoRouter.of(context).pushNamed(
+                        AppRouterConstants.registerScreen,
                       );
                     },
                     child: const Text(
@@ -327,7 +338,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

@@ -15,8 +15,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simbiotik_customer/core/blocs/auth/logout_bloc.dart';
 import 'package:simbiotik_customer/data/repository/logout_repository.dart';
 import 'package:simbiotik_customer/models/models.dart';
@@ -59,11 +57,8 @@ class _DetailUserScreenContentState extends State<DetailUserScreenContent> {
     return BlocListener<LogoutBloc, LogoutState>(
       listener: (context, state) {
         if (state.status.isLoaded) {
-          Navigator.of(context).pop();
-          GoRouter.of(context).pushReplacement(
-            '/',
-          );
-          _logout(context);
+          Navigator.of(context).pop(true);
+          Navigator.of(context).pop(true);
         }
       },
       child: Scaffold(
@@ -227,10 +222,5 @@ class _DetailUserScreenContentState extends State<DetailUserScreenContent> {
         ),
       ],
     );
-  }
-
-  void _logout(BuildContext context) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('token');
   }
 }

@@ -12,9 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-class AppRouterConstants {
-  static const String homeScreen = '/home_screen';
-  static const String loginScreen = '/login_screen';
-  static const String detailUser = '/detail_user';
-  static const String registerScreen = '/register_screen';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:simbiotik_customer/models/models.dart';
+
+part 'register_response.freezed.dart';
+part 'register_response.g.dart';
+
+@freezed
+class RegisterResponse with _$RegisterResponse {
+  const factory RegisterResponse({
+    required bool success,
+    required UserModel user,
+  }) = _RegisterResponse;
+
+  factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
+      _$RegisterResponseFromJson(json);
 }

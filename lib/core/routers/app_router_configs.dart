@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simbiotik_customer/core/routers/app_router_constants.dart';
 import 'package:simbiotik_customer/models/models.dart';
+import 'package:simbiotik_customer/screens/register/register.dart';
 import 'package:simbiotik_customer/screens/screens.dart';
 
 class AppRouterConfig {
@@ -41,14 +42,22 @@ class AppRouterConfig {
               },
             ),
             GoRoute(
-                name: AppRouterConstants.detailUser,
-                path: AppRouterConstants.detailUser,
-                builder: (context, state) {
-                  UserModel user = state.extra as UserModel;
-                  return DetailUserScreen(
-                    user: user,
-                  );
-                })
+              name: AppRouterConstants.detailUser,
+              path: AppRouterConstants.detailUser,
+              builder: (context, state) {
+                UserModel user = state.extra as UserModel;
+                return DetailUserScreen(
+                  user: user,
+                );
+              },
+            ),
+            GoRoute(
+              name: AppRouterConstants.registerScreen,
+              path: AppRouterConstants.registerScreen,
+              builder: (context, state) {
+                return const RegisterScreen();
+              },
+            )
           ],
           errorBuilder: (context, state) {
             return const Scaffold(
