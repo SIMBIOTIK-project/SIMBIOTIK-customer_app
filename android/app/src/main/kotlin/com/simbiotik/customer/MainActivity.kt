@@ -1,4 +1,4 @@
-package com.example.simbiotik_customer
+package com.simbiotik.customer
 
 import io.flutter.embedding.android.FlutterActivity
 
