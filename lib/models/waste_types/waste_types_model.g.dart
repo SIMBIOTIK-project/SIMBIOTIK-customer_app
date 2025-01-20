@@ -11,7 +11,7 @@ _$WasteTypesModelImpl _$$WasteTypesModelImplFromJson(
     _$WasteTypesModelImpl(
       id: (json['id'] as num?)?.toInt(),
       type: json['type'] as String?,
-      price: json['price'] as String?,
+      price: (json['price'] as num?)?.toInt(),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

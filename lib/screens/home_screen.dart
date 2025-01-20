@@ -436,11 +436,13 @@ class _HomescreenContentState extends State<HomescreenContent>
                                 allWithdrawal = state2.allData ?? [];
                                 final totalDepositPrice =
                                     allDeposit.fold<double>(0, (sum, deposit) {
-                                  return sum + double.parse(deposit.price!);
+                                  return sum +
+                                      double.parse(deposit.price.toString());
                                 });
                                 final totalWithdrawalPrice = allWithdrawal
                                     .fold<double>(0, (sum, withdrawal) {
-                                  return sum + double.parse(withdrawal.price!);
+                                  return sum +
+                                      double.parse(withdrawal.price.toString());
                                 });
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -780,7 +782,7 @@ class _HomescreenContentState extends State<HomescreenContent>
                   ),
                 ),
                 Text(
-                  formatCurrency(double.parse(deposit.price!)),
+                  formatCurrency(double.parse(deposit.price!.toString())),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -838,7 +840,7 @@ class _HomescreenContentState extends State<HomescreenContent>
                   ),
                 ),
                 Text(
-                  formatCurrency(double.parse(withdarawal.price!)),
+                  formatCurrency(double.parse(withdarawal.price!.toString())),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,

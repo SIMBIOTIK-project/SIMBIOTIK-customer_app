@@ -10,9 +10,9 @@ _$DepositModelImpl _$$DepositModelImplFromJson(Map<String, dynamic> json) =>
     _$DepositModelImpl(
       id: (json['id'] as num?)?.toInt(),
       idUser: json['id_user'] as String?,
-      idWastetype: json['id_wastetype'] as String?,
-      weight: json['weight'] as String?,
-      price: json['price'] as String?,
+      idWastetype: (json['id_wastetype'] as num?)?.toInt(),
+      weight: (json['weight'] as num?)?.toInt(),
+      price: (json['price'] as num?)?.toInt(),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -25,7 +25,7 @@ _$DepositModelImpl _$$DepositModelImplFromJson(Map<String, dynamic> json) =>
       wasteType: json['wastetype'] == null
           ? null
           : WasteTypesModel.fromJson(json['wastetype'] as Map<String, dynamic>),
-      createdby: json['created_by'] as String?,
+      createdBy: json['created_by'] as String?,
     );
 
 Map<String, dynamic> _$$DepositModelImplToJson(_$DepositModelImpl instance) =>
@@ -39,5 +39,5 @@ Map<String, dynamic> _$$DepositModelImplToJson(_$DepositModelImpl instance) =>
       'updated_at': instance.updatedAt?.toIso8601String(),
       'user': instance.user,
       'wastetype': instance.wasteType,
-      'created_by': instance.createdby,
+      'created_by': instance.createdBy,
     };
