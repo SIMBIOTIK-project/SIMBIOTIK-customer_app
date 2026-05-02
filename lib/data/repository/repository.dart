@@ -17,3 +17,4 @@ export 'deposit_repository.dart';
 export 'logout_repository.dart';
 export 'user_repository.dart';
 export 'withdrawal_repository.dart';
+export 'balance_repository.dart';

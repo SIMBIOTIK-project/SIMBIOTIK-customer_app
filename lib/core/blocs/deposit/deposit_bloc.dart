@@ -27,11 +27,14 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
 
   DepositBloc(this._depositRepository) : super(const DepositState()) {
     on<_Fetch>(_onFetch);
-    on<_FetchAll>(_onFetchAll);
   }
 
-  Future<void> _onFetch(_Fetch event, Emitter<DepositState> emit) async {
-    emit(state.copyWith(status: DepositStateStatus.loading, error: ''));
+  Future<void> _onFetch(event, Emitter<DepositState> emit) async {
+    emit(state.copyWith(
+      status: DepositStateStatus.loading,
+      data: null,
+      error: '',
+    ));
 
     try {
       final response = await _depositRepository.getDeposit(
@@ -43,32 +46,6 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
         state.copyWith(
           status: DepositStateStatus.loaded,
           data: response,
-        ),
-      );
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: DepositStateStatus.error,
-          error: e.toString(),
-        ),
-      );
-    }
-  }
-
-  Future<void> _onFetchAll(_FetchAll event, Emitter<DepositState> emit) async {
-    emit(state.copyWith(status: DepositStateStatus.loading, error: ''));
-
-    try {
-      final List<DepositModel> deposits =
-          await _depositRepository.getAllDeposits(
-        event.token,
-        event.idUser,
-      );
-
-      emit(
-        state.copyWith(
-          status: DepositStateStatus.loaded,
-          allData: deposits,
         ),
       );
     } catch (e) {

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -51,27 +53,41 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
 
   String? getToken;
 
-  _savedToken(String token) async {
+  _savedToken(AuthResponse data) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
+    final jsonString = jsonEncode(data.toJson());
+
+    await prefs.setString('auth', jsonString);
   }
 
   Future<void> _loadToken() async {
     final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token') ?? '';
+
+    final jsonString = prefs.getString('auth');
+    if (jsonString != null) return;
+
+    final Map<String, dynamic> jsonMap = jsonDecode(jsonString!);
     setState(() {
-      getToken = token;
+      getToken = jsonMap['token'] as String?;
     });
     if (getToken != null && getToken?.isNotEmpty == true) {
-      _buildAutoLogin();
+      _buildAutoLogin(
+        jsonMap['success'] as bool,
+        getToken!,
+        jsonMap['user'] as UserModel,
+      );
     }
-    Logger().d(token);
+    Logger().d(getToken);
   }
 
-  _buildAutoLogin() {
+  _buildAutoLogin(bool success, String token, UserModel user) {
     GoRouter.of(context).pushReplacement(
       AppRouterConstants.homeScreen,
-      extra: getToken,
+      extra: AuthResponse(
+        success: success,
+        token: token,
+        user: user,
+      ),
     );
   }
 
@@ -164,7 +180,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                   child: TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(
-                      hintText: 'Masukkan Email',
+                      hintText: 'Masukkan Username',
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 8.0,
@@ -235,17 +251,33 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                     if (state.status.isLoaded) {
                       if (state.data?.status == StatusUser.nasabah.value) {
                         if (_rememberMe == true) {
-                          if (state.token != null) {
-                            _savedToken(state.token!);
+                          if (state.token != null && state.data != null) {
+                            _savedToken(AuthResponse(
+                              success: true,
+                              user: state.data!,
+                              token: state.token!,
+                            ));
                             GoRouter.of(context).pushReplacement(
                               AppRouterConstants.homeScreen,
-                              extra: state.token,
+                              extra: state.data != null && state.token != null
+                                  ? AuthResponse(
+                                      success: true,
+                                      token: state.token!,
+                                      user: state.data!,
+                                    )
+                                  : null,
                             );
                           }
                         } else {
                           GoRouter.of(context).pushReplacement(
                             AppRouterConstants.homeScreen,
-                            extra: state.token,
+                            extra: state.data != null && state.token != null
+                                ? AuthResponse(
+                                    success: true,
+                                    token: state.token!,
+                                    user: state.data!,
+                                  )
+                                : null,
                           );
                         }
                       } else {
@@ -283,7 +315,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                         onPressed: () {
                           context.read<AuthBloc>().add(
                                 AuthEvent.login(
-                                  email: _emailController.text,
+                                  name: _emailController.text,
                                   password: _passwordController.text,
                                 ),
                               );

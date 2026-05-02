@@ -18,5 +18,6 @@ part of 'user_bloc.dart';
 class UserEvent with _$UserEvent {
   const factory UserEvent.fetch({
     required String token,
+    required String idUser,
   }) = _Fetch;
 }

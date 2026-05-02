@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserEvent {
   String get token => throw _privateConstructorUsedError;
+  String get idUser => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String token) fetch,
+    required TResult Function(String token, String idUser) fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token)? fetch,
+    TResult? Function(String token, String idUser)? fetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token)? fetch,
+    TResult Function(String token, String idUser)? fetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +51,9 @@ mixin _$UserEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserEventCopyWith<UserEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,7 +63,7 @@ abstract class $UserEventCopyWith<$Res> {
   factory $UserEventCopyWith(UserEvent value, $Res Function(UserEvent) then) =
       _$UserEventCopyWithImpl<$Res, UserEvent>;
   @useResult
-  $Res call({String token});
+  $Res call({String token, String idUser});
 }
 
 /// @nodoc
@@ -73,15 +76,22 @@ class _$UserEventCopyWithImpl<$Res, $Val extends UserEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = null,
+    Object? idUser = null,
   }) {
     return _then(_value.copyWith(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      idUser: null == idUser
+          ? _value.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -94,7 +104,7 @@ abstract class _$$FetchImplCopyWith<$Res> implements $UserEventCopyWith<$Res> {
       __$$FetchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String token});
+  $Res call({String token, String idUser});
 }
 
 /// @nodoc
@@ -105,15 +115,22 @@ class __$$FetchImplCopyWithImpl<$Res>
       _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = null,
+    Object? idUser = null,
   }) {
     return _then(_$FetchImpl(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      idUser: null == idUser
+          ? _value.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -122,14 +139,16 @@ class __$$FetchImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchImpl implements _Fetch {
-  const _$FetchImpl({required this.token});
+  const _$FetchImpl({required this.token, required this.idUser});
 
   @override
   final String token;
+  @override
+  final String idUser;
 
   @override
   String toString() {
-    return 'UserEvent.fetch(token: $token)';
+    return 'UserEvent.fetch(token: $token, idUser: $idUser)';
   }
 
   @override
@@ -137,13 +156,16 @@ class _$FetchImpl implements _Fetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchImpl &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.idUser, idUser) || other.idUser == idUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token);
+  int get hashCode => Object.hash(runtimeType, token, idUser);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
@@ -152,27 +174,27 @@ class _$FetchImpl implements _Fetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String token) fetch,
+    required TResult Function(String token, String idUser) fetch,
   }) {
-    return fetch(token);
+    return fetch(token, idUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token)? fetch,
+    TResult? Function(String token, String idUser)? fetch,
   }) {
-    return fetch?.call(token);
+    return fetch?.call(token, idUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token)? fetch,
+    TResult Function(String token, String idUser)? fetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
-      return fetch(token);
+      return fetch(token, idUser);
     }
     return orElse();
   }
@@ -207,12 +229,19 @@ class _$FetchImpl implements _Fetch {
 }
 
 abstract class _Fetch implements UserEvent {
-  const factory _Fetch({required final String token}) = _$FetchImpl;
+  const factory _Fetch(
+      {required final String token,
+      required final String idUser}) = _$FetchImpl;
 
   @override
   String get token;
   @override
-  @JsonKey(ignore: true)
+  String get idUser;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -223,7 +252,9 @@ mixin _$UserState {
   UserModel? get data => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserStateCopyWith<UserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -248,6 +279,8 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,6 +304,8 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     ) as $Val);
   }
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserModelCopyWith<$Res>? get data {
@@ -306,6 +341,8 @@ class __$$UserStateImplCopyWithImpl<$Res>
       _$UserStateImpl _value, $Res Function(_$UserStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -363,7 +400,9 @@ class _$UserStateImpl implements _UserState {
   @override
   int get hashCode => Object.hash(runtimeType, status, data, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
@@ -382,8 +421,11 @@ abstract class _UserState implements UserState {
   UserModel? get data;
   @override
   String? get error;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserStateImplCopyWith<_$UserStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

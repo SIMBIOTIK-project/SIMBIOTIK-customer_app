@@ -16,3 +16,4 @@ export 'auth/auth.dart';
 export 'user/user.dart';
 export 'deposit/deposit.dart';
 export 'withdrawal/withdrawal.dart';
+export 'balance/balance.dart';

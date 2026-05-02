@@ -34,39 +34,29 @@ class WithdrawalRepository {
     String? idUser,
     int? page,
   ) async {
-    final response = await _dio.get(
-      api,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
+    try {
+      final response = await _dio.get(
+        api,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ),
+        queryParameters: {
+          if (idUser != null) 'id_user': idUser,
+          if (page != null) 'page': page,
         },
-      ),
-      queryParameters: {
-        'id_user': idUser,
-        'page': page,
-      },
-    );
+      );
 
-    if (response.statusCode == 200) {
-      return WithdrawalResponseModel.fromJson(response.data['data']);
-    } else {
-      throw Exception('Gagal memuat data');
+      if (response.statusCode == 200) {
+        return WithdrawalResponseModel.fromJson(response.data['data']);
+      }
+      throw Exception(
+          response.data['message'] ?? 'Failed to fetch withdrawals');
+    } on DioException catch (e) {
+      throw Exception(
+        e.response?.data['message'] ?? e.message ?? 'Network error',
+      );
     }
-  }
-
-  Future<List<WithdrawalModel>> getAllWithdrawal(
-      String token, String? idUser) async {
-    List<WithdrawalModel> allWithdrawals = [];
-    int? currentPage = 1;
-    int? totalPages;
-
-    do {
-      final response = await getWithdrawal(token, idUser, currentPage);
-      allWithdrawals.addAll(response.result?.data ?? []);
-      totalPages = response.result?.totalPages;
-      currentPage = (currentPage ?? 1) + 1;
-    } while (currentPage <= totalPages!);
-
-    return allWithdrawals;
   }
 }

@@ -3,6 +3,11 @@ allprojects {
         google()
         mavenCentral()
     }
+    configurations.all {
+        resolutionStrategy {
+            force 'org.bouncycastle:bcprov-jdk18on:1.78'
+        }
+    }
 }
 
 rootProject.buildDir = '../build'
@@ -10,7 +15,15 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
-    project.evaluationDependsOn(':app')
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            project.android {
+                if (namespace == null || namespace == "") {
+                    namespace project.group.toString()
+                }
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {

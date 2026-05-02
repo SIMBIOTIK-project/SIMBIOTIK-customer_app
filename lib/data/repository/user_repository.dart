@@ -28,7 +28,7 @@ class UserRepository {
       error: true,
     ));
   final String api = dotenv.get('URL') + ApiConstants.user;
-  Future<UserModel> getUser(String token) async {
+  Future<UserModel?> getUser(String token, String loginIdUser) async {
     final response = await _dio.get(
       api,
       options: Options(
@@ -39,9 +39,21 @@ class UserRepository {
     );
 
     if (response.statusCode == 200) {
-      return UserModel.fromJson(response.data);
+      final list = response.data['data']['result']['data'];
+
+      final filtered = list
+          .where(
+            (e) => e['id_user'] == loginIdUser,
+          )
+          .toList();
+
+      if (filtered.isNotEmpty) {
+        return UserModel.fromJson(filtered.first);
+      }
+
+      return null;
     } else {
-      throw Exception('Gagal login');
+      throw Exception('Gagal mengambil data user');
     }
   }
 }

@@ -13,10 +13,12 @@
 // limitations under the License.
 
 class ApiConstants {
-  static const String login = '/login';
-  static const String logout = '/logout';
-  static const String register = '/register';
-  static const String user = '/user';
+  static const String login = '/auth/login';
+  static const String logout = '/auth/logout';
+  static const String register = '/auth/register';
+  static const String user = '/users';
   static const String deposit = '/deposits';
   static const String withdrawal = '/withdrawals';
+  static const String balance = '/balances';
+  static const String sodakos = '/sodakos';
 }

@@ -27,11 +27,14 @@ class WithdrawalBloc extends Bloc<WithdrawalEvent, WithdrawalState> {
 
   WithdrawalBloc(this._withdrawalRepository) : super(const WithdrawalState()) {
     on<_Fetch>(_onFetch);
-    on<_FetchAll>(_onFetchAll);
   }
 
   Future<void> _onFetch(_Fetch event, Emitter<WithdrawalState> emit) async {
-    emit(state.copyWith(status: WithdrawalStateStatus.loading, error: ''));
+    emit(state.copyWith(
+      status: WithdrawalStateStatus.loading,
+      error: '',
+      data: null,
+    ));
 
     try {
       final response = await _withdrawalRepository.getWithdrawal(
@@ -44,33 +47,6 @@ class WithdrawalBloc extends Bloc<WithdrawalEvent, WithdrawalState> {
         state.copyWith(
           status: WithdrawalStateStatus.loaded,
           data: response,
-        ),
-      );
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: WithdrawalStateStatus.error,
-          error: e.toString(),
-        ),
-      );
-    }
-  }
-
-  Future<void> _onFetchAll(
-      _FetchAll event, Emitter<WithdrawalState> emit) async {
-    emit(state.copyWith(status: WithdrawalStateStatus.loading, error: ''));
-
-    try {
-      final List<WithdrawalModel> withdrawals =
-          await _withdrawalRepository.getAllWithdrawal(
-        event.token,
-        event.idUser,
-      );
-
-      emit(
-        state.copyWith(
-          status: WithdrawalStateStatus.loaded,
-          allData: withdrawals,
         ),
       );
     } catch (e) {

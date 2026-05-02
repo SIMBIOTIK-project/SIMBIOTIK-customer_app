@@ -29,11 +29,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> _onFetch(_Fetch event, Emitter<UserState> emit) async {
-    emit(state.copyWith(status: UserStateStatus.loading, error: ''));
+    emit(state.copyWith(
+      status: UserStateStatus.loading,
+      error: '',
+      data: null,
+    ));
 
     try {
       final response = await _userRepository.getUser(
         event.token,
+        event.idUser,
       );
 
       emit(
