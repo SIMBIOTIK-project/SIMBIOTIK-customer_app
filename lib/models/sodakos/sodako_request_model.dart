@@ -18,7 +18,7 @@ part 'sodako_request_model.freezed.dart';
 part 'sodako_request_model.g.dart';
 
 @freezed
-class SodakoRequestModel with _$SodakoRequestModel {
+abstract class SodakoRequestModel with _$SodakoRequestModel {
   const factory SodakoRequestModel({
     @JsonKey(name: 'id_user') String? idUser,
     @JsonKey(name: 'price') double? price,

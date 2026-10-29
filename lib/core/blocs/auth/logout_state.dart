@@ -27,7 +27,7 @@ enum GetLogoutStateStatus {
 }
 
 @freezed
-class LogoutState with _$LogoutState {
+abstract class LogoutState with _$LogoutState {
   const factory LogoutState({
     @Default(GetLogoutStateStatus.initial) GetLogoutStateStatus status,
     @Default('') String? error,

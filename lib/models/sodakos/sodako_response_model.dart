@@ -19,7 +19,7 @@ part 'sodako_response_model.freezed.dart';
 part 'sodako_response_model.g.dart';
 
 @freezed
-class SodakoResponseModel with _$SodakoResponseModel {
+abstract class SodakoResponseModel with _$SodakoResponseModel {
   const factory SodakoResponseModel({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'message') String? message,

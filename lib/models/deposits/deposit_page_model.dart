@@ -21,7 +21,7 @@ part 'deposit_page_model.freezed.dart';
 part 'deposit_page_model.g.dart';
 
 @freezed
-class DepositPageModel with _$DepositPageModel {
+abstract class DepositPageModel with _$DepositPageModel {
   const factory DepositPageModel({
     @JsonKey(name: 'total_data') int? totalData,
     @JsonKey(name: 'current_page') int? currentPage,

@@ -18,7 +18,7 @@ part 'logout_response.freezed.dart';
 part 'logout_response.g.dart';
 
 @freezed
-class LogoutResponse with _$LogoutResponse {
+abstract class LogoutResponse with _$LogoutResponse {
   const factory LogoutResponse({
     required bool success,
   }) = _LogoutResponse;

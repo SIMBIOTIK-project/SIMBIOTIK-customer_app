@@ -6,9 +6,8 @@ part of 'withdrawal_page_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WithdrawalPageModelImpl _$$WithdrawalPageModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WithdrawalPageModelImpl(
+_WithdrawalPageModel _$WithdrawalPageModelFromJson(Map<String, dynamic> json) =>
+    _WithdrawalPageModel(
       totalData: (json['total_data'] as num?)?.toInt(),
       currentPage: (json['current_page'] as num?)?.toInt(),
       perPage: (json['per_page'] as num?)?.toInt(),
@@ -18,8 +17,8 @@ _$WithdrawalPageModelImpl _$$WithdrawalPageModelImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$WithdrawalPageModelImplToJson(
-        _$WithdrawalPageModelImpl instance) =>
+Map<String, dynamic> _$WithdrawalPageModelToJson(
+        _WithdrawalPageModel instance) =>
     <String, dynamic>{
       'total_data': instance.totalData,
       'current_page': instance.currentPage,

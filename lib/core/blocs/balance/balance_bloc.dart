@@ -37,7 +37,6 @@ class BalanceBloc extends Bloc<BalanceEvent, BalanceState> {
 
     try {
       final response = await _balanceRepository.getBalance(
-        event.token,
         event.idUser,
       );
       emit(

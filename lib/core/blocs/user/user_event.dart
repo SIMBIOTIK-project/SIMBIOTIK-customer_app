@@ -15,9 +15,8 @@
 part of 'user_bloc.dart';
 
 @freezed
-class UserEvent with _$UserEvent {
+abstract class UserEvent with _$UserEvent {
   const factory UserEvent.fetch({
-    required String token,
     required String idUser,
   }) = _Fetch;
 }

@@ -6,8 +6,7 @@ part of 'sodako_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SodakoModelImpl _$$SodakoModelImplFromJson(Map<String, dynamic> json) =>
-    _$SodakoModelImpl(
+_SodakoModel _$SodakoModelFromJson(Map<String, dynamic> json) => _SodakoModel(
       id: (json['id'] as num?)?.toInt(),
       idUser: json['id_user'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -22,7 +21,7 @@ _$SodakoModelImpl _$$SodakoModelImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
     );
 
-Map<String, dynamic> _$$SodakoModelImplToJson(_$SodakoModelImpl instance) =>
+Map<String, dynamic> _$SodakoModelToJson(_SodakoModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'id_user': instance.idUser,

@@ -37,7 +37,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
     try {
       final response = await _userRepository.getUser(
-        event.token,
         event.idUser,
       );
 

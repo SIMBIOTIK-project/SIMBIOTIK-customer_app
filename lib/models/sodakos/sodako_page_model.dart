@@ -19,7 +19,7 @@ part 'sodako_page_model.freezed.dart';
 part 'sodako_page_model.g.dart';
 
 @freezed
-class SodakoPageModel with _$SodakoPageModel {
+abstract class SodakoPageModel with _$SodakoPageModel {
   const factory SodakoPageModel({
     @JsonKey(name: 'total_data') int? totalData,
     @JsonKey(name: 'current_page') int? currentPage,

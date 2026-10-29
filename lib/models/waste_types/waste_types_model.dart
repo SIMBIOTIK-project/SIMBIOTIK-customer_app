@@ -20,7 +20,7 @@ part 'waste_types_model.freezed.dart';
 part 'waste_types_model.g.dart';
 
 @freezed
-class WasteTypesModel with _$WasteTypesModel {
+abstract class WasteTypesModel with _$WasteTypesModel {
   const factory WasteTypesModel({
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'type') String? type,

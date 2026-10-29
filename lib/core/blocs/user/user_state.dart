@@ -27,7 +27,7 @@ enum UserStateStatus {
 }
 
 @freezed
-class UserState with _$UserState {
+abstract class UserState with _$UserState {
   const factory UserState({
     @Default(UserStateStatus.initial) UserStateStatus status,
     UserModel? data,

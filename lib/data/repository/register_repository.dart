@@ -14,11 +14,18 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:simbiotik_customer/core/networks/networks.dart';
+import 'package:simbiotik_customer/core/storages/storages.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/auth/register_response.dart';
 
 class RegisterRepository {
   final Dio _dio = Dio()
+    ..interceptors.add(
+      AuthInterceptor(
+        AuthStorage(),
+      ),
+    )
     ..interceptors.add(LogInterceptor(
       request: true,
       requestBody: true,
@@ -38,24 +45,28 @@ class RegisterRepository {
     String address,
     String status,
   ) async {
-    final response = await _dio.post(
-      api,
-      data: {
-        'name': name,
-        'email': email,
-        'password': password,
-        'password_confirmation': passwordConfirmation,
-        'nik': nik,
-        'phone_number': phoneNumber,
-        'address': address,
-        'status': status,
-      },
-    );
+    try {
+      final response = await _dio.post(
+        api,
+        data: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'password_confirmation': passwordConfirmation,
+          'nik': nik,
+          'phone_number': phoneNumber,
+          'address': address,
+          'status': status,
+        },
+      );
 
-    if (response.statusCode == 200) {
       return RegisterResponse.fromJson(response.data);
-    } else {
-      throw Exception('Gagal registrasi');
+    } on DioException catch (e) {
+      if (e.response?.data['email'] != null) {
+        throw e.response!.data['email'][0];
+      }
+
+      throw e.response?.data['message'] ?? 'Gagal registrasi';
     }
   }
 }

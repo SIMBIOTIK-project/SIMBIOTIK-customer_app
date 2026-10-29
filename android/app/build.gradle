@@ -28,7 +28,7 @@ if (flutterVersionName == null) {
 android {
     namespace "com.simbiotik.customer"
     compileSdk 35
-    ndkVersion flutter.ndkVersion
+    ndkVersion "27.0.12077973"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -48,7 +48,7 @@ android {
         applicationId "com.simbiotik.customer"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -87,13 +87,3 @@ flutter {
 }
 
 dependencies {}
-
-configurations.all {
-    resolutionStrategy {
-        eachDependency {
-            if ((requested.group == "org.jetbrains.kotlin") && (requested.name.startsWith("kotlin-stdlib"))) {
-                useVersion("1.8.0")
-            }
-        }
-    }
-}

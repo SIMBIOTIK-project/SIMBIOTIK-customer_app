@@ -14,12 +14,18 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:simbiotik_customer/core/networks/networks.dart';
+import 'package:simbiotik_customer/core/storages/storages.dart';
 import 'package:simbiotik_customer/data/data.dart';
-import 'package:simbiotik_customer/models/models.dart';
 import 'package:simbiotik_customer/models/withdrawals/withdrawal_response_model.dart';
 
 class WithdrawalRepository {
   final Dio _dio = Dio()
+    ..interceptors.add(
+      AuthInterceptor(
+        AuthStorage(),
+      ),
+    )
     ..interceptors.add(LogInterceptor(
       request: true,
       requestBody: true,
@@ -29,34 +35,44 @@ class WithdrawalRepository {
       error: true,
     ));
   final String api = dotenv.get('URL') + ApiConstants.withdrawal;
-  Future<WithdrawalResponseModel> getWithdrawal(
-    String token,
+  Future<WithdrawalResponseModel> getWithdrawal({
     String? idUser,
     int? page,
-  ) async {
-    try {
-      final response = await _dio.get(
-        api,
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-          },
-        ),
-        queryParameters: {
-          if (idUser != null) 'id_user': idUser,
-          if (page != null) 'page': page,
-        },
-      );
+    String? date,
+    String? startDate,
+    String? endDate,
+  }) async {
+    final queryParameters = <String, dynamic>{
+      'page': page,
+    };
 
-      if (response.statusCode == 200) {
-        return WithdrawalResponseModel.fromJson(response.data['data']);
-      }
-      throw Exception(
-          response.data['message'] ?? 'Failed to fetch withdrawals');
-    } on DioException catch (e) {
-      throw Exception(
-        e.response?.data['message'] ?? e.message ?? 'Network error',
+    if (idUser != null && idUser.isNotEmpty) {
+      queryParameters['user_id'] = idUser;
+    }
+
+    if (date != null && date.isNotEmpty) {
+      queryParameters['date'] = date;
+    }
+
+    if (startDate != null && startDate.isNotEmpty) {
+      queryParameters['start_date'] = startDate;
+    }
+
+    if (endDate != null && endDate.isNotEmpty) {
+      queryParameters['end_date'] = endDate;
+    }
+
+    final response = await _dio.get(
+      api,
+      queryParameters: queryParameters,
+    );
+
+    if (response.statusCode == 200) {
+      return WithdrawalResponseModel.fromJson(
+        response.data['data'],
       );
     }
+
+    throw Exception('Gagal memuat data');
   }
 }

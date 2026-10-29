@@ -6,9 +6,9 @@ part of 'deposit_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DepositResponseModelImpl _$$DepositResponseModelImplFromJson(
+_DepositResponseModel _$DepositResponseModelFromJson(
         Map<String, dynamic> json) =>
-    _$DepositResponseModelImpl(
+    _DepositResponseModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,
       result: json['result'] == null
@@ -16,8 +16,8 @@ _$DepositResponseModelImpl _$$DepositResponseModelImplFromJson(
           : DepositPageModel.fromJson(json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$DepositResponseModelImplToJson(
-        _$DepositResponseModelImpl instance) =>
+Map<String, dynamic> _$DepositResponseModelToJson(
+        _DepositResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,

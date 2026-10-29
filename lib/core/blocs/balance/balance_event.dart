@@ -15,9 +15,8 @@
 part of 'balance_bloc.dart';
 
 @freezed
-class BalanceEvent with _$BalanceEvent {
+abstract class BalanceEvent with _$BalanceEvent {
   const factory BalanceEvent.fetch({
-    required String token,
     required String idUser,
   }) = _Fetch;
 }

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,302 +9,367 @@ part of 'deposit_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DepositEvent {
-  String get token => throw _privateConstructorUsedError;
-  String? get idUser => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, String? idUser) fetchAll,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, String? idUser)? fetchAll,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, String? idUser)? fetchAll,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_FetchAll value) fetchAll,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_FetchAll value)? fetchAll,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_FetchAll value)? fetchAll,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of DepositEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DepositEventCopyWith<DepositEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DepositEventCopyWith<$Res> {
-  factory $DepositEventCopyWith(
-          DepositEvent value, $Res Function(DepositEvent) then) =
-      _$DepositEventCopyWithImpl<$Res, DepositEvent>;
-  @useResult
-  $Res call({String token, String? idUser});
-}
-
-/// @nodoc
-class _$DepositEventCopyWithImpl<$Res, $Val extends DepositEvent>
-    implements $DepositEventCopyWith<$Res> {
-  _$DepositEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of DepositEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
-    Object? idUser = freezed,
-  }) {
-    return _then(_value.copyWith(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      idUser: freezed == idUser
-          ? _value.idUser
-          : idUser // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$FetchImplCopyWith<$Res>
-    implements $DepositEventCopyWith<$Res> {
-  factory _$$FetchImplCopyWith(
-          _$FetchImpl value, $Res Function(_$FetchImpl) then) =
-      __$$FetchImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String token, String? idUser, int? page});
-}
-
-/// @nodoc
-class __$$FetchImplCopyWithImpl<$Res>
-    extends _$DepositEventCopyWithImpl<$Res, _$FetchImpl>
-    implements _$$FetchImplCopyWith<$Res> {
-  __$$FetchImplCopyWithImpl(
-      _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DepositEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
-    Object? idUser = freezed,
-    Object? page = freezed,
-  }) {
-    return _then(_$FetchImpl(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      idUser: freezed == idUser
-          ? _value.idUser
-          : idUser // ignore: cast_nullable_to_non_nullable
-              as String?,
-      page: freezed == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FetchImpl implements _Fetch {
-  const _$FetchImpl({required this.token, this.idUser, this.page});
-
-  @override
-  final String token;
-  @override
-  final String? idUser;
-  @override
-  final int? page;
-
-  @override
-  String toString() {
-    return 'DepositEvent.fetch(token: $token, idUser: $idUser, page: $page)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FetchImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.idUser, idUser) || other.idUser == idUser) &&
-            (identical(other.page, page) || other.page == page));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, token, idUser, page);
-
-  /// Create a copy of DepositEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      __$$FetchImplCopyWithImpl<_$FetchImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, String? idUser) fetchAll,
-  }) {
-    return fetch(token, idUser, page);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, String? idUser)? fetchAll,
-  }) {
-    return fetch?.call(token, idUser, page);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, String? idUser)? fetchAll,
-    required TResult orElse(),
-  }) {
-    if (fetch != null) {
-      return fetch(token, idUser, page);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_FetchAll value) fetchAll,
-  }) {
-    return fetch(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_FetchAll value)? fetchAll,
-  }) {
-    return fetch?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_FetchAll value)? fetchAll,
-    required TResult orElse(),
-  }) {
-    if (fetch != null) {
-      return fetch(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Fetch implements DepositEvent {
-  const factory _Fetch(
-      {required final String token,
-      final String? idUser,
-      final int? page}) = _$FetchImpl;
-
-  @override
-  String get token;
-  @override
   String? get idUser;
-  int? get page;
 
   /// Create a copy of DepositEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $DepositEventCopyWith<DepositEvent> get copyWith =>
+      _$DepositEventCopyWithImpl<DepositEvent>(
+          this as DepositEvent, _$identity);
 
-/// @nodoc
-abstract class _$$FetchAllImplCopyWith<$Res>
-    implements $DepositEventCopyWith<$Res> {
-  factory _$$FetchAllImplCopyWith(
-          _$FetchAllImpl value, $Res Function(_$FetchAllImpl) then) =
-      __$$FetchAllImplCopyWithImpl<$Res>;
   @override
-  @useResult
-  $Res call({String token, String? idUser});
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DepositEvent &&
+            (identical(other.idUser, idUser) || other.idUser == idUser));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idUser);
+
+  @override
+  String toString() {
+    return 'DepositEvent(idUser: $idUser)';
+  }
 }
 
 /// @nodoc
-class __$$FetchAllImplCopyWithImpl<$Res>
-    extends _$DepositEventCopyWithImpl<$Res, _$FetchAllImpl>
-    implements _$$FetchAllImplCopyWith<$Res> {
-  __$$FetchAllImplCopyWithImpl(
-      _$FetchAllImpl _value, $Res Function(_$FetchAllImpl) _then)
-      : super(_value, _then);
+abstract mixin class $DepositEventCopyWith<$Res> {
+  factory $DepositEventCopyWith(
+          DepositEvent value, $Res Function(DepositEvent) _then) =
+      _$DepositEventCopyWithImpl;
+  @useResult
+  $Res call({String? idUser});
+}
+
+/// @nodoc
+class _$DepositEventCopyWithImpl<$Res> implements $DepositEventCopyWith<$Res> {
+  _$DepositEventCopyWithImpl(this._self, this._then);
+
+  final DepositEvent _self;
+  final $Res Function(DepositEvent) _then;
 
   /// Create a copy of DepositEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = null,
     Object? idUser = freezed,
   }) {
-    return _then(_$FetchAllImpl(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_self.copyWith(
       idUser: freezed == idUser
-          ? _value.idUser
+          ? _self.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [DepositEvent].
+extension DepositEventPatterns on DepositEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetch value)? fetch,
+    TResult Function(_FetchAll value)? fetchAll,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that);
+      case _FetchAll() when fetchAll != null:
+        return fetchAll(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_FetchAll value) fetchAll,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch():
+        return fetch(_that);
+      case _FetchAll():
+        return fetchAll(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_FetchAll value)? fetchAll,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that);
+      case _FetchAll() when fetchAll != null:
+        return fetchAll(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? idUser, int page, String? wasteTypeId,
+            String? date, String? startDate, String? endDate)?
+        fetch,
+    TResult Function(String token, String? idUser)? fetchAll,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that.idUser, _that.page, _that.wasteTypeId, _that.date,
+            _that.startDate, _that.endDate);
+      case _FetchAll() when fetchAll != null:
+        return fetchAll(_that.token, _that.idUser);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? idUser, int page, String? wasteTypeId,
+            String? date, String? startDate, String? endDate)
+        fetch,
+    required TResult Function(String token, String? idUser) fetchAll,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch():
+        return fetch(_that.idUser, _that.page, _that.wasteTypeId, _that.date,
+            _that.startDate, _that.endDate);
+      case _FetchAll():
+        return fetchAll(_that.token, _that.idUser);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? idUser, int page, String? wasteTypeId,
+            String? date, String? startDate, String? endDate)?
+        fetch,
+    TResult? Function(String token, String? idUser)? fetchAll,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that.idUser, _that.page, _that.wasteTypeId, _that.date,
+            _that.startDate, _that.endDate);
+      case _FetchAll() when fetchAll != null:
+        return fetchAll(_that.token, _that.idUser);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _Fetch implements DepositEvent {
+  const _Fetch(
+      {this.idUser = '',
+      this.page = 1,
+      this.wasteTypeId,
+      this.date,
+      this.startDate,
+      this.endDate});
+
+  @override
+  @JsonKey()
+  final String? idUser;
+  @JsonKey()
+  final int page;
+  final String? wasteTypeId;
+  final String? date;
+  final String? startDate;
+  final String? endDate;
+
+  /// Create a copy of DepositEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FetchCopyWith<_Fetch> get copyWith =>
+      __$FetchCopyWithImpl<_Fetch>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Fetch &&
+            (identical(other.idUser, idUser) || other.idUser == idUser) &&
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.wasteTypeId, wasteTypeId) ||
+                other.wasteTypeId == wasteTypeId) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, idUser, page, wasteTypeId, date, startDate, endDate);
+
+  @override
+  String toString() {
+    return 'DepositEvent.fetch(idUser: $idUser, page: $page, wasteTypeId: $wasteTypeId, date: $date, startDate: $startDate, endDate: $endDate)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FetchCopyWith<$Res>
+    implements $DepositEventCopyWith<$Res> {
+  factory _$FetchCopyWith(_Fetch value, $Res Function(_Fetch) _then) =
+      __$FetchCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String? idUser,
+      int page,
+      String? wasteTypeId,
+      String? date,
+      String? startDate,
+      String? endDate});
+}
+
+/// @nodoc
+class __$FetchCopyWithImpl<$Res> implements _$FetchCopyWith<$Res> {
+  __$FetchCopyWithImpl(this._self, this._then);
+
+  final _Fetch _self;
+  final $Res Function(_Fetch) _then;
+
+  /// Create a copy of DepositEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? idUser = freezed,
+    Object? page = null,
+    Object? wasteTypeId = freezed,
+    Object? date = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
+  }) {
+    return _then(_Fetch(
+      idUser: freezed == idUser
+          ? _self.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
+              as String?,
+      page: null == page
+          ? _self.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      wasteTypeId: freezed == wasteTypeId
+          ? _self.wasteTypeId
+          : wasteTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      startDate: freezed == startDate
+          ? _self.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      endDate: freezed == endDate
+          ? _self.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -312,24 +377,26 @@ class __$$FetchAllImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchAllImpl implements _FetchAll {
-  const _$FetchAllImpl({required this.token, this.idUser});
+class _FetchAll implements DepositEvent {
+  const _FetchAll({required this.token, this.idUser});
 
-  @override
   final String token;
   @override
   final String? idUser;
 
+  /// Create a copy of DepositEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DepositEvent.fetchAll(token: $token, idUser: $idUser)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FetchAllCopyWith<_FetchAll> get copyWith =>
+      __$FetchAllCopyWithImpl<_FetchAll>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FetchAllImpl &&
+            other is _FetchAll &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.idUser, idUser) || other.idUser == idUser));
   }
@@ -337,113 +404,91 @@ class _$FetchAllImpl implements _FetchAll {
   @override
   int get hashCode => Object.hash(runtimeType, token, idUser);
 
-  /// Create a copy of DepositEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FetchAllImplCopyWith<_$FetchAllImpl> get copyWith =>
-      __$$FetchAllImplCopyWithImpl<_$FetchAllImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, String? idUser) fetchAll,
-  }) {
-    return fetchAll(token, idUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, String? idUser)? fetchAll,
-  }) {
-    return fetchAll?.call(token, idUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, String? idUser)? fetchAll,
-    required TResult orElse(),
-  }) {
-    if (fetchAll != null) {
-      return fetchAll(token, idUser);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_FetchAll value) fetchAll,
-  }) {
-    return fetchAll(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_FetchAll value)? fetchAll,
-  }) {
-    return fetchAll?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_FetchAll value)? fetchAll,
-    required TResult orElse(),
-  }) {
-    if (fetchAll != null) {
-      return fetchAll(this);
-    }
-    return orElse();
+  String toString() {
+    return 'DepositEvent.fetchAll(token: $token, idUser: $idUser)';
   }
 }
 
-abstract class _FetchAll implements DepositEvent {
-  const factory _FetchAll({required final String token, final String? idUser}) =
-      _$FetchAllImpl;
+/// @nodoc
+abstract mixin class _$FetchAllCopyWith<$Res>
+    implements $DepositEventCopyWith<$Res> {
+  factory _$FetchAllCopyWith(_FetchAll value, $Res Function(_FetchAll) _then) =
+      __$FetchAllCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String token, String? idUser});
+}
 
-  @override
-  String get token;
-  @override
-  String? get idUser;
+/// @nodoc
+class __$FetchAllCopyWithImpl<$Res> implements _$FetchAllCopyWith<$Res> {
+  __$FetchAllCopyWithImpl(this._self, this._then);
+
+  final _FetchAll _self;
+  final $Res Function(_FetchAll) _then;
 
   /// Create a copy of DepositEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FetchAllImplCopyWith<_$FetchAllImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? token = null,
+    Object? idUser = freezed,
+  }) {
+    return _then(_FetchAll(
+      token: null == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      idUser: freezed == idUser
+          ? _self.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$DepositState {
-  DepositStateStatus get status => throw _privateConstructorUsedError;
-  DepositResponseModel? get data => throw _privateConstructorUsedError;
-  List<DepositModel>? get allData => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  DepositStateStatus get status;
+  DepositResponseModel? get data;
+  List<DepositModel>? get allData;
+  String? get error;
 
   /// Create a copy of DepositState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $DepositStateCopyWith<DepositState> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$DepositStateCopyWithImpl<DepositState>(
+          this as DepositState, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DepositState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.data, data) || other.data == data) &&
+            const DeepCollectionEquality().equals(other.allData, allData) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status, data,
+      const DeepCollectionEquality().hash(allData), error);
+
+  @override
+  String toString() {
+    return 'DepositState(status: $status, data: $data, allData: $allData, error: $error)';
+  }
 }
 
 /// @nodoc
-abstract class $DepositStateCopyWith<$Res> {
+abstract mixin class $DepositStateCopyWith<$Res> {
   factory $DepositStateCopyWith(
-          DepositState value, $Res Function(DepositState) then) =
-      _$DepositStateCopyWithImpl<$Res, DepositState>;
+          DepositState value, $Res Function(DepositState) _then) =
+      _$DepositStateCopyWithImpl;
   @useResult
   $Res call(
       {DepositStateStatus status,
@@ -455,14 +500,11 @@ abstract class $DepositStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DepositStateCopyWithImpl<$Res, $Val extends DepositState>
-    implements $DepositStateCopyWith<$Res> {
-  _$DepositStateCopyWithImpl(this._value, this._then);
+class _$DepositStateCopyWithImpl<$Res> implements $DepositStateCopyWith<$Res> {
+  _$DepositStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DepositState _self;
+  final $Res Function(DepositState) _then;
 
   /// Create a copy of DepositState
   /// with the given fields replaced by the non-null parameter values.
@@ -474,24 +516,24 @@ class _$DepositStateCopyWithImpl<$Res, $Val extends DepositState>
     Object? allData = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as DepositStateStatus,
       data: freezed == data
-          ? _value.data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as DepositResponseModel?,
       allData: freezed == allData
-          ? _value.allData
+          ? _self.allData
           : allData // ignore: cast_nullable_to_non_nullable
               as List<DepositModel>?,
       error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of DepositState
@@ -499,77 +541,183 @@ class _$DepositStateCopyWithImpl<$Res, $Val extends DepositState>
   @override
   @pragma('vm:prefer-inline')
   $DepositResponseModelCopyWith<$Res>? get data {
-    if (_value.data == null) {
+    if (_self.data == null) {
       return null;
     }
 
-    return $DepositResponseModelCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+    return $DepositResponseModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$DepositStateImplCopyWith<$Res>
-    implements $DepositStateCopyWith<$Res> {
-  factory _$$DepositStateImplCopyWith(
-          _$DepositStateImpl value, $Res Function(_$DepositStateImpl) then) =
-      __$$DepositStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {DepositStateStatus status,
-      DepositResponseModel? data,
-      List<DepositModel>? allData,
-      String? error});
+/// Adds pattern-matching-related methods to [DepositState].
+extension DepositStatePatterns on DepositState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $DepositResponseModelCopyWith<$Res>? get data;
-}
-
-/// @nodoc
-class __$$DepositStateImplCopyWithImpl<$Res>
-    extends _$DepositStateCopyWithImpl<$Res, _$DepositStateImpl>
-    implements _$$DepositStateImplCopyWith<$Res> {
-  __$$DepositStateImplCopyWithImpl(
-      _$DepositStateImpl _value, $Res Function(_$DepositStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of DepositState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? data = freezed,
-    Object? allData = freezed,
-    Object? error = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DepositState value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$DepositStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as DepositStateStatus,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as DepositResponseModel?,
-      allData: freezed == allData
-          ? _value._allData
-          : allData // ignore: cast_nullable_to_non_nullable
-              as List<DepositModel>?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _DepositState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DepositState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_DepositState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DepositStateStatus status, DepositResponseModel? data,
+            List<DepositModel>? allData, String? error)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DepositState() when $default != null:
+        return $default(_that.status, _that.data, _that.allData, _that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(DepositStateStatus status, DepositResponseModel? data,
+            List<DepositModel>? allData, String? error)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositState():
+        return $default(_that.status, _that.data, _that.allData, _that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(DepositStateStatus status, DepositResponseModel? data,
+            List<DepositModel>? allData, String? error)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositState() when $default != null:
+        return $default(_that.status, _that.data, _that.allData, _that.error);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$DepositStateImpl implements _DepositState {
-  const _$DepositStateImpl(
+class _DepositState implements DepositState {
+  const _DepositState(
       {this.status = DepositStateStatus.initial,
       this.data,
       final List<DepositModel>? allData,
@@ -595,16 +743,19 @@ class _$DepositStateImpl implements _DepositState {
   @JsonKey()
   final String? error;
 
+  /// Create a copy of DepositState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DepositState(status: $status, data: $data, allData: $allData, error: $error)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DepositStateCopyWith<_DepositState> get copyWith =>
+      __$DepositStateCopyWithImpl<_DepositState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DepositStateImpl &&
+            other is _DepositState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.data, data) || other.data == data) &&
             const DeepCollectionEquality().equals(other._allData, _allData) &&
@@ -615,35 +766,81 @@ class _$DepositStateImpl implements _DepositState {
   int get hashCode => Object.hash(runtimeType, status, data,
       const DeepCollectionEquality().hash(_allData), error);
 
+  @override
+  String toString() {
+    return 'DepositState(status: $status, data: $data, allData: $allData, error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$DepositStateCopyWith<$Res>
+    implements $DepositStateCopyWith<$Res> {
+  factory _$DepositStateCopyWith(
+          _DepositState value, $Res Function(_DepositState) _then) =
+      __$DepositStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {DepositStateStatus status,
+      DepositResponseModel? data,
+      List<DepositModel>? allData,
+      String? error});
+
+  @override
+  $DepositResponseModelCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$DepositStateCopyWithImpl<$Res>
+    implements _$DepositStateCopyWith<$Res> {
+  __$DepositStateCopyWithImpl(this._self, this._then);
+
+  final _DepositState _self;
+  final $Res Function(_DepositState) _then;
+
   /// Create a copy of DepositState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DepositStateImplCopyWith<_$DepositStateImpl> get copyWith =>
-      __$$DepositStateImplCopyWithImpl<_$DepositStateImpl>(this, _$identity);
-}
-
-abstract class _DepositState implements DepositState {
-  const factory _DepositState(
-      {final DepositStateStatus status,
-      final DepositResponseModel? data,
-      final List<DepositModel>? allData,
-      final String? error}) = _$DepositStateImpl;
-
-  @override
-  DepositStateStatus get status;
-  @override
-  DepositResponseModel? get data;
-  @override
-  List<DepositModel>? get allData;
-  @override
-  String? get error;
+  $Res call({
+    Object? status = null,
+    Object? data = freezed,
+    Object? allData = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_DepositState(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as DepositStateStatus,
+      data: freezed == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DepositResponseModel?,
+      allData: freezed == allData
+          ? _self._allData
+          : allData // ignore: cast_nullable_to_non_nullable
+              as List<DepositModel>?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 
   /// Create a copy of DepositState
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DepositStateImplCopyWith<_$DepositStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $DepositResponseModelCopyWith<$Res>? get data {
+    if (_self.data == null) {
+      return null;
+    }
+
+    return $DepositResponseModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
+    });
+  }
 }
+
+// dart format on

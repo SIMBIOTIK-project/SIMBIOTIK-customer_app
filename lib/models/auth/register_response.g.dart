@@ -6,15 +6,13 @@ part of 'register_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RegisterResponseImpl _$$RegisterResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RegisterResponseImpl(
+_RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) =>
+    _RegisterResponse(
       success: json['success'] as bool,
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$RegisterResponseImplToJson(
-        _$RegisterResponseImpl instance) =>
+Map<String, dynamic> _$RegisterResponseToJson(_RegisterResponse instance) =>
     <String, dynamic>{
       'success': instance.success,
       'user': instance.user,

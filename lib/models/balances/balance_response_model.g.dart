@@ -6,9 +6,9 @@ part of 'balance_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BalanceResponseModelImpl _$$BalanceResponseModelImplFromJson(
+_BalanceResponseModel _$BalanceResponseModelFromJson(
         Map<String, dynamic> json) =>
-    _$BalanceResponseModelImpl(
+    _BalanceResponseModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,
       result: json['data'] == null
@@ -16,8 +16,8 @@ _$BalanceResponseModelImpl _$$BalanceResponseModelImplFromJson(
           : BalanceModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$BalanceResponseModelImplToJson(
-        _$BalanceResponseModelImpl instance) =>
+Map<String, dynamic> _$BalanceResponseModelToJson(
+        _BalanceResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,

@@ -15,11 +15,14 @@
 part of 'deposit_bloc.dart';
 
 @freezed
-class DepositEvent with _$DepositEvent {
+abstract class DepositEvent with _$DepositEvent {
   const factory DepositEvent.fetch({
-    required String token,
-    String? idUser,
-    int? page,
+    @Default('') String? idUser,
+    @Default(1) int page,
+    String? wasteTypeId,
+    String? date,
+    String? startDate,
+    String? endDate,
   }) = _Fetch;
 
   const factory DepositEvent.fetchAll({

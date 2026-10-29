@@ -14,11 +14,18 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:simbiotik_customer/core/networks/networks.dart';
+import 'package:simbiotik_customer/core/storages/storages.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/auth/logout_response.dart';
 
 class LogoutRepository {
   final Dio _dio = Dio()
+    ..interceptors.add(
+      AuthInterceptor(
+        AuthStorage(),
+      ),
+    )
     ..interceptors.add(LogInterceptor(
       request: true,
       requestBody: true,

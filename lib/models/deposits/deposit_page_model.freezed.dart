@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,105 +9,64 @@ part of 'deposit_page_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-DepositPageModel _$DepositPageModelFromJson(Map<String, dynamic> json) {
-  return _DepositPageModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$DepositPageModel {
   @JsonKey(name: 'total_data')
-  int? get totalData => throw _privateConstructorUsedError;
+  int? get totalData;
   @JsonKey(name: 'current_page')
-  int? get currentPage => throw _privateConstructorUsedError;
+  int? get currentPage;
   @JsonKey(name: 'per_page')
-  int? get perPage => throw _privateConstructorUsedError;
+  int? get perPage;
   @JsonKey(name: 'total_pages')
-  int? get totalPages => throw _privateConstructorUsedError;
+  int? get totalPages;
   @JsonKey(name: 'data')
-  List<DepositModel>? get data => throw _privateConstructorUsedError;
-
-  /// Serializes this DepositPageModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<DepositModel>? get data;
 
   /// Create a copy of DepositPageModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DepositPageModelCopyWith<DepositPageModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DepositPageModelCopyWith<$Res> {
-  factory $DepositPageModelCopyWith(
-          DepositPageModel value, $Res Function(DepositPageModel) then) =
-      _$DepositPageModelCopyWithImpl<$Res, DepositPageModel>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'total_data') int? totalData,
-      @JsonKey(name: 'current_page') int? currentPage,
-      @JsonKey(name: 'per_page') int? perPage,
-      @JsonKey(name: 'total_pages') int? totalPages,
-      @JsonKey(name: 'data') List<DepositModel>? data});
-}
-
-/// @nodoc
-class _$DepositPageModelCopyWithImpl<$Res, $Val extends DepositPageModel>
-    implements $DepositPageModelCopyWith<$Res> {
-  _$DepositPageModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of DepositPageModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $DepositPageModelCopyWith<DepositPageModel> get copyWith =>
+      _$DepositPageModelCopyWithImpl<DepositPageModel>(
+          this as DepositPageModel, _$identity);
+
+  /// Serializes this DepositPageModel to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? totalData = freezed,
-    Object? currentPage = freezed,
-    Object? perPage = freezed,
-    Object? totalPages = freezed,
-    Object? data = freezed,
-  }) {
-    return _then(_value.copyWith(
-      totalData: freezed == totalData
-          ? _value.totalData
-          : totalData // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currentPage: freezed == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      perPage: freezed == perPage
-          ? _value.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalPages: freezed == totalPages
-          ? _value.totalPages
-          : totalPages // ignore: cast_nullable_to_non_nullable
-              as int?,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<DepositModel>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DepositPageModel &&
+            (identical(other.totalData, totalData) ||
+                other.totalData == totalData) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.perPage, perPage) || other.perPage == perPage) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages) &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, totalData, currentPage, perPage,
+      totalPages, const DeepCollectionEquality().hash(data));
+
+  @override
+  String toString() {
+    return 'DepositPageModel(totalData: $totalData, currentPage: $currentPage, perPage: $perPage, totalPages: $totalPages, data: $data)';
   }
 }
 
 /// @nodoc
-abstract class _$$DepositPageModelImplCopyWith<$Res>
-    implements $DepositPageModelCopyWith<$Res> {
-  factory _$$DepositPageModelImplCopyWith(_$DepositPageModelImpl value,
-          $Res Function(_$DepositPageModelImpl) then) =
-      __$$DepositPageModelImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $DepositPageModelCopyWith<$Res> {
+  factory $DepositPageModelCopyWith(
+          DepositPageModel value, $Res Function(DepositPageModel) _then) =
+      _$DepositPageModelCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: 'total_data') int? totalData,
@@ -118,12 +77,12 @@ abstract class _$$DepositPageModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DepositPageModelImplCopyWithImpl<$Res>
-    extends _$DepositPageModelCopyWithImpl<$Res, _$DepositPageModelImpl>
-    implements _$$DepositPageModelImplCopyWith<$Res> {
-  __$$DepositPageModelImplCopyWithImpl(_$DepositPageModelImpl _value,
-      $Res Function(_$DepositPageModelImpl) _then)
-      : super(_value, _then);
+class _$DepositPageModelCopyWithImpl<$Res>
+    implements $DepositPageModelCopyWith<$Res> {
+  _$DepositPageModelCopyWithImpl(this._self, this._then);
+
+  final DepositPageModel _self;
+  final $Res Function(DepositPageModel) _then;
 
   /// Create a copy of DepositPageModel
   /// with the given fields replaced by the non-null parameter values.
@@ -136,44 +95,221 @@ class __$$DepositPageModelImplCopyWithImpl<$Res>
     Object? totalPages = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$DepositPageModelImpl(
+    return _then(_self.copyWith(
       totalData: freezed == totalData
-          ? _value.totalData
+          ? _self.totalData
           : totalData // ignore: cast_nullable_to_non_nullable
               as int?,
       currentPage: freezed == currentPage
-          ? _value.currentPage
+          ? _self.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int?,
       perPage: freezed == perPage
-          ? _value.perPage
+          ? _self.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
               as int?,
       totalPages: freezed == totalPages
-          ? _value.totalPages
+          ? _self.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
               as int?,
       data: freezed == data
-          ? _value._data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<DepositModel>?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [DepositPageModel].
+extension DepositPageModelPatterns on DepositPageModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_DepositPageModel value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DepositPageModel value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_DepositPageModel value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'total_data') int? totalData,
+            @JsonKey(name: 'current_page') int? currentPage,
+            @JsonKey(name: 'per_page') int? perPage,
+            @JsonKey(name: 'total_pages') int? totalPages,
+            @JsonKey(name: 'data') List<DepositModel>? data)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel() when $default != null:
+        return $default(_that.totalData, _that.currentPage, _that.perPage,
+            _that.totalPages, _that.data);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'total_data') int? totalData,
+            @JsonKey(name: 'current_page') int? currentPage,
+            @JsonKey(name: 'per_page') int? perPage,
+            @JsonKey(name: 'total_pages') int? totalPages,
+            @JsonKey(name: 'data') List<DepositModel>? data)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel():
+        return $default(_that.totalData, _that.currentPage, _that.perPage,
+            _that.totalPages, _that.data);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'total_data') int? totalData,
+            @JsonKey(name: 'current_page') int? currentPage,
+            @JsonKey(name: 'per_page') int? perPage,
+            @JsonKey(name: 'total_pages') int? totalPages,
+            @JsonKey(name: 'data') List<DepositModel>? data)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _DepositPageModel() when $default != null:
+        return $default(_that.totalData, _that.currentPage, _that.perPage,
+            _that.totalPages, _that.data);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$DepositPageModelImpl implements _DepositPageModel {
-  const _$DepositPageModelImpl(
+class _DepositPageModel implements DepositPageModel {
+  const _DepositPageModel(
       {@JsonKey(name: 'total_data') this.totalData,
       @JsonKey(name: 'current_page') this.currentPage,
       @JsonKey(name: 'per_page') this.perPage,
       @JsonKey(name: 'total_pages') this.totalPages,
       @JsonKey(name: 'data') final List<DepositModel>? data})
       : _data = data;
-
-  factory _$DepositPageModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DepositPageModelImplFromJson(json);
+  factory _DepositPageModel.fromJson(Map<String, dynamic> json) =>
+      _$DepositPageModelFromJson(json);
 
   @override
   @JsonKey(name: 'total_data')
@@ -198,16 +334,26 @@ class _$DepositPageModelImpl implements _DepositPageModel {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of DepositPageModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DepositPageModel(totalData: $totalData, currentPage: $currentPage, perPage: $perPage, totalPages: $totalPages, data: $data)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DepositPageModelCopyWith<_DepositPageModel> get copyWith =>
+      __$DepositPageModelCopyWithImpl<_DepositPageModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$DepositPageModelToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DepositPageModelImpl &&
+            other is _DepositPageModel &&
             (identical(other.totalData, totalData) ||
                 other.totalData == totalData) &&
             (identical(other.currentPage, currentPage) ||
@@ -223,55 +369,70 @@ class _$DepositPageModelImpl implements _DepositPageModel {
   int get hashCode => Object.hash(runtimeType, totalData, currentPage, perPage,
       totalPages, const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of DepositPageModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$DepositPageModelImplCopyWith<_$DepositPageModelImpl> get copyWith =>
-      __$$DepositPageModelImplCopyWithImpl<_$DepositPageModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$DepositPageModelImplToJson(
-      this,
-    );
+  String toString() {
+    return 'DepositPageModel(totalData: $totalData, currentPage: $currentPage, perPage: $perPage, totalPages: $totalPages, data: $data)';
   }
 }
 
-abstract class _DepositPageModel implements DepositPageModel {
-  const factory _DepositPageModel(
-          {@JsonKey(name: 'total_data') final int? totalData,
-          @JsonKey(name: 'current_page') final int? currentPage,
-          @JsonKey(name: 'per_page') final int? perPage,
-          @JsonKey(name: 'total_pages') final int? totalPages,
-          @JsonKey(name: 'data') final List<DepositModel>? data}) =
-      _$DepositPageModelImpl;
+/// @nodoc
+abstract mixin class _$DepositPageModelCopyWith<$Res>
+    implements $DepositPageModelCopyWith<$Res> {
+  factory _$DepositPageModelCopyWith(
+          _DepositPageModel value, $Res Function(_DepositPageModel) _then) =
+      __$DepositPageModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'total_data') int? totalData,
+      @JsonKey(name: 'current_page') int? currentPage,
+      @JsonKey(name: 'per_page') int? perPage,
+      @JsonKey(name: 'total_pages') int? totalPages,
+      @JsonKey(name: 'data') List<DepositModel>? data});
+}
 
-  factory _DepositPageModel.fromJson(Map<String, dynamic> json) =
-      _$DepositPageModelImpl.fromJson;
+/// @nodoc
+class __$DepositPageModelCopyWithImpl<$Res>
+    implements _$DepositPageModelCopyWith<$Res> {
+  __$DepositPageModelCopyWithImpl(this._self, this._then);
 
-  @override
-  @JsonKey(name: 'total_data')
-  int? get totalData;
-  @override
-  @JsonKey(name: 'current_page')
-  int? get currentPage;
-  @override
-  @JsonKey(name: 'per_page')
-  int? get perPage;
-  @override
-  @JsonKey(name: 'total_pages')
-  int? get totalPages;
-  @override
-  @JsonKey(name: 'data')
-  List<DepositModel>? get data;
+  final _DepositPageModel _self;
+  final $Res Function(_DepositPageModel) _then;
 
   /// Create a copy of DepositPageModel
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DepositPageModelImplCopyWith<_$DepositPageModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? totalData = freezed,
+    Object? currentPage = freezed,
+    Object? perPage = freezed,
+    Object? totalPages = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_DepositPageModel(
+      totalData: freezed == totalData
+          ? _self.totalData
+          : totalData // ignore: cast_nullable_to_non_nullable
+              as int?,
+      currentPage: freezed == currentPage
+          ? _self.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      perPage: freezed == perPage
+          ? _self.perPage
+          : perPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPages: freezed == totalPages
+          ? _self.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
+      data: freezed == data
+          ? _self._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<DepositModel>?,
+    ));
+  }
 }
+
+// dart format on

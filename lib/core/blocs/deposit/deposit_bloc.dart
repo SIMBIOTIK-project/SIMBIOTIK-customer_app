@@ -38,9 +38,12 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
 
     try {
       final response = await _depositRepository.getDeposit(
-        event.token,
-        event.idUser,
-        event.page,
+        idUser: event.idUser,
+        page: event.page,
+        wasteTypeId: event.wasteTypeId,
+        date: event.date,
+        startDate: event.startDate,
+        endDate: event.endDate,
       );
       emit(
         state.copyWith(

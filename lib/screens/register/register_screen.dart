@@ -18,6 +18,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:simbiotik_customer/core/blocs/auth/register_bloc.dart';
 import 'package:simbiotik_customer/data/repository/register_repository.dart';
+import 'package:simbiotik_customer/utils/utils.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({
@@ -61,6 +62,32 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
   bool _obsecurePasswordConfirmation = true;
 
   String? selectStatusItem;
+
+  @override
+  void initState() {
+    _name.addListener(_refresh);
+    _email.addListener(_refresh);
+    _nik.addListener(_refresh);
+    _phoneNumber.addListener(_refresh);
+    _address.addListener(_refresh);
+    super.initState();
+  }
+
+  void _refresh() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _name.removeListener(_refresh);
+    _email.removeListener(_refresh);
+    _nik.removeListener(_refresh);
+    _phoneNumber.removeListener(_refresh);
+    _address.removeListener(_refresh);
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,6 +194,11 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                   ),
                 ),
               ),
+              if (_email.text.isNotEmpty && !isValidEmail(_email.text))
+                const Text(
+                  'Email tidak valid',
+                  style: TextStyle(color: Colors.red),
+                ),
               const Gap(8),
               const Row(
                 children: [
@@ -347,6 +379,11 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                   ),
                 ),
               ),
+              if (_nik.text.isNotEmpty && !isValidNik(_nik.text))
+                const Text(
+                  'NIK tidak valid! NIK harus terdiri dari 16 digit angka.',
+                  style: TextStyle(color: Colors.red),
+                ),
               const Gap(8),
               const Row(
                 children: [
@@ -396,6 +433,12 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                   ),
                 ),
               ),
+              if (_phoneNumber.text.isNotEmpty &&
+                  !isValidPhoneNumber(_phoneNumber.text))
+                const Text(
+                  'Nomor telepon tidak valid! Nomor telepon harus dimulai dengan 08 dan terdiri dari 10-13 digit angka.',
+                  style: TextStyle(color: Colors.red),
+                ),
               const Gap(8),
               const Row(
                 children: [
@@ -518,13 +561,24 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Gagal menambahkan akun!'),
+                      SnackBar(
+                        content: Text('Gagal menambahkan akun! ${state.error}'),
                       ),
                     );
                   }
                 },
                 builder: (context, state) {
+                  final isValid = isRequired(_name.text) &&
+                      isValidEmail(_email.text) &&
+                      isValidPassword(_password.text) &&
+                      isPasswordMatch(
+                        _password.text,
+                        _passwordConfirmation.text,
+                      ) &&
+                      isValidNik(_nik.text) &&
+                      isValidPhoneNumber(_phoneNumber.text) &&
+                      isRequired(_address.text) &&
+                      selectStatusItem != null;
                   return SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -533,15 +587,7 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           )),
-                      onPressed: (_name.text.isNotEmpty &&
-                              _email.text.isNotEmpty &&
-                              _password.text.isNotEmpty &&
-                              _passwordConfirmation.text.isNotEmpty &&
-                              _nik.text.isNotEmpty &&
-                              _phoneNumber.text.isNotEmpty &&
-                              _address.text.isNotEmpty &&
-                              selectStatusItem != null &&
-                              (_password.text == _passwordConfirmation.text))
+                      onPressed: isValid
                           ? () {
                               showDialog(
                                 context: context,
@@ -551,6 +597,12 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                                     content: const Text(
                                         'Apakah anda yakin akan menyimpan data?'),
                                     actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(dialogContext).pop();
+                                        },
+                                        child: const Text('Tidak'),
+                                      ),
                                       TextButton(
                                         onPressed: () {
                                           context
@@ -568,12 +620,6 @@ class _RegisterScreenContentState extends State<RegisterScreenContent> {
                                               ));
                                         },
                                         child: const Text('Ya, Simpan'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(dialogContext).pop();
-                                        },
-                                        child: const Text('Tidak'),
                                       ),
                                     ],
                                   );

@@ -19,7 +19,7 @@ part 'sodako_model.freezed.dart';
 part 'sodako_model.g.dart';
 
 @freezed
-class SodakoModel with _$SodakoModel {
+abstract class SodakoModel with _$SodakoModel {
   const factory SodakoModel({
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'id_user') String? idUser,

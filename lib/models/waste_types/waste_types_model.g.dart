@@ -6,9 +6,8 @@ part of 'waste_types_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WasteTypesModelImpl _$$WasteTypesModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WasteTypesModelImpl(
+_WasteTypesModel _$WasteTypesModelFromJson(Map<String, dynamic> json) =>
+    _WasteTypesModel(
       id: (json['id'] as num?)?.toInt(),
       type: json['type'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -20,8 +19,7 @@ _$WasteTypesModelImpl _$$WasteTypesModelImplFromJson(
           : DateTime.parse(json['updated_at'] as String),
     );
 
-Map<String, dynamic> _$$WasteTypesModelImplToJson(
-        _$WasteTypesModelImpl instance) =>
+Map<String, dynamic> _$WasteTypesModelToJson(_WasteTypesModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,

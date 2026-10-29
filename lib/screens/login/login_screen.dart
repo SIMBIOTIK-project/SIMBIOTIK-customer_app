@@ -229,23 +229,25 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                     obscureText: _obsecurePassword,
                   ),
                 ),
-                Row(
-                  children: [
-                    const Text(
-                      'Ingat Saya',
-                      style: TextStyle(fontSize: 12.0),
-                    ),
-                    Checkbox(
-                      activeColor: Colors.lightBlue,
-                      value: _rememberMe,
-                      onChanged: (bool? newValue) {
-                        setState(() {
-                          _rememberMe = newValue ?? false;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                const Gap(16.0), // TODO: Delete this Gap
+                // TODO: Feature remember me
+                // Row(
+                //   children: [
+                //     const Text(
+                //       'Ingat Saya',
+                //       style: TextStyle(fontSize: 12.0),
+                //     ),
+                //     Checkbox(
+                //       activeColor: Colors.lightBlue,
+                //       value: _rememberMe,
+                //       onChanged: (bool? newValue) {
+                //         setState(() {
+                //           _rememberMe = newValue ?? false;
+                //         });
+                //       },
+                //     ),
+                //   ],
+                // ),
                 BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
                     if (state.status.isLoaded) {

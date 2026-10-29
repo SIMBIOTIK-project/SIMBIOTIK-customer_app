@@ -21,7 +21,7 @@ part 'withdrawal_page_model.freezed.dart';
 part 'withdrawal_page_model.g.dart';
 
 @freezed
-class WithdrawalPageModel with _$WithdrawalPageModel {
+abstract class WithdrawalPageModel with _$WithdrawalPageModel {
   const factory WithdrawalPageModel({
     @JsonKey(name: 'total_data') int? totalData,
     @JsonKey(name: 'current_page') int? currentPage,

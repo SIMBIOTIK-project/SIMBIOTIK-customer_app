@@ -27,7 +27,7 @@ enum DepositStateStatus {
 }
 
 @freezed
-class DepositState with _$DepositState {
+abstract class DepositState with _$DepositState {
   const factory DepositState({
     @Default(DepositStateStatus.initial) DepositStateStatus status,
     DepositResponseModel? data,

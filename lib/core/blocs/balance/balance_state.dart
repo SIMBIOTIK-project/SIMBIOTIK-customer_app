@@ -27,7 +27,7 @@ enum BalanceStatus {
 }
 
 @freezed
-class BalanceState with _$BalanceState {
+abstract class BalanceState with _$BalanceState {
   const factory BalanceState({
     @Default(BalanceStatus.initial) BalanceStatus status,
     BalanceResponseModel? data,

@@ -14,11 +14,18 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:simbiotik_customer/core/networks/networks.dart';
+import 'package:simbiotik_customer/core/storages/storages.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/models.dart';
 
 class UserRepository {
   final Dio _dio = Dio()
+    ..interceptors.add(
+      AuthInterceptor(
+        AuthStorage(),
+      ),
+    )
     ..interceptors.add(LogInterceptor(
       request: true,
       requestBody: true,
@@ -28,14 +35,11 @@ class UserRepository {
       error: true,
     ));
   final String api = dotenv.get('URL') + ApiConstants.user;
-  Future<UserModel?> getUser(String token, String loginIdUser) async {
+  Future<UserModel?> getUser(
+    String loginIdUser,
+  ) async {
     final response = await _dio.get(
       api,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      ),
     );
 
     if (response.statusCode == 200) {

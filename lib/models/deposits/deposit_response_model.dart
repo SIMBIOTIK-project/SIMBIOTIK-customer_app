@@ -21,7 +21,7 @@ part 'deposit_response_model.freezed.dart';
 part 'deposit_response_model.g.dart';
 
 @freezed
-class DepositResponseModel with _$DepositResponseModel {
+abstract class DepositResponseModel with _$DepositResponseModel {
   const factory DepositResponseModel({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'message') String? message,

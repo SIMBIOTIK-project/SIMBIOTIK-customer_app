@@ -6,9 +6,8 @@ part of 'sodako_page_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SodakoPageModelImpl _$$SodakoPageModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SodakoPageModelImpl(
+_SodakoPageModel _$SodakoPageModelFromJson(Map<String, dynamic> json) =>
+    _SodakoPageModel(
       totalData: (json['total_data'] as num?)?.toInt(),
       currentPage: (json['current_page'] as num?)?.toInt(),
       perPage: (json['per_page'] as num?)?.toInt(),
@@ -18,8 +17,7 @@ _$SodakoPageModelImpl _$$SodakoPageModelImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$SodakoPageModelImplToJson(
-        _$SodakoPageModelImpl instance) =>
+Map<String, dynamic> _$SodakoPageModelToJson(_SodakoPageModel instance) =>
     <String, dynamic>{
       'total_data': instance.totalData,
       'current_page': instance.currentPage,

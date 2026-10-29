@@ -15,15 +15,16 @@
 part of 'withdrawal_bloc.dart';
 
 @freezed
-class WithdrawalEvent with _$WithdrawalEvent {
+abstract class WithdrawalEvent with _$WithdrawalEvent {
   const factory WithdrawalEvent.fetch({
-    required String token,
     String? idUser,
     int? page,
+    String? date,
+    String? startDate,
+    String? endDate,
   }) = _Fetch;
 
   const factory WithdrawalEvent.fetchAll({
-    required String token,
     String? idUser,
   }) = _FetchAll;
 }

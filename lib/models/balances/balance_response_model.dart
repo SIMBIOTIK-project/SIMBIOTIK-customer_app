@@ -19,7 +19,7 @@ part 'balance_response_model.freezed.dart';
 part 'balance_response_model.g.dart';
 
 @freezed
-class BalanceResponseModel with _$BalanceResponseModel {
+abstract class BalanceResponseModel with _$BalanceResponseModel {
   const factory BalanceResponseModel({
     @JsonKey(name: 'success') bool? success,
     @JsonKey(name: 'message') String? message,

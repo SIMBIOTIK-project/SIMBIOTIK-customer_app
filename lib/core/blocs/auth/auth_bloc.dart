@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:simbiotik_customer/core/storages/auth_storages.dart';
 import 'package:simbiotik_customer/data/data.dart';
 import 'package:simbiotik_customer/models/models.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,18 +24,28 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
+  final AuthStorage _authStorage = AuthStorage();
 
   AuthBloc(this._authRepository) : super(const AuthState()) {
     on<_Login>(_onLogin);
   }
 
   Future<void> _onLogin(_Login event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(status: GetAuthStateStatus.loading, error: ''));
+    emit(
+      state.copyWith(
+        status: GetAuthStateStatus.loading,
+        error: '',
+      ),
+    );
 
     try {
       final response = await _authRepository.login(
         event.name,
         event.password,
+      );
+
+      await _authStorage.saveToken(
+        response.token,
       );
 
       emit(state.copyWith(

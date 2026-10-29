@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,237 +9,253 @@ part of 'logout_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LogoutEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() logout,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? logout,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? logout,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Logout value) logout,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Logout value)? logout,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Logout value)? logout,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LogoutEventCopyWith<$Res> {
-  factory $LogoutEventCopyWith(
-          LogoutEvent value, $Res Function(LogoutEvent) then) =
-      _$LogoutEventCopyWithImpl<$Res, LogoutEvent>;
-}
-
-/// @nodoc
-class _$LogoutEventCopyWithImpl<$Res, $Val extends LogoutEvent>
-    implements $LogoutEventCopyWith<$Res> {
-  _$LogoutEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of LogoutEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$LogoutImplCopyWith<$Res> {
-  factory _$$LogoutImplCopyWith(
-          _$LogoutImpl value, $Res Function(_$LogoutImpl) then) =
-      __$$LogoutImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LogoutImplCopyWithImpl<$Res>
-    extends _$LogoutEventCopyWithImpl<$Res, _$LogoutImpl>
-    implements _$$LogoutImplCopyWith<$Res> {
-  __$$LogoutImplCopyWithImpl(
-      _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LogoutEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LogoutImpl implements _Logout {
-  const _$LogoutImpl();
-
-  @override
-  String toString() {
-    return 'LogoutEvent.logout()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LogoutImpl);
+        (other.runtimeType == runtimeType && other is LogoutEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() logout,
-  }) {
-    return logout();
+  String toString() {
+    return 'LogoutEvent()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? logout,
-  }) {
-    return logout?.call();
-  }
+/// @nodoc
+class $LogoutEventCopyWith<$Res> {
+  $LogoutEventCopyWith(LogoutEvent _, $Res Function(LogoutEvent) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? logout,
-    required TResult orElse(),
-  }) {
-    if (logout != null) {
-      return logout();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [LogoutEvent].
+extension LogoutEventPatterns on LogoutEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Logout value) logout,
-  }) {
-    return logout(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Logout value)? logout,
-  }) {
-    return logout?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Logout value)? logout,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout(this);
+    final _that = this;
+    switch (_that) {
+      case _Logout() when logout != null:
+        return logout(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Logout value) logout,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Logout():
+        return logout(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Logout value)? logout,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Logout() when logout != null:
+        return logout(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Logout() when logout != null:
+        return logout();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() logout,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Logout():
+        return logout();
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? logout,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Logout() when logout != null:
+        return logout();
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _Logout implements LogoutEvent {
-  const factory _Logout() = _$LogoutImpl;
+/// @nodoc
+
+class _Logout implements LogoutEvent {
+  const _Logout();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Logout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'LogoutEvent.logout()';
+  }
 }
 
 /// @nodoc
 mixin _$LogoutState {
-  GetLogoutStateStatus get status => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  GetLogoutStateStatus get status;
+  String? get error;
 
   /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $LogoutStateCopyWith<LogoutState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LogoutStateCopyWith<$Res> {
-  factory $LogoutStateCopyWith(
-          LogoutState value, $Res Function(LogoutState) then) =
-      _$LogoutStateCopyWithImpl<$Res, LogoutState>;
-  @useResult
-  $Res call({GetLogoutStateStatus status, String? error});
-}
-
-/// @nodoc
-class _$LogoutStateCopyWithImpl<$Res, $Val extends LogoutState>
-    implements $LogoutStateCopyWith<$Res> {
-  _$LogoutStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of LogoutState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $LogoutStateCopyWith<LogoutState> get copyWith =>
+      _$LogoutStateCopyWithImpl<LogoutState>(this as LogoutState, _$identity);
+
   @override
-  $Res call({
-    Object? status = null,
-    Object? error = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as GetLogoutStateStatus,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LogoutState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status, error);
+
+  @override
+  String toString() {
+    return 'LogoutState(status: $status, error: $error)';
   }
 }
 
 /// @nodoc
-abstract class _$$LogoutStateImplCopyWith<$Res>
-    implements $LogoutStateCopyWith<$Res> {
-  factory _$$LogoutStateImplCopyWith(
-          _$LogoutStateImpl value, $Res Function(_$LogoutStateImpl) then) =
-      __$$LogoutStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $LogoutStateCopyWith<$Res> {
+  factory $LogoutStateCopyWith(
+          LogoutState value, $Res Function(LogoutState) _then) =
+      _$LogoutStateCopyWithImpl;
   @useResult
   $Res call({GetLogoutStateStatus status, String? error});
 }
 
 /// @nodoc
-class __$$LogoutStateImplCopyWithImpl<$Res>
-    extends _$LogoutStateCopyWithImpl<$Res, _$LogoutStateImpl>
-    implements _$$LogoutStateImplCopyWith<$Res> {
-  __$$LogoutStateImplCopyWithImpl(
-      _$LogoutStateImpl _value, $Res Function(_$LogoutStateImpl) _then)
-      : super(_value, _then);
+class _$LogoutStateCopyWithImpl<$Res> implements $LogoutStateCopyWith<$Res> {
+  _$LogoutStateCopyWithImpl(this._self, this._then);
+
+  final LogoutState _self;
+  final $Res Function(LogoutState) _then;
 
   /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
@@ -249,23 +265,180 @@ class __$$LogoutStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? error = freezed,
   }) {
-    return _then(_$LogoutStateImpl(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as GetLogoutStateStatus,
       error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [LogoutState].
+extension LogoutStatePatterns on LogoutState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_LogoutState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_LogoutState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_LogoutState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(GetLogoutStateStatus status, String? error)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState() when $default != null:
+        return $default(_that.status, _that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(GetLogoutStateStatus status, String? error) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState():
+        return $default(_that.status, _that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(GetLogoutStateStatus status, String? error)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LogoutState() when $default != null:
+        return $default(_that.status, _that.error);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$LogoutStateImpl implements _LogoutState {
-  const _$LogoutStateImpl(
+class _LogoutState implements LogoutState {
+  const _LogoutState(
       {this.status = GetLogoutStateStatus.initial, this.error = ''});
 
   @override
@@ -275,16 +448,19 @@ class _$LogoutStateImpl implements _LogoutState {
   @JsonKey()
   final String? error;
 
+  /// Create a copy of LogoutState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'LogoutState(status: $status, error: $error)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LogoutStateCopyWith<_LogoutState> get copyWith =>
+      __$LogoutStateCopyWithImpl<_LogoutState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LogoutStateImpl &&
+            other is _LogoutState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -292,29 +468,49 @@ class _$LogoutStateImpl implements _LogoutState {
   @override
   int get hashCode => Object.hash(runtimeType, status, error);
 
+  @override
+  String toString() {
+    return 'LogoutState(status: $status, error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$LogoutStateCopyWith<$Res>
+    implements $LogoutStateCopyWith<$Res> {
+  factory _$LogoutStateCopyWith(
+          _LogoutState value, $Res Function(_LogoutState) _then) =
+      __$LogoutStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({GetLogoutStateStatus status, String? error});
+}
+
+/// @nodoc
+class __$LogoutStateCopyWithImpl<$Res> implements _$LogoutStateCopyWith<$Res> {
+  __$LogoutStateCopyWithImpl(this._self, this._then);
+
+  final _LogoutState _self;
+  final $Res Function(_LogoutState) _then;
+
   /// Create a copy of LogoutState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LogoutStateImplCopyWith<_$LogoutStateImpl> get copyWith =>
-      __$$LogoutStateImplCopyWithImpl<_$LogoutStateImpl>(this, _$identity);
+  $Res call({
+    Object? status = null,
+    Object? error = freezed,
+  }) {
+    return _then(_LogoutState(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as GetLogoutStateStatus,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
-abstract class _LogoutState implements LogoutState {
-  const factory _LogoutState(
-      {final GetLogoutStateStatus status,
-      final String? error}) = _$LogoutStateImpl;
-
-  @override
-  GetLogoutStateStatus get status;
-  @override
-  String? get error;
-
-  /// Create a copy of LogoutState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LogoutStateImplCopyWith<_$LogoutStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

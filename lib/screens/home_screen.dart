@@ -102,17 +102,16 @@ class _HomescreenContentState extends State<HomescreenContent>
     ),
   ];
 
-  String? token;
   List<DepositModel> allDeposit = [];
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
-    _fetchDepositData(widget.data?.token, widget.data?.user.idUser);
-    _fetchWithdrawalData(widget.data?.token, widget.data?.user.idUser);
-    _fetchBalanceData(widget.data?.token, widget.data?.user.idUser);
-    _fetchSodakoData(widget.data?.token, widget.data?.user.idUser);
+    _fetchDepositData(widget.data?.user.idUser);
+    _fetchWithdrawalData(widget.data?.user.idUser);
+    _fetchBalanceData(widget.data?.user.idUser);
+    _fetchSodakoData(widget.data?.user.idUser);
     _tabController = TabController(length: 3, vsync: this);
   }
 
@@ -144,11 +143,10 @@ class _HomescreenContentState extends State<HomescreenContent>
                     backgroundColor: Colors.green,
                   ),
                 );
-                _fetchDepositData(widget.data?.token, widget.data?.user.idUser);
-                _fetchBalanceData(widget.data?.token, widget.data?.user.idUser);
-                _fetchWithdrawalData(
-                    widget.data?.token, widget.data?.user.idUser);
-                _fetchSodakoData(widget.data?.token, widget.data?.user.idUser);
+                _fetchDepositData(widget.data?.user.idUser);
+                _fetchBalanceData(widget.data?.user.idUser);
+                _fetchWithdrawalData(widget.data?.user.idUser);
+                _fetchSodakoData(widget.data?.user.idUser);
               }
             },
           )
@@ -182,11 +180,10 @@ class _HomescreenContentState extends State<HomescreenContent>
         Expanded(
           child: RefreshIndicator(
             onRefresh: () async {
-              _fetchDepositData(widget.data?.token, widget.data?.user.idUser);
-              _fetchWithdrawalData(
-                  widget.data?.token, widget.data?.user.idUser);
-              _fetchBalanceData(widget.data?.token, widget.data?.user.idUser);
-              _fetchSodakoData(widget.data?.token, widget.data?.user.idUser);
+              _fetchDepositData(widget.data?.user.idUser);
+              _fetchWithdrawalData(widget.data?.user.idUser);
+              _fetchBalanceData(widget.data?.user.idUser);
+              _fetchSodakoData(widget.data?.user.idUser);
             },
             child: CustomScrollView(
               slivers: [
@@ -222,7 +219,6 @@ class _HomescreenContentState extends State<HomescreenContent>
                                 if (widget.data != null) {
                                   showCreateDialog(
                                     context,
-                                    widget.data!.token,
                                     widget.data!.user.idUser!,
                                   );
                                 }
@@ -443,7 +439,9 @@ class _HomescreenContentState extends State<HomescreenContent>
                             });
                           },
                           child: Icon(
-                            _isHidden ? Icons.visibility : Icons.visibility_off,
+                            !_isHidden
+                                ? Icons.visibility
+                                : Icons.visibility_off,
                             size: 16,
                             color: Colors.white,
                           ),
@@ -486,7 +484,10 @@ class _HomescreenContentState extends State<HomescreenContent>
                             ],
                           );
                         }
-                        return Container();
+                        return Center(
+                          child: Text(
+                              'Data tidak ditemukan!. Silahkan coba lagi!'),
+                        );
                       },
                     ),
                   ],
@@ -527,7 +528,7 @@ class _HomescreenContentState extends State<HomescreenContent>
     );
   }
 
-  _buildDeposit(
+  Expanded _buildDeposit(
     BuildContext context,
   ) {
     return Expanded(
@@ -591,7 +592,9 @@ class _HomescreenContentState extends State<HomescreenContent>
                       return const Center(child: Text('Tidak ada data'));
                     }
                   }
-                  return Container();
+                  return Center(
+                    child: Text('Data tidak ditemukan!. Silahkan coba lagi!'),
+                  );
                 },
               )
             ],
@@ -601,7 +604,7 @@ class _HomescreenContentState extends State<HomescreenContent>
     );
   }
 
-  _buildWithdrawal(
+  Expanded _buildWithdrawal(
     BuildContext context,
   ) {
     return Expanded(
@@ -664,7 +667,8 @@ class _HomescreenContentState extends State<HomescreenContent>
                       );
                     } else {
                       return const Center(
-                        child: Text('Tidak ada data'),
+                        child:
+                            Text('Data tidak ditemukan!. Silahkan coba lagi!'),
                       );
                     }
                   }
@@ -762,7 +766,8 @@ class _HomescreenContentState extends State<HomescreenContent>
     }
   }
 
-  _buildListHistoryDeposit(BuildContext context, DepositModel deposit) {
+  Container _buildListHistoryDeposit(
+      BuildContext context, DepositModel deposit) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -819,7 +824,7 @@ class _HomescreenContentState extends State<HomescreenContent>
     );
   }
 
-  _buildListHistoryWithdrawal(
+  Container _buildListHistoryWithdrawal(
       BuildContext context, WithdrawalModel withdarawal) {
     return Container(
       decoration: BoxDecoration(
@@ -871,7 +876,7 @@ class _HomescreenContentState extends State<HomescreenContent>
     );
   }
 
-  _buildRowText(
+  Row _buildRowText(
     BuildContext context,
     String title,
     String value,
@@ -905,8 +910,7 @@ class _HomescreenContentState extends State<HomescreenContent>
           );
         } else if (state.status.isLoaded) {
           final list = state.data?.result?.data ?? [];
-          print(
-              'Sodako List: $list'); // Debug print untuk melihat jumlah data sodako
+          // Debug print untuk melihat jumlah data sodako
 
           return Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
@@ -964,7 +968,7 @@ class _HomescreenContentState extends State<HomescreenContent>
     );
   }
 
-  void showCreateDialog(BuildContext context, String token, String idUser) {
+  void showCreateDialog(BuildContext context, String idUser) {
     final priceController = TextEditingController();
 
     final sodakoBloc = context.read<SodakoBloc>();
@@ -975,11 +979,42 @@ class _HomescreenContentState extends State<HomescreenContent>
         return AlertDialog(
           backgroundColor: Colors.white,
           title: const Text('Tambah Sodakoh'),
-          content: TextField(
-            controller: priceController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              labelText: 'Sodakoh (Rp)',
+          content: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(
+                color: Colors.black12,
+              ),
+            ),
+            height: 40,
+            padding: const EdgeInsets.fromLTRB(
+              8,
+              4,
+              8,
+              4,
+            ),
+            child: TextFormField(
+              controller: priceController,
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                final number = value.replaceAll('.', '');
+                if (number.isEmpty) return;
+
+                final formatted = formatNumber(number);
+
+                priceController.value = TextEditingValue(
+                  text: formatted,
+                  selection: TextSelection.collapsed(
+                    offset: formatted.length,
+                  ),
+                );
+              },
+              decoration: const InputDecoration(
+                  hintText: 'Sodakoh (Rp)',
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                  )),
             ),
           ),
           actions: [
@@ -994,19 +1029,54 @@ class _HomescreenContentState extends State<HomescreenContent>
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              onPressed: () {
-                final price = double.tryParse(priceController.text);
+              onPressed: () async {
+                final price =
+                    double.tryParse(priceController.text.replaceAll('.', ''));
                 if (price == null) return;
 
-                final request = SodakoRequestModel(
-                  idUser: idUser,
-                  price: price,
+                final saldo =
+                    context.read<BalanceBloc>().state.data?.result?.saldo ?? 0;
+
+                if (price > saldo) {
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content:
+                          Text('Nominal sodakoh melebihi saldo yang tersedia'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                  return;
+                }
+
+                final confirm = await showDialog<bool>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Sodakoh'),
+                    content: Text(
+                      'Anda akan menambahkan sodakoh sebesar Rp ${formatNumber(price.toStringAsFixed(0))}. Apakah data sudah benar?',
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: const Text('Tidak'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: const Text('Ya'),
+                      ),
+                    ],
+                  ),
                 );
+
+                if (confirm != true) return;
 
                 sodakoBloc.add(
                   SodakoEvent.create(
-                    token: token,
-                    request: request,
+                    request: SodakoRequestModel(
+                      idUser: idUser,
+                      price: price,
+                    ),
                   ),
                 );
 
@@ -1028,11 +1098,10 @@ class _HomescreenContentState extends State<HomescreenContent>
     await prefs.remove('token');
   }
 
-  void _fetchDepositData(String? token, String? idUser) {
-    if (token != null && idUser != null) {
+  void _fetchDepositData(String? idUser) {
+    if (idUser != null) {
       context.read<DepositBloc>().add(
             DepositEvent.fetch(
-              token: token,
               idUser: idUser,
               page: 1,
             ),
@@ -1040,11 +1109,10 @@ class _HomescreenContentState extends State<HomescreenContent>
     }
   }
 
-  void _fetchWithdrawalData(String? token, String? idUser) {
-    if (token != null && idUser != null) {
+  void _fetchWithdrawalData(String? idUser) {
+    if (idUser != null) {
       context.read<WithdrawalBloc>().add(
             WithdrawalEvent.fetch(
-              token: token,
               idUser: idUser,
               page: 1,
             ),
@@ -1052,22 +1120,20 @@ class _HomescreenContentState extends State<HomescreenContent>
     }
   }
 
-  void _fetchBalanceData(String? token, String? idUser) {
-    if (token != null && idUser != null) {
+  void _fetchBalanceData(String? idUser) {
+    if (idUser != null) {
       context.read<BalanceBloc>().add(
             BalanceEvent.fetch(
-              token: token,
               idUser: idUser,
             ),
           );
     }
   }
 
-  void _fetchSodakoData(String? token, String? idUser) {
-    if (token != null && idUser != null) {
+  void _fetchSodakoData(String? idUser) {
+    if (idUser != null) {
       context.read<SodakoBloc>().add(
             SodakoEvent.fetch(
-              token: token,
               idUser: idUser,
               page: 1,
             ),

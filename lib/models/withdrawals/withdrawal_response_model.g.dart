@@ -6,9 +6,9 @@ part of 'withdrawal_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WithdrawalResponseModelImpl _$$WithdrawalResponseModelImplFromJson(
+_WithdrawalResponseModel _$WithdrawalResponseModelFromJson(
         Map<String, dynamic> json) =>
-    _$WithdrawalResponseModelImpl(
+    _WithdrawalResponseModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,
       result: json['result'] == null
@@ -17,8 +17,8 @@ _$WithdrawalResponseModelImpl _$$WithdrawalResponseModelImplFromJson(
               json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$WithdrawalResponseModelImplToJson(
-        _$WithdrawalResponseModelImpl instance) =>
+Map<String, dynamic> _$WithdrawalResponseModelToJson(
+        _WithdrawalResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,

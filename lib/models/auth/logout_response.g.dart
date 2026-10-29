@@ -6,13 +6,12 @@ part of 'logout_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LogoutResponseImpl _$$LogoutResponseImplFromJson(Map<String, dynamic> json) =>
-    _$LogoutResponseImpl(
+_LogoutResponse _$LogoutResponseFromJson(Map<String, dynamic> json) =>
+    _LogoutResponse(
       success: json['success'] as bool,
     );
 
-Map<String, dynamic> _$$LogoutResponseImplToJson(
-        _$LogoutResponseImpl instance) =>
+Map<String, dynamic> _$LogoutResponseToJson(_LogoutResponse instance) =>
     <String, dynamic>{
       'success': instance.success,
     };

@@ -38,9 +38,11 @@ class WithdrawalBloc extends Bloc<WithdrawalEvent, WithdrawalState> {
 
     try {
       final response = await _withdrawalRepository.getWithdrawal(
-        event.token,
-        event.idUser,
-        event.page,
+        idUser: event.idUser,
+        page: event.page,
+        date: event.date,
+        startDate: event.startDate,
+        endDate: event.endDate,
       );
 
       emit(

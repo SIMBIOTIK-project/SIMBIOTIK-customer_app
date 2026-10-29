@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,49 +9,223 @@ part of 'register_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RegisterEvent {
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get passwordConfirmation => throw _privateConstructorUsedError;
-  String get nik => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String get name;
+  String get email;
+  String get password;
+  String get passwordConfirmation;
+  String get nik;
+  String get phoneNumber;
+  String get address;
+  String get status;
+
+  /// Create a copy of RegisterEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RegisterEventCopyWith<RegisterEvent> get copyWith =>
+      _$RegisterEventCopyWithImpl<RegisterEvent>(
+          this as RegisterEvent, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RegisterEvent &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirmation, passwordConfirmation) ||
+                other.passwordConfirmation == passwordConfirmation) &&
+            (identical(other.nik, nik) || other.nik == nik) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, email, password,
+      passwordConfirmation, nik, phoneNumber, address, status);
+
+  @override
+  String toString() {
+    return 'RegisterEvent(name: $name, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, nik: $nik, phoneNumber: $phoneNumber, address: $address, status: $status)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $RegisterEventCopyWith<$Res> {
+  factory $RegisterEventCopyWith(
+          RegisterEvent value, $Res Function(RegisterEvent) _then) =
+      _$RegisterEventCopyWithImpl;
+  @useResult
+  $Res call(
+      {String name,
+      String email,
+      String password,
+      String passwordConfirmation,
+      String nik,
+      String phoneNumber,
+      String address,
+      String status});
+}
+
+/// @nodoc
+class _$RegisterEventCopyWithImpl<$Res>
+    implements $RegisterEventCopyWith<$Res> {
+  _$RegisterEventCopyWithImpl(this._self, this._then);
+
+  final RegisterEvent _self;
+  final $Res Function(RegisterEvent) _then;
+
+  /// Create a copy of RegisterEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+    Object? nik = null,
+    Object? phoneNumber = null,
+    Object? address = null,
+    Object? status = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+      nik: null == nik
+          ? _self.nik
+          : nik // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [RegisterEvent].
+extension RegisterEventPatterns on RegisterEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            String email,
-            String password,
-            String passwordConfirmation,
-            String nik,
-            String phoneNumber,
-            String address,
-            String status)
-        register,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Register value)? register,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Register() when register != null:
+        return register(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            String email,
-            String password,
-            String passwordConfirmation,
-            String nik,
-            String phoneNumber,
-            String address,
-            String status)?
-        register,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Register value) register,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Register():
+        return register(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Register value)? register,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Register() when register != null:
+        return register(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
@@ -65,192 +239,114 @@ mixin _$RegisterEvent {
             String status)?
         register,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Register value) register,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Register value)? register,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Register value)? register,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of RegisterEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RegisterEventCopyWith<RegisterEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RegisterEventCopyWith<$Res> {
-  factory $RegisterEventCopyWith(
-          RegisterEvent value, $Res Function(RegisterEvent) then) =
-      _$RegisterEventCopyWithImpl<$Res, RegisterEvent>;
-  @useResult
-  $Res call(
-      {String name,
-      String email,
-      String password,
-      String passwordConfirmation,
-      String nik,
-      String phoneNumber,
-      String address,
-      String status});
-}
-
-/// @nodoc
-class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
-    implements $RegisterEventCopyWith<$Res> {
-  _$RegisterEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of RegisterEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
-    Object? passwordConfirmation = null,
-    Object? nik = null,
-    Object? phoneNumber = null,
-    Object? address = null,
-    Object? status = null,
   }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordConfirmation: null == passwordConfirmation
-          ? _value.passwordConfirmation
-          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
-              as String,
-      nik: null == nik
-          ? _value.nik
-          : nik // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    final _that = this;
+    switch (_that) {
+      case _Register() when register != null:
+        return register(
+            _that.name,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.nik,
+            _that.phoneNumber,
+            _that.address,
+            _that.status);
+      case _:
+        return orElse();
+    }
   }
-}
 
-/// @nodoc
-abstract class _$$RegisterImplCopyWith<$Res>
-    implements $RegisterEventCopyWith<$Res> {
-  factory _$$RegisterImplCopyWith(
-          _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
-      __$$RegisterImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String name,
-      String email,
-      String password,
-      String passwordConfirmation,
-      String nik,
-      String phoneNumber,
-      String address,
-      String status});
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-class __$$RegisterImplCopyWithImpl<$Res>
-    extends _$RegisterEventCopyWithImpl<$Res, _$RegisterImpl>
-    implements _$$RegisterImplCopyWith<$Res> {
-  __$$RegisterImplCopyWithImpl(
-      _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RegisterEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
-    Object? passwordConfirmation = null,
-    Object? nik = null,
-    Object? phoneNumber = null,
-    Object? address = null,
-    Object? status = null,
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String name,
+            String email,
+            String password,
+            String passwordConfirmation,
+            String nik,
+            String phoneNumber,
+            String address,
+            String status)
+        register,
   }) {
-    return _then(_$RegisterImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordConfirmation: null == passwordConfirmation
-          ? _value.passwordConfirmation
-          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
-              as String,
-      nik: null == nik
-          ? _value.nik
-          : nik // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Register():
+        return register(
+            _that.name,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.nik,
+            _that.phoneNumber,
+            _that.address,
+            _that.status);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String name,
+            String email,
+            String password,
+            String passwordConfirmation,
+            String nik,
+            String phoneNumber,
+            String address,
+            String status)?
+        register,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Register() when register != null:
+        return register(
+            _that.name,
+            _that.email,
+            _that.password,
+            _that.passwordConfirmation,
+            _that.nik,
+            _that.phoneNumber,
+            _that.address,
+            _that.status);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$RegisterImpl implements _Register {
-  const _$RegisterImpl(
+class _Register implements RegisterEvent {
+  const _Register(
       {required this.name,
       required this.email,
       required this.password,
@@ -277,16 +373,19 @@ class _$RegisterImpl implements _Register {
   @override
   final String status;
 
+  /// Create a copy of RegisterEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'RegisterEvent.register(name: $name, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, nik: $nik, phoneNumber: $phoneNumber, address: $address, status: $status)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RegisterCopyWith<_Register> get copyWith =>
+      __$RegisterCopyWithImpl<_Register>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterImpl &&
+            other is _Register &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
@@ -304,155 +403,126 @@ class _$RegisterImpl implements _Register {
   int get hashCode => Object.hash(runtimeType, name, email, password,
       passwordConfirmation, nik, phoneNumber, address, status);
 
-  /// Create a copy of RegisterEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      __$$RegisterImplCopyWithImpl<_$RegisterImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            String email,
-            String password,
-            String passwordConfirmation,
-            String nik,
-            String phoneNumber,
-            String address,
-            String status)
-        register,
-  }) {
-    return register(name, email, password, passwordConfirmation, nik,
-        phoneNumber, address, status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            String email,
-            String password,
-            String passwordConfirmation,
-            String nik,
-            String phoneNumber,
-            String address,
-            String status)?
-        register,
-  }) {
-    return register?.call(name, email, password, passwordConfirmation, nik,
-        phoneNumber, address, status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name,
-            String email,
-            String password,
-            String passwordConfirmation,
-            String nik,
-            String phoneNumber,
-            String address,
-            String status)?
-        register,
-    required TResult orElse(),
-  }) {
-    if (register != null) {
-      return register(name, email, password, passwordConfirmation, nik,
-          phoneNumber, address, status);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Register value) register,
-  }) {
-    return register(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Register value)? register,
-  }) {
-    return register?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Register value)? register,
-    required TResult orElse(),
-  }) {
-    if (register != null) {
-      return register(this);
-    }
-    return orElse();
+  String toString() {
+    return 'RegisterEvent.register(name: $name, email: $email, password: $password, passwordConfirmation: $passwordConfirmation, nik: $nik, phoneNumber: $phoneNumber, address: $address, status: $status)';
   }
 }
 
-abstract class _Register implements RegisterEvent {
-  const factory _Register(
-      {required final String name,
-      required final String email,
-      required final String password,
-      required final String passwordConfirmation,
-      required final String nik,
-      required final String phoneNumber,
-      required final String address,
-      required final String status}) = _$RegisterImpl;
+/// @nodoc
+abstract mixin class _$RegisterCopyWith<$Res>
+    implements $RegisterEventCopyWith<$Res> {
+  factory _$RegisterCopyWith(_Register value, $Res Function(_Register) _then) =
+      __$RegisterCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      String email,
+      String password,
+      String passwordConfirmation,
+      String nik,
+      String phoneNumber,
+      String address,
+      String status});
+}
 
-  @override
-  String get name;
-  @override
-  String get email;
-  @override
-  String get password;
-  @override
-  String get passwordConfirmation;
-  @override
-  String get nik;
-  @override
-  String get phoneNumber;
-  @override
-  String get address;
-  @override
-  String get status;
+/// @nodoc
+class __$RegisterCopyWithImpl<$Res> implements _$RegisterCopyWith<$Res> {
+  __$RegisterCopyWithImpl(this._self, this._then);
+
+  final _Register _self;
+  final $Res Function(_Register) _then;
 
   /// Create a copy of RegisterEvent
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirmation = null,
+    Object? nik = null,
+    Object? phoneNumber = null,
+    Object? address = null,
+    Object? status = null,
+  }) {
+    return _then(_Register(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _self.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirmation: null == passwordConfirmation
+          ? _self.passwordConfirmation
+          : passwordConfirmation // ignore: cast_nullable_to_non_nullable
+              as String,
+      nik: null == nik
+          ? _self.nik
+          : nik // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$RegisterState {
-  RegisterStateStatus get status => throw _privateConstructorUsedError;
-  UserModel? get data => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  RegisterStateStatus get status;
+  UserModel? get data;
+  String? get error;
 
   /// Create a copy of RegisterState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $RegisterStateCopyWith<RegisterState> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$RegisterStateCopyWithImpl<RegisterState>(
+          this as RegisterState, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RegisterState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status, data, error);
+
+  @override
+  String toString() {
+    return 'RegisterState(status: $status, data: $data, error: $error)';
+  }
 }
 
 /// @nodoc
-abstract class $RegisterStateCopyWith<$Res> {
+abstract mixin class $RegisterStateCopyWith<$Res> {
   factory $RegisterStateCopyWith(
-          RegisterState value, $Res Function(RegisterState) then) =
-      _$RegisterStateCopyWithImpl<$Res, RegisterState>;
+          RegisterState value, $Res Function(RegisterState) _then) =
+      _$RegisterStateCopyWithImpl;
   @useResult
   $Res call({RegisterStateStatus status, UserModel? data, String? error});
 
@@ -460,14 +530,12 @@ abstract class $RegisterStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
+class _$RegisterStateCopyWithImpl<$Res>
     implements $RegisterStateCopyWith<$Res> {
-  _$RegisterStateCopyWithImpl(this._value, this._then);
+  _$RegisterStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final RegisterState _self;
+  final $Res Function(RegisterState) _then;
 
   /// Create a copy of RegisterState
   /// with the given fields replaced by the non-null parameter values.
@@ -478,20 +546,20 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
     Object? data = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as RegisterStateStatus,
       data: freezed == data
-          ? _value.data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as UserModel?,
       error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of RegisterState
@@ -499,68 +567,182 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
   @override
   @pragma('vm:prefer-inline')
   $UserModelCopyWith<$Res>? get data {
-    if (_value.data == null) {
+    if (_self.data == null) {
       return null;
     }
 
-    return $UserModelCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+    return $UserModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$RegisterStateImplCopyWith<$Res>
-    implements $RegisterStateCopyWith<$Res> {
-  factory _$$RegisterStateImplCopyWith(
-          _$RegisterStateImpl value, $Res Function(_$RegisterStateImpl) then) =
-      __$$RegisterStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({RegisterStateStatus status, UserModel? data, String? error});
+/// Adds pattern-matching-related methods to [RegisterState].
+extension RegisterStatePatterns on RegisterState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $UserModelCopyWith<$Res>? get data;
-}
-
-/// @nodoc
-class __$$RegisterStateImplCopyWithImpl<$Res>
-    extends _$RegisterStateCopyWithImpl<$Res, _$RegisterStateImpl>
-    implements _$$RegisterStateImplCopyWith<$Res> {
-  __$$RegisterStateImplCopyWithImpl(
-      _$RegisterStateImpl _value, $Res Function(_$RegisterStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RegisterState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? data = freezed,
-    Object? error = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_RegisterState value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$RegisterStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as RegisterStateStatus,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as UserModel?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _RegisterState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_RegisterState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RegisterState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_RegisterState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RegisterState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            RegisterStateStatus status, UserModel? data, String? error)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _RegisterState() when $default != null:
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(RegisterStateStatus status, UserModel? data, String? error)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RegisterState():
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            RegisterStateStatus status, UserModel? data, String? error)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RegisterState() when $default != null:
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$RegisterStateImpl implements _RegisterState {
-  const _$RegisterStateImpl(
+class _RegisterState implements RegisterState {
+  const _RegisterState(
       {this.status = RegisterStateStatus.initial, this.data, this.error = ''});
 
   @override
@@ -572,16 +754,19 @@ class _$RegisterStateImpl implements _RegisterState {
   @JsonKey()
   final String? error;
 
+  /// Create a copy of RegisterState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'RegisterState(status: $status, data: $data, error: $error)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RegisterStateCopyWith<_RegisterState> get copyWith =>
+      __$RegisterStateCopyWithImpl<_RegisterState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterStateImpl &&
+            other is _RegisterState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.error, error) || other.error == error));
@@ -590,32 +775,72 @@ class _$RegisterStateImpl implements _RegisterState {
   @override
   int get hashCode => Object.hash(runtimeType, status, data, error);
 
+  @override
+  String toString() {
+    return 'RegisterState(status: $status, data: $data, error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$RegisterStateCopyWith<$Res>
+    implements $RegisterStateCopyWith<$Res> {
+  factory _$RegisterStateCopyWith(
+          _RegisterState value, $Res Function(_RegisterState) _then) =
+      __$RegisterStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({RegisterStateStatus status, UserModel? data, String? error});
+
+  @override
+  $UserModelCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$RegisterStateCopyWithImpl<$Res>
+    implements _$RegisterStateCopyWith<$Res> {
+  __$RegisterStateCopyWithImpl(this._self, this._then);
+
+  final _RegisterState _self;
+  final $Res Function(_RegisterState) _then;
+
   /// Create a copy of RegisterState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
-      __$$RegisterStateImplCopyWithImpl<_$RegisterStateImpl>(this, _$identity);
-}
-
-abstract class _RegisterState implements RegisterState {
-  const factory _RegisterState(
-      {final RegisterStateStatus status,
-      final UserModel? data,
-      final String? error}) = _$RegisterStateImpl;
-
-  @override
-  RegisterStateStatus get status;
-  @override
-  UserModel? get data;
-  @override
-  String? get error;
+  $Res call({
+    Object? status = null,
+    Object? data = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_RegisterState(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as RegisterStateStatus,
+      data: freezed == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 
   /// Create a copy of RegisterState
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res>? get data {
+    if (_self.data == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
+    });
+  }
 }
+
+// dart format on

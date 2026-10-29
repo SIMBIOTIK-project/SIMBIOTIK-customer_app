@@ -6,9 +6,8 @@ part of 'deposit_page_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DepositPageModelImpl _$$DepositPageModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DepositPageModelImpl(
+_DepositPageModel _$DepositPageModelFromJson(Map<String, dynamic> json) =>
+    _DepositPageModel(
       totalData: (json['total_data'] as num?)?.toInt(),
       currentPage: (json['current_page'] as num?)?.toInt(),
       perPage: (json['per_page'] as num?)?.toInt(),
@@ -18,8 +17,7 @@ _$DepositPageModelImpl _$$DepositPageModelImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$DepositPageModelImplToJson(
-        _$DepositPageModelImpl instance) =>
+Map<String, dynamic> _$DepositPageModelToJson(_DepositPageModel instance) =>
     <String, dynamic>{
       'total_data': instance.totalData,
       'current_page': instance.currentPage,

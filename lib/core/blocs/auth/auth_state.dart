@@ -27,7 +27,7 @@ enum GetAuthStateStatus {
 }
 
 @freezed
-class AuthState with _$AuthState {
+abstract class AuthState with _$AuthState {
   const factory AuthState({
     @Default(GetAuthStateStatus.initial) GetAuthStateStatus status,
     UserModel? data,

@@ -144,17 +144,17 @@ class _DetailUserScreenContentState extends State<DetailUserScreenContent> {
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
+                                Navigator.of(dialogContext).pop();
+                              },
+                              child: const Text('Tidak'),
+                            ),
+                            TextButton(
+                              onPressed: () {
                                 context.read<LogoutBloc>().add(
                                       const LogoutEvent.logout(),
                                     );
                               },
                               child: const Text('Ya, Keluar'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(dialogContext).pop();
-                              },
-                              child: const Text('Tidak'),
                             ),
                           ],
                         );

@@ -27,7 +27,7 @@ enum WithdrawalStateStatus {
 }
 
 @freezed
-class WithdrawalState with _$WithdrawalState {
+abstract class WithdrawalState with _$WithdrawalState {
   const factory WithdrawalState({
     @Default(WithdrawalStateStatus.initial) WithdrawalStateStatus status,
     WithdrawalResponseModel? data,

@@ -18,7 +18,7 @@ part 'balance_model.freezed.dart';
 part 'balance_model.g.dart';
 
 @freezed
-class BalanceModel with _$BalanceModel {
+abstract class BalanceModel with _$BalanceModel {
   const factory BalanceModel({
     @JsonKey(name: 'saldo') double? saldo,
     @JsonKey(name: 'total_deposit') double? totalDeposit,

@@ -6,9 +6,8 @@ part of 'sodako_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SodakoResponseModelImpl _$$SodakoResponseModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SodakoResponseModelImpl(
+_SodakoResponseModel _$SodakoResponseModelFromJson(Map<String, dynamic> json) =>
+    _SodakoResponseModel(
       success: json['success'] as bool?,
       message: json['message'] as String?,
       result: json['result'] == null
@@ -16,8 +15,8 @@ _$SodakoResponseModelImpl _$$SodakoResponseModelImplFromJson(
           : SodakoPageModel.fromJson(json['result'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$SodakoResponseModelImplToJson(
-        _$SodakoResponseModelImpl instance) =>
+Map<String, dynamic> _$SodakoResponseModelToJson(
+        _SodakoResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,

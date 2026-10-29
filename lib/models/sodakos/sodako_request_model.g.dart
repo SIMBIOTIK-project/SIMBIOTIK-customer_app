@@ -6,15 +6,13 @@ part of 'sodako_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SodakoRequestModelImpl _$$SodakoRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SodakoRequestModelImpl(
+_SodakoRequestModel _$SodakoRequestModelFromJson(Map<String, dynamic> json) =>
+    _SodakoRequestModel(
       idUser: json['id_user'] as String?,
       price: (json['price'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$SodakoRequestModelImplToJson(
-        _$SodakoRequestModelImpl instance) =>
+Map<String, dynamic> _$SodakoRequestModelToJson(_SodakoRequestModel instance) =>
     <String, dynamic>{
       'id_user': instance.idUser,
       'price': instance.price,

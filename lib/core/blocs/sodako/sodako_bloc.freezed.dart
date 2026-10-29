@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,134 +9,269 @@ part of 'sodako_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SodakoEvent {
-  String get token => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, SodakoRequestModel request) create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, SodakoRequestModel request)? create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, SodakoRequestModel request)? create,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_Create value) create,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_Create value)? create,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is SodakoEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'SodakoEvent()';
+  }
+}
+
+/// @nodoc
+class $SodakoEventCopyWith<$Res> {
+  $SodakoEventCopyWith(SodakoEvent _, $Res Function(SodakoEvent) __);
+}
+
+/// Adds pattern-matching-related methods to [SodakoEvent].
+extension SodakoEventPatterns on SodakoEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
     TResult Function(_Create value)? create,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SodakoEventCopyWith<SodakoEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SodakoEventCopyWith<$Res> {
-  factory $SodakoEventCopyWith(
-          SodakoEvent value, $Res Function(SodakoEvent) then) =
-      _$SodakoEventCopyWithImpl<$Res, SodakoEvent>;
-  @useResult
-  $Res call({String token});
-}
-
-/// @nodoc
-class _$SodakoEventCopyWithImpl<$Res, $Val extends SodakoEvent>
-    implements $SodakoEventCopyWith<$Res> {
-  _$SodakoEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = null,
   }) {
-    return _then(_value.copyWith(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that);
+      case _Create() when create != null:
+        return create(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetch value) fetch,
+    required TResult Function(_Create value) create,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch():
+        return fetch(_that);
+      case _Create():
+        return create(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetch value)? fetch,
+    TResult? Function(_Create value)? create,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that);
+      case _Create() when create != null:
+        return create(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? idUser, int? page)? fetch,
+    TResult Function(SodakoRequestModel request)? create,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that.idUser, _that.page);
+      case _Create() when create != null:
+        return create(_that.request);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? idUser, int? page) fetch,
+    required TResult Function(SodakoRequestModel request) create,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch():
+        return fetch(_that.idUser, _that.page);
+      case _Create():
+        return create(_that.request);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? idUser, int? page)? fetch,
+    TResult? Function(SodakoRequestModel request)? create,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Fetch() when fetch != null:
+        return fetch(_that.idUser, _that.page);
+      case _Create() when create != null:
+        return create(_that.request);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
-abstract class _$$FetchImplCopyWith<$Res>
-    implements $SodakoEventCopyWith<$Res> {
-  factory _$$FetchImplCopyWith(
-          _$FetchImpl value, $Res Function(_$FetchImpl) then) =
-      __$$FetchImplCopyWithImpl<$Res>;
+
+class _Fetch implements SodakoEvent {
+  const _Fetch({this.idUser, this.page});
+
+  final String? idUser;
+  final int? page;
+
+  /// Create a copy of SodakoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FetchCopyWith<_Fetch> get copyWith =>
+      __$FetchCopyWithImpl<_Fetch>(this, _$identity);
+
   @override
-  @useResult
-  $Res call({String token, String? idUser, int? page});
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Fetch &&
+            (identical(other.idUser, idUser) || other.idUser == idUser) &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idUser, page);
+
+  @override
+  String toString() {
+    return 'SodakoEvent.fetch(idUser: $idUser, page: $page)';
+  }
 }
 
 /// @nodoc
-class __$$FetchImplCopyWithImpl<$Res>
-    extends _$SodakoEventCopyWithImpl<$Res, _$FetchImpl>
-    implements _$$FetchImplCopyWith<$Res> {
-  __$$FetchImplCopyWithImpl(
-      _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
-      : super(_value, _then);
+abstract mixin class _$FetchCopyWith<$Res>
+    implements $SodakoEventCopyWith<$Res> {
+  factory _$FetchCopyWith(_Fetch value, $Res Function(_Fetch) _then) =
+      __$FetchCopyWithImpl;
+  @useResult
+  $Res call({String? idUser, int? page});
+}
+
+/// @nodoc
+class __$FetchCopyWithImpl<$Res> implements _$FetchCopyWith<$Res> {
+  __$FetchCopyWithImpl(this._self, this._then);
+
+  final _Fetch _self;
+  final $Res Function(_Fetch) _then;
 
   /// Create a copy of SodakoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? token = null,
     Object? idUser = freezed,
     Object? page = freezed,
   }) {
-    return _then(_$FetchImpl(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_Fetch(
       idUser: freezed == idUser
-          ? _value.idUser
+          ? _self.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as String?,
       page: freezed == page
-          ? _value.page
+          ? _self.page
           : page // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
@@ -145,160 +280,62 @@ class __$$FetchImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchImpl implements _Fetch {
-  const _$FetchImpl({required this.token, this.idUser, this.page});
+class _Create implements SodakoEvent {
+  const _Create({required this.request});
 
-  @override
-  final String token;
-  @override
-  final String? idUser;
-  @override
-  final int? page;
+  final SodakoRequestModel request;
 
-  @override
-  String toString() {
-    return 'SodakoEvent.fetch(token: $token, idUser: $idUser, page: $page)';
-  }
+  /// Create a copy of SodakoEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateCopyWith<_Create> get copyWith =>
+      __$CreateCopyWithImpl<_Create>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FetchImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.idUser, idUser) || other.idUser == idUser) &&
-            (identical(other.page, page) || other.page == page));
+            other is _Create &&
+            (identical(other.request, request) || other.request == request));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token, idUser, page);
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      __$$FetchImplCopyWithImpl<_$FetchImpl>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, request);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, SodakoRequestModel request) create,
-  }) {
-    return fetch(token, idUser, page);
+  String toString() {
+    return 'SodakoEvent.create(request: $request)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, SodakoRequestModel request)? create,
-  }) {
-    return fetch?.call(token, idUser, page);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, SodakoRequestModel request)? create,
-    required TResult orElse(),
-  }) {
-    if (fetch != null) {
-      return fetch(token, idUser, page);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_Create value) create,
-  }) {
-    return fetch(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_Create value)? create,
-  }) {
-    return fetch?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_Create value)? create,
-    required TResult orElse(),
-  }) {
-    if (fetch != null) {
-      return fetch(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Fetch implements SodakoEvent {
-  const factory _Fetch(
-      {required final String token,
-      final String? idUser,
-      final int? page}) = _$FetchImpl;
-
-  @override
-  String get token;
-  String? get idUser;
-  int? get page;
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FetchImplCopyWith<_$FetchImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreateImplCopyWith<$Res>
+abstract mixin class _$CreateCopyWith<$Res>
     implements $SodakoEventCopyWith<$Res> {
-  factory _$$CreateImplCopyWith(
-          _$CreateImpl value, $Res Function(_$CreateImpl) then) =
-      __$$CreateImplCopyWithImpl<$Res>;
-  @override
+  factory _$CreateCopyWith(_Create value, $Res Function(_Create) _then) =
+      __$CreateCopyWithImpl;
   @useResult
-  $Res call({String token, SodakoRequestModel request});
+  $Res call({SodakoRequestModel request});
 
   $SodakoRequestModelCopyWith<$Res> get request;
 }
 
 /// @nodoc
-class __$$CreateImplCopyWithImpl<$Res>
-    extends _$SodakoEventCopyWithImpl<$Res, _$CreateImpl>
-    implements _$$CreateImplCopyWith<$Res> {
-  __$$CreateImplCopyWithImpl(
-      _$CreateImpl _value, $Res Function(_$CreateImpl) _then)
-      : super(_value, _then);
+class __$CreateCopyWithImpl<$Res> implements _$CreateCopyWith<$Res> {
+  __$CreateCopyWithImpl(this._self, this._then);
+
+  final _Create _self;
+  final $Res Function(_Create) _then;
 
   /// Create a copy of SodakoEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? token = null,
     Object? request = null,
   }) {
-    return _then(_$CreateImpl(
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_Create(
       request: null == request
-          ? _value.request
+          ? _self.request
           : request // ignore: cast_nullable_to_non_nullable
               as SodakoRequestModel,
     ));
@@ -309,145 +346,49 @@ class __$$CreateImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $SodakoRequestModelCopyWith<$Res> get request {
-    return $SodakoRequestModelCopyWith<$Res>(_value.request, (value) {
-      return _then(_value.copyWith(request: value));
+    return $SodakoRequestModelCopyWith<$Res>(_self.request, (value) {
+      return _then(_self.copyWith(request: value));
     });
   }
 }
 
 /// @nodoc
+mixin _$SodakoState {
+  SodakoStateStatus get status;
+  SodakoResponseModel? get data;
+  String? get error;
 
-class _$CreateImpl implements _Create {
-  const _$CreateImpl({required this.token, required this.request});
-
-  @override
-  final String token;
-  @override
-  final SodakoRequestModel request;
-
-  @override
-  String toString() {
-    return 'SodakoEvent.create(token: $token, request: $request)';
-  }
+  /// Create a copy of SodakoState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SodakoStateCopyWith<SodakoState> get copyWith =>
+      _$SodakoStateCopyWithImpl<SodakoState>(this as SodakoState, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.request, request) || other.request == request));
+            other is SodakoState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token, request);
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
-      __$$CreateImplCopyWithImpl<_$CreateImpl>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, status, data, error);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String token, String? idUser, int? page) fetch,
-    required TResult Function(String token, SodakoRequestModel request) create,
-  }) {
-    return create(token, request);
+  String toString() {
+    return 'SodakoState(status: $status, data: $data, error: $error)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String token, String? idUser, int? page)? fetch,
-    TResult? Function(String token, SodakoRequestModel request)? create,
-  }) {
-    return create?.call(token, request);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String token, String? idUser, int? page)? fetch,
-    TResult Function(String token, SodakoRequestModel request)? create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(token, request);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_Create value) create,
-  }) {
-    return create(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_Create value)? create,
-  }) {
-    return create?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_Create value)? create,
-    required TResult orElse(),
-  }) {
-    if (create != null) {
-      return create(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Create implements SodakoEvent {
-  const factory _Create(
-      {required final String token,
-      required final SodakoRequestModel request}) = _$CreateImpl;
-
-  @override
-  String get token;
-  SodakoRequestModel get request;
-
-  /// Create a copy of SodakoEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$SodakoState {
-  SodakoStateStatus get status => throw _privateConstructorUsedError;
-  SodakoResponseModel? get data => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
-
-  /// Create a copy of SodakoState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SodakoStateCopyWith<SodakoState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SodakoStateCopyWith<$Res> {
+abstract mixin class $SodakoStateCopyWith<$Res> {
   factory $SodakoStateCopyWith(
-          SodakoState value, $Res Function(SodakoState) then) =
-      _$SodakoStateCopyWithImpl<$Res, SodakoState>;
+          SodakoState value, $Res Function(SodakoState) _then) =
+      _$SodakoStateCopyWithImpl;
   @useResult
   $Res call(
       {SodakoStateStatus status, SodakoResponseModel? data, String? error});
@@ -456,14 +397,11 @@ abstract class $SodakoStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SodakoStateCopyWithImpl<$Res, $Val extends SodakoState>
-    implements $SodakoStateCopyWith<$Res> {
-  _$SodakoStateCopyWithImpl(this._value, this._then);
+class _$SodakoStateCopyWithImpl<$Res> implements $SodakoStateCopyWith<$Res> {
+  _$SodakoStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SodakoState _self;
+  final $Res Function(SodakoState) _then;
 
   /// Create a copy of SodakoState
   /// with the given fields replaced by the non-null parameter values.
@@ -474,20 +412,20 @@ class _$SodakoStateCopyWithImpl<$Res, $Val extends SodakoState>
     Object? data = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as SodakoStateStatus,
       data: freezed == data
-          ? _value.data
+          ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as SodakoResponseModel?,
       error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of SodakoState
@@ -495,69 +433,183 @@ class _$SodakoStateCopyWithImpl<$Res, $Val extends SodakoState>
   @override
   @pragma('vm:prefer-inline')
   $SodakoResponseModelCopyWith<$Res>? get data {
-    if (_value.data == null) {
+    if (_self.data == null) {
       return null;
     }
 
-    return $SodakoResponseModelCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
+    return $SodakoResponseModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$SodakoStateImplCopyWith<$Res>
-    implements $SodakoStateCopyWith<$Res> {
-  factory _$$SodakoStateImplCopyWith(
-          _$SodakoStateImpl value, $Res Function(_$SodakoStateImpl) then) =
-      __$$SodakoStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {SodakoStateStatus status, SodakoResponseModel? data, String? error});
+/// Adds pattern-matching-related methods to [SodakoState].
+extension SodakoStatePatterns on SodakoState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $SodakoResponseModelCopyWith<$Res>? get data;
-}
-
-/// @nodoc
-class __$$SodakoStateImplCopyWithImpl<$Res>
-    extends _$SodakoStateCopyWithImpl<$Res, _$SodakoStateImpl>
-    implements _$$SodakoStateImplCopyWith<$Res> {
-  __$$SodakoStateImplCopyWithImpl(
-      _$SodakoStateImpl _value, $Res Function(_$SodakoStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SodakoState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? data = freezed,
-    Object? error = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SodakoState value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$SodakoStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as SodakoStateStatus,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as SodakoResponseModel?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _SodakoState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SodakoState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SodakoState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SodakoState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SodakoState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            SodakoStateStatus status, SodakoResponseModel? data, String? error)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _SodakoState() when $default != null:
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            SodakoStateStatus status, SodakoResponseModel? data, String? error)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SodakoState():
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            SodakoStateStatus status, SodakoResponseModel? data, String? error)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _SodakoState() when $default != null:
+        return $default(_that.status, _that.data, _that.error);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$SodakoStateImpl implements _SodakoState {
-  const _$SodakoStateImpl(
+class _SodakoState implements SodakoState {
+  const _SodakoState(
       {this.status = SodakoStateStatus.initial, this.data, this.error = ''});
 
   @override
@@ -569,16 +621,19 @@ class _$SodakoStateImpl implements _SodakoState {
   @JsonKey()
   final String? error;
 
+  /// Create a copy of SodakoState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SodakoState(status: $status, data: $data, error: $error)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SodakoStateCopyWith<_SodakoState> get copyWith =>
+      __$SodakoStateCopyWithImpl<_SodakoState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SodakoStateImpl &&
+            other is _SodakoState &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.error, error) || other.error == error));
@@ -587,32 +642,72 @@ class _$SodakoStateImpl implements _SodakoState {
   @override
   int get hashCode => Object.hash(runtimeType, status, data, error);
 
+  @override
+  String toString() {
+    return 'SodakoState(status: $status, data: $data, error: $error)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SodakoStateCopyWith<$Res>
+    implements $SodakoStateCopyWith<$Res> {
+  factory _$SodakoStateCopyWith(
+          _SodakoState value, $Res Function(_SodakoState) _then) =
+      __$SodakoStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {SodakoStateStatus status, SodakoResponseModel? data, String? error});
+
+  @override
+  $SodakoResponseModelCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$SodakoStateCopyWithImpl<$Res> implements _$SodakoStateCopyWith<$Res> {
+  __$SodakoStateCopyWithImpl(this._self, this._then);
+
+  final _SodakoState _self;
+  final $Res Function(_SodakoState) _then;
+
   /// Create a copy of SodakoState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SodakoStateImplCopyWith<_$SodakoStateImpl> get copyWith =>
-      __$$SodakoStateImplCopyWithImpl<_$SodakoStateImpl>(this, _$identity);
-}
-
-abstract class _SodakoState implements SodakoState {
-  const factory _SodakoState(
-      {final SodakoStateStatus status,
-      final SodakoResponseModel? data,
-      final String? error}) = _$SodakoStateImpl;
-
-  @override
-  SodakoStateStatus get status;
-  @override
-  SodakoResponseModel? get data;
-  @override
-  String? get error;
+  $Res call({
+    Object? status = null,
+    Object? data = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_SodakoState(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as SodakoStateStatus,
+      data: freezed == data
+          ? _self.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as SodakoResponseModel?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 
   /// Create a copy of SodakoState
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SodakoStateImplCopyWith<_$SodakoStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $SodakoResponseModelCopyWith<$Res>? get data {
+    if (_self.data == null) {
+      return null;
+    }
+
+    return $SodakoResponseModelCopyWith<$Res>(_self.data!, (value) {
+      return _then(_self.copyWith(data: value));
+    });
+  }
 }
+
+// dart format on

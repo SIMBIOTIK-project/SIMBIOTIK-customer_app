@@ -29,7 +29,7 @@ enum SodakoStateStatus {
 }
 
 @freezed
-class SodakoState with _$SodakoState {
+abstract class SodakoState with _$SodakoState {
   const factory SodakoState({
     @Default(SodakoStateStatus.initial) SodakoStateStatus status,
     SodakoResponseModel? data,

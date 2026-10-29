@@ -6,11 +6,11 @@ part of 'deposit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DepositModelImpl _$$DepositModelImplFromJson(Map<String, dynamic> json) =>
-    _$DepositModelImpl(
+_DepositModel _$DepositModelFromJson(Map<String, dynamic> json) =>
+    _DepositModel(
       id: (json['id'] as num?)?.toInt(),
       idUser: json['id_user'] as String?,
-      idWastetype: json['id_wastetype'] as String?,
+      idWastetype: (json['id_wastetype'] as num?)?.toInt(),
       weight: (json['weight'] as num?)?.toDouble(),
       price: (json['price'] as num?)?.toDouble(),
       createdAt: json['created_at'] == null
@@ -28,7 +28,7 @@ _$DepositModelImpl _$$DepositModelImplFromJson(Map<String, dynamic> json) =>
       createdBy: json['created_by'] as String?,
     );
 
-Map<String, dynamic> _$$DepositModelImplToJson(_$DepositModelImpl instance) =>
+Map<String, dynamic> _$DepositModelToJson(_DepositModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'id_user': instance.idUser,

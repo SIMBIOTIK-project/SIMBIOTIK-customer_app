@@ -21,11 +21,11 @@ part 'deposit_model.freezed.dart';
 part 'deposit_model.g.dart';
 
 @freezed
-class DepositModel with _$DepositModel {
+abstract class DepositModel with _$DepositModel {
   const factory DepositModel({
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'id_user') String? idUser,
-    @JsonKey(name: 'id_wastetype') String? idWastetype,
+    @JsonKey(name: 'id_wastetype') int? idWastetype,
     @JsonKey(name: 'weight') double? weight,
     @JsonKey(name: 'price') double? price,
     @JsonKey(name: 'created_at') DateTime? createdAt,
